@@ -1,0 +1,10 @@
+export default const isIDPattern = (id) => {
+    const korean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]+/;
+    const unicode = /[^\w\s]/;
+
+    if(korean.test(id) || unicode.test(id)) {
+        return false;
+    }
+
+    return id.length > 8 ? false : id;
+}
