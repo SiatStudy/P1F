@@ -1,9 +1,9 @@
-export default const isPWPattern = (pw) => {
+const isPWPattern = (pw) => {
     const korean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]+/;
-    const unicode = /[^\w\s]/;
+    const unicode = /[^\w]/;
     const english = /[a-zA-Z]/;
 
-    if(unicode.test(pw)) {
+    if(korean.test(pw) && /[/s]/.test(pw)) {
         return false;
     }
 
@@ -11,5 +11,7 @@ export default const isPWPattern = (pw) => {
         return false;
     }
 
-    return pw > 8 ? false : pw;
+    return pw.length > 8 ? false : pw;
 }
+
+export { isPWPattern };

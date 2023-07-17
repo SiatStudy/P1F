@@ -1,6 +1,9 @@
-export default const isString = (val) => {
-    if(val instanceof String) {
-        return val;
+const isString = (val) => {
+    if(!(typeof val === 'string')) {
+        throw new Error('[ERROR] This value is not a string.');
     }
-    throw new TypeError;
+
+    return true;
 }
+
+export { isString };

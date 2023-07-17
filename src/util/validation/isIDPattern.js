@@ -1,4 +1,4 @@
-export default const isIDPattern = (id) => {
+const isIDPattern = (id) => {
     const korean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]+/;
     const unicode = /[^\w\s]/;
 
@@ -8,3 +8,5 @@ export default const isIDPattern = (id) => {
 
     return id.length > 8 ? false : id;
 }
+
+export { isIDPattern };

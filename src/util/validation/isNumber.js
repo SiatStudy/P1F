@@ -1,6 +1,9 @@
-export default const isNumber = (val) => {
-    if(val instanceof Number) {
-        return val;
+const isNumber = (val) => {
+    if(!(typeof val === 'number')) {
+        throw new Error('[ERROR] This value is not a number.');
     }
-    throw new TypeError;
+
+    return true;
 }
+
+export { isNumber };
