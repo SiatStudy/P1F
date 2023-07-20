@@ -34,7 +34,7 @@ describe('isEventValue function', () => {
 
         expect(() => {
             isEventValue(state);
-        }).toThrowError('[ERROR] This state is missing the following keys: eventContent, [plan] >> date, [plan] >> time, [plan] >> date, [plan] >> time');
+        }).toThrowError(`[ERROR] This state is missing the following keys: eventContent, plan's date, plan's time`);
     });
 
     test('제대로 된 값을 줄 경우 작동하는지 확인', () => {
@@ -112,5 +112,5 @@ describe('isString function', () => {
     test('문자일 경우 true값을 반환하는지 확인', () => {
         const val = '1234';
         expect(isString(val)).toBe(true);
-    })
-})
+    });
+});

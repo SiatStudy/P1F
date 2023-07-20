@@ -19,27 +19,27 @@ const isEventValue = (state) => {
     } else {
         for (const key of requiredPlanElements) {
             if (!(key in state.plan)) {
-                missingKeys.push(`[plan] >> ${key}`);
+                missingKeys.push(`plan's ${key}`);
             }
         }
 
         // Check for missing keys in the 'date' and 'time' objects
         if (!state.plan.date || typeof state.plan.date !== 'object') {
-            missingKeys.push('[plan] >> date');
+            missingKeys.push(`plan's date`);
         } else {
             for (const key of requiredEventElements) {
                 if (!(key in state.plan.date)) {
-                    missingKeys.push(`[plan.date] >> ${key}`);
+                    missingKeys.push(`date's ${key}`);
                 }
             }
         }
 
         if (!state.plan.time || typeof state.plan.time !== 'object') {
-            missingKeys.push('[plan] >> time');
+            missingKeys.push(`plan's time`);
         } else {
             for (const key of requiredEventElements) {
                 if (!(key in state.plan.time)) {
-                    missingKeys.push(`[plan.time] >> ${key}`);
+                    missingKeys.push(`plan's ${key}`);
                 }
             }
         }
@@ -51,7 +51,7 @@ const isEventValue = (state) => {
     } else {
         for (const key of requiredEndElements) {
             if (!(key in state.end)) {
-                missingKeys.push(`[end] >> ${key}`);
+                missingKeys.push(`end's ${key}`);
             }
         }
     }

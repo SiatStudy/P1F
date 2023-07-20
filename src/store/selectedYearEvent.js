@@ -1,5 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import { isEventValue } from "../util/validation/isEventValue"
+import { isNumber }} from "../util/validation/isNumber"
+
 let selectedYearEvent = createSlice({
     name : "currentYearEvent",
     initialState : [{
@@ -20,24 +23,43 @@ let selectedYearEvent = createSlice({
           date : "2023-07-24",
           time : "09:30"
         },
-        state : false
+        state : true
     }],
+
     reducers : {
         setEvent : (state, action) => {
-            state = action.payload;
+            if(isEventValue(action?.payload) != undefined) state = action.payload;
         },
+
         addEvent : (state, action) => {
-            state.push(action.payload);
+            if(isEventValue(action?.payload) != undefined) state.push(action.payload);
         },
+
         finishEvent : (state, action) => {
             const { id, end } = action.payload;
-            state[id].state = true;
-            state[id].end = end;
+
+            if(isNumber(id)) {
+                state = state.map(item => {
+                    if(item.id === id) {
+                        return {
+                            ...item,
+                            end : end
+                        };
+                    } else {
+                        return item;
+                    }
+                });
+            }
         },
+
         removeEvent : (state, action) => {
             const { id } = action.payload;
-            state[id] = action.payload;
+
+            if(isNumber(id)) {
+                state = state.filter(item => item.id !== id);
+            }
         },
+
         resetEvent : (state, action) => {
             state = [];
         }
