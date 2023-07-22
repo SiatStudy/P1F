@@ -7,7 +7,7 @@ html {
   word-wrap: break-word;
 }
 body {
-  background: #eee;
+  /* background: #eee; */
   -webkit-font-smoothing: antialiased;
 }
 html, body, div, span, applet, object, iframe,
