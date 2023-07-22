@@ -20,8 +20,8 @@ const CustomDiv = styled.div`
   line-height: 1.5rem;
   letter-spacing: 0.03rem;
 
-  ${({findType}) => {
-    switch(findType){
+  ${({type}) => {
+    switch(type){
       case "id" :
         return `
         background: #E3F6FF;
@@ -35,9 +35,9 @@ const CustomDiv = styled.div`
 }}
 `;
 
-const MenuItem = ({findType}) => {
+const MenuItem = ({type}) => {
   let divText;
-  switch (findType) {
+  switch (type) {
     case "id":
       divText = "ID 찾기";
       break;
@@ -53,7 +53,7 @@ const MenuItem = ({findType}) => {
       }
   }
   return (
-    <CustomDiv findType={findType}>{divText}</CustomDiv>
+    <CustomDiv type={type}>{divText}</CustomDiv>
   );
 };
 

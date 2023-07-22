@@ -20,24 +20,24 @@ const LoginContainer = () => {
     <div className={style.container}>
       {/* <AccessButton text="로그인1"></AccessButton> */}
       <AccessButton>로그인2</AccessButton>
-      <LogoButton logo="naver" onClick={onBtnClick}></LogoButton>
-      <LogoButton logo="kakao"></LogoButton>
-      <LogoButton logo="aaa"></LogoButton>
+      <LogoButton type="naver" onClick={onBtnClick}></LogoButton>
+      <LogoButton type="kakao"></LogoButton>
+      {/* <LogoButton type="aaa"></LogoButton> */}
       <VarInput type="text" label="id"></VarInput>
       <VarInput type="password" label="pass"></VarInput>
       {/* <p>passwordInput</p> */}
       <PasswordInput label="password2"></PasswordInput>
-      {/* <MenuItem findType="id"></MenuItem>
-      <MenuItem findType="pw"></MenuItem> */}
+      {/* <MenuItem type="id"></MenuItem>
+      <MenuItem type="pw"></MenuItem> */}
       <div className={style.container2}>
-        <MenuItem findType="id"></MenuItem>
-        <MenuItem findType="pw"></MenuItem>
+        <MenuItem type="id"></MenuItem>
+        <MenuItem type="pw"></MenuItem>
       </div>
       <div className={style.container2}>
-        <MenuItem findType="id"></MenuItem>
+        <MenuItem type="id"></MenuItem>
       </div>
       <div className={style.container2}>
-        <MenuItem findType="pw"></MenuItem>
+        <MenuItem type="pw"></MenuItem>
       </div>
     </div>
   );
