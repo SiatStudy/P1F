@@ -13,9 +13,9 @@ const onBtnClick=()=>{
   console.log("버튼클릭");
 }
 
-const LoginContainer = () => {
-  //컴포넌트 테스트용 임시 컨테이너
 
+const TestContainer1 = () => {
+  //컴포넌트 테스트용 임시 컨테이너
   return (
     <div className={style.container}>
       {/* <AccessButton text="로그인1"></AccessButton> */}
@@ -43,4 +43,4 @@ const LoginContainer = () => {
   );
 };
 
-export default LoginContainer;
+export default TestContainer1;
