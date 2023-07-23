@@ -6,9 +6,9 @@ function App() {
   return (
     <div className="mainContainer">
       {/* 테스트 컨테이너1 */}
-      {/* <TestContainer1></TestContainer1> */}
+      <TestContainer1></TestContainer1>
       {/* 테스트 컨테이너2 */}
-      <TestContainer2></TestContainer2>
+      {/* <TestContainer2></TestContainer2> */}
     </div>
   );
 }

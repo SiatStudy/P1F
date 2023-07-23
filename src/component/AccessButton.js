@@ -55,9 +55,9 @@ ${({ type }) => {
 }}
 `;
 
-const AccessButton = ({children, type}) => {
+const AccessButton = ({children, type, onClick}) => {
   return (
-      <CustomButton1 type={type}>{children}</CustomButton1>  
+      <CustomButton1 type={type} onClick={onClick}>{children}</CustomButton1>  
   );
 };
 

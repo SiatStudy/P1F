@@ -35,7 +35,7 @@ const CustomButton1 = styled.button`
   }}
 `;
 
-const LogoButton = ({ type }) => {
+const LogoButton = ({ type, onClick }) => {
   // 로고 유형에 따라 이미지 소스와 텍스트를 정의합니다.
   let logoImageSrc, buttonText;
   switch (type) {
@@ -57,7 +57,7 @@ const LogoButton = ({ type }) => {
   }
 
   return (
-    <CustomButton1 type={type}>
+    <CustomButton1 type={type} onClick={onClick}>
       <img src={logoImageSrc} alt={type} />
       {buttonText}
     </CustomButton1>

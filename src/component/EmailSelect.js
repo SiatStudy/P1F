@@ -15,8 +15,8 @@ background: var(--yoda-admin-template-blacks-b-0, #FFF);
 
 const EmailSelect = () => {
   return (
-      <CustomSelect>
-        <option value="Email" disabled selected>이메일 선택</option>
+      <CustomSelect defaultValue="Email">
+        <option value="Email" disabled>이메일 선택</option>
         <option value="naver.com">naver.com</option>
         <option value="google.com">google.com</option>
       </CustomSelect>
