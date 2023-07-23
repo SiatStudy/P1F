@@ -19,7 +19,12 @@ const TestContainer1 = () => {
   return (
     <div className={style.container}>
       {/* <AccessButton text="로그인1"></AccessButton> */}
-      <AccessButton>로그인2</AccessButton>
+      <AccessButton>로그인</AccessButton>
+      <AccessButton type="signUpIncomplete">회원가입 미완료</AccessButton>
+      <AccessButton type="signUpComplete">회원가입 완료</AccessButton>
+      <AccessButton type="findIdPw">아이디 찾기</AccessButton>
+   
+      
       <LogoButton type="naver" onClick={onBtnClick}></LogoButton>
       <LogoButton type="kakao"></LogoButton>
       {/* <LogoButton type="aaa"></LogoButton> */}
