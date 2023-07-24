@@ -10,28 +10,32 @@ import SignUpButton from '../component/SignUpButton';
 
 //테스트용 컨테이너1
 //추후 삭제예정
-const [mode, setMode] = useState(false);
-
-const onBtnClick=()=>{
-  console.log("버튼클릭");
-}
-
-const togleMode=()=>{
-  setMode(mode=>!mode);
-}
-
-
 const TestContainer1 = () => {
   //컴포넌트 테스트용 임시 컨테이너
+
+  //버튼의 디자인 상태를 변경하는 mode를 state로 선언
+  const [mode, setMode] = useState(false);
+
+  //임시 버튼 onClick메서드
+  const onBtnClick=()=>{
+    console.log("버튼클릭");
+  }
+
+  //임시 mode 값 변경 메서드
+  const togleMode=()=>{
+    setMode(mode=>!mode);
+  }
+
   return (
     <div className={style.container}>
       {/* <AccessButton text="로그인1"></AccessButton> */}
       <AccessButton onClick={onBtnClick}>로그인</AccessButton>
-      <AccessButton type="signUpIncomplete">회원가입 미완료</AccessButton>
-      <AccessButton type="signUpComplete">회원가입 완료</AccessButton>
+      {/* 회원가입 버튼 분리로 아래 두개의 type 제거 */}
+      {/* <AccessButton type="signUpIncomplete">회원가입 미완료</AccessButton>
+      <AccessButton type="signUpComplete">회원가입 완료</AccessButton> */}
       <AccessButton type="findIdPw">아이디 찾기</AccessButton>
       <AccessButton onClick={togleMode}>mode변환</AccessButton>
-      <SignUpButton mode={mode}>회원가입</SignUpButton>
+      <SignUpButton mode={mode.toString()}>회원가입</SignUpButton>
       
       <LogoButton type="naver" onClick={onBtnClick}></LogoButton>
       <LogoButton type="kakao"></LogoButton>

@@ -10,43 +10,25 @@ justify-content: center;
 align-items: center;
 align-self: stretch;
 border-radius: 0.4375rem;
+background: #3E54AC;
 
 text-align: center;
 font-family: Noto Sans;
 font-style: normal;
+font-weight: 700;
 line-height: 1rem;
 
 ${({ type }) => {
   switch (type) {
-    case "signUpIncomplete":
-      return `
-      background: #EEE;
-      color: #959595;
-      font-weight: 600;
-      font-size: 0.875rem;
-      letter-spacing: 0.02625rem;
-    `
-    case "signUpComplete":
-      return `
-      background: #3E54AC;
-      color: var(--yoda-admin-template-blacks-b-0, #FFF);
-      font-weight: 600;
-      font-size: 0.875rem;
-      letter-spacing: 0.02625rem;
-    `
     case "findIdPw":
       return `
       height: 3.8125rem;
-      background: #3E54AC;
       color: var(--yoda-admin-template-blacks-b-0, #FFF);
       font-size: 1.5625rem;
-      font-weight: 700;
       letter-spacing: 0.04688rem;
     `
     default:
       return `
-      background: #3E54AC;
-      font-weight: 700;
       font-size: 0.875rem;
       color: var(--yoda-admin-template-blacks-b-0, #FFF);
       letter-spacing: 0.02625rem;
@@ -56,6 +38,9 @@ ${({ type }) => {
 `;
 
 const AccessButton = ({children, type, onClick}) => {
+  //children은 외부에서 AccessButton 태그 안쪽에 넣는 내용을 받아옴
+  //type은 버튼의 디자인을 지정
+  //onClick은 onClick 이벤트 메서드를 받아온다
   return (
       <CustomButton1 type={type} onClick={onClick}>{children}</CustomButton1>  
   );

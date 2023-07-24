@@ -36,7 +36,10 @@ const CustomButton1 = styled.button`
 `;
 
 const LogoButton = ({ type, onClick }) => {
-  // 로고 유형에 따라 이미지 소스와 텍스트를 정의합니다.
+  //type은 로고 종류에 따른 버튼의 디자인을 지정
+  //onClick은 onClick 이벤트 메서드를 받아온다
+
+  // 로고 유형에 따라 이미지 소스와 텍스트를 정의
   let logoImageSrc, buttonText;
   switch (type) {
     case "naver":

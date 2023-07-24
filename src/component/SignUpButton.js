@@ -21,7 +21,7 @@ letter-spacing: 0.02625rem;
 
 ${({ mode }) => {
   switch (mode) {
-    case true:
+    case "true":
       return `
       background: #3E54AC;
       color: var(--yoda-admin-template-blacks-b-0, #FFF);
@@ -36,6 +36,9 @@ ${({ mode }) => {
 `;
 
 const SignUpButton = ({children, mode, onClick}) => {
+  //children은 외부에서 SignUpButton 태그 안쪽에 넣는 내용을 받아옴
+  //mode은 외부의 mode state에 따른 버튼의 디자인을 지정
+  //onClick은 onClick 이벤트 메서드를 받아온다
   return (
       <CustomButton1 mode={mode} onClick={onClick}>{children}</CustomButton1>  
   );

@@ -36,6 +36,7 @@ const CustomDiv = styled.div`
 `;
 
 const MenuItem = ({type}) => {
+  //type은 메뉴 아이콘의 디자인을 지정
   let divText;
   switch (type) {
     case "id":
