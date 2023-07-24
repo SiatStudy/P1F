@@ -32,6 +32,9 @@ align-self: stretch;
 const VarInput = ({type, label, name, onChange, value}) => {
   //type에서 해당 input의 타입 지정
   //label에서 해당 input의 라밸 지정
+  //외부에서 받아온 해당 input의 name 지정
+  //외부에서 받아온 해당 input의 onChange 이벤트 지정
+  // 
 
   return (
     <CustomDiv>
