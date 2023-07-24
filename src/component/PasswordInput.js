@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {useState} from "react";
 
 //비밀번호 input용 컴포넌트 파일
 const CustomInput = styled.input.attrs({ type: 'password' })`
@@ -37,11 +38,24 @@ align-self: stretch;
 `
 
 const PasswordInput = ({ label }) => {
+  //label에서 해당 input의 라밸 지정
+
+  const [val,setVal] = useState('');
+  //input 값을 지정하는 val state 선언
+
+  const onInputChange=(e)=>{
+    //onChange로 값이 변경될때마다 변경감지 함수 실행
+    const value = e.target.value;
+    setVal(value);
+    console.log(val);
+    //값이 찍히는걸 보는 테스트용 console.log
+  }
+
   return (
     <OutDiv>
       <CustomLabel>{label} : </CustomLabel>
       <InDiv>
-        <CustomInput></CustomInput>
+        <CustomInput onChange={onInputChange} value={val}></CustomInput>
         <img src="/assets/eyeoffline.svg"></img>
       </InDiv>
     </OutDiv>
