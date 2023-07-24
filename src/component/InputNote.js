@@ -25,10 +25,10 @@ ${({ type }) => {
 }}
 `;
 
-const InputNotification = ({children, type}) => {
+const InputNote = ({children, type}) => {
   return (
     <CustomP type={type}>{children}</CustomP>
   );
 };
 
-export default InputNotification;
+export default InputNote;

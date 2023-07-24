@@ -27,6 +27,7 @@ display: flex;
 flex-direction: column;
 align-items: flex-start;
 align-self: stretch;
+gap: 0.5rem;
 `
 
 const VarInput = ({type, label, name, onChange, value}) => {

@@ -2,7 +2,7 @@ import React from 'react';
 import style from './TestContainer2.module.css';
 import LoginTitle from '../component/LoginTitle';
 import LoginSpan from '../component/LoginSpan';
-import InputNotification from '../component/InputNotification';
+import InputNote from '../component/InputNote';
 import LineWithText from '../component/LineWithText';
 // import TestDiv from '../components/TestDiv';
 
@@ -15,8 +15,8 @@ const TestContainer2 = () => {
     <div className={style.container}>
       {/* <TestDiv></TestDiv> */}
       <LoginTitle>로그인페이지</LoginTitle>
-      <InputNotification type="check">아이디중복확인완료2</InputNotification>
-      <InputNotification>아디비번 일치하지않습니다2</InputNotification>
+      <InputNote type="check">아이디중복확인완료2</InputNote>
+      <InputNote>아디비번 일치하지않습니다2</InputNote>
       <div>
         <LoginSpan type="findIdPw">아디찾기</LoginSpan>
         <LoginSpan type="findIdPw">/</LoginSpan>

@@ -35,6 +35,7 @@ display: flex;
 flex-direction: column;
 align-items: flex-start;
 align-self: stretch;
+gap: 0.5rem;
 `
 
 const PasswordInput = ({ label, name, onChange, value}) => {
