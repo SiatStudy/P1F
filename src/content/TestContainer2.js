@@ -3,7 +3,7 @@ import style from './TestContainer2.module.css';
 import LoginTitle from '../component/LoginTitle';
 import LoginSpan from '../component/LoginSpan';
 import InputNotification from '../component/InputNotification';
-import EmailSelect from '../component/EmailSelect';
+import LineWithText from '../component/LineWithText';
 // import TestDiv from '../components/TestDiv';
 
 //테스트용 컨테이언2
@@ -32,7 +32,7 @@ const TestContainer2 = () => {
         <LoginSpan type="blackMessage">입니다</LoginSpan>
       </div>
       <div className={style.container2}>
-        <EmailSelect></EmailSelect>
+      <LineWithText>OR</LineWithText>
       </div>
     </div >
   );

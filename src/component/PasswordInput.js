@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {useState} from "react";
 
 //비밀번호 input용 컴포넌트 파일
-const CustomInput = styled.input.attrs({ type: 'password' })`
+const CustomInput = styled.input`
   display: flex;
   align-items: center;
   flex: 1 0 0;
@@ -37,26 +37,24 @@ align-items: flex-start;
 align-self: stretch;
 `
 
-const PasswordInput = ({ label }) => {
+const PasswordInput = ({ label, name, onChange, value}) => {
   //label에서 해당 input의 라밸 지정
 
-  const [val,setVal] = useState('');
-  //input 값을 지정하는 val state 선언
+  const [inputType, setInputType] = useState('password');
+  //input의 type을 지정하는 state선언
 
-  const onInputChange=(e)=>{
-    //onChange로 값이 변경될때마다 변경감지 함수 실행
-    const value = e.target.value;
-    setVal(value);
-    console.log(val);
-    //값이 찍히는걸 보는 테스트용 console.log
-  }
+  const onToggleInputType = () => {
+    setInputType(prevType => {return prevType === 'password' ? 'text' : 'password'});
+    console.log("input type 변경");
+  };
+  //눈 아이콘 클릭시 input type 전환
 
   return (
     <OutDiv>
       <CustomLabel>{label} : </CustomLabel>
       <InDiv>
-        <CustomInput onChange={onInputChange} value={val}></CustomInput>
-        <img src="/assets/eyeoffline.svg"></img>
+        <CustomInput type={inputType} name={name} onChange={onChange} value={value}></CustomInput>
+        <img src="/assets/eyeoffline.svg" onClick={onToggleInputType}></img>
       </InDiv>
     </OutDiv>
   );
