@@ -1,9 +1,13 @@
+// import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import Dday from './page/Dday';
 
 function App() {
-  return (
-    <div className="mainContainer">
 
+  return (
+    <div>
+      <Dday></Dday>
     </div>
   );
 }

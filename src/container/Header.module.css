@@ -1,0 +1,21 @@
+.Header{
+    display: flex;
+    flex-direction: row;
+    border-radius: 0.5rem;
+    align-items: center;
+    background-color: #FFF;
+    height: 4.375rem;
+
+}
+
+.Title{
+    padding: 0rem 1rem;
+    display: flex;
+    width: 65rem;
+}
+
+.Search{
+    display: flex;
+    padding: 0rem 1rem;
+
+}

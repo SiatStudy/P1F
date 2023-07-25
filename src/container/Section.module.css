@@ -1,0 +1,30 @@
+.Section{
+    width: 100%;
+    height: 100%;
+
+}
+
+.Top{
+    padding-top: 3rem;
+}
+
+.MonthTitle{
+    padding: 1rem;
+    display: flex;
+}
+
+.Progress{
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+    background: var(--yoda-admin-template-blacks-b-0, #FFF);
+}
+
+.Bottom{
+    padding-top: 3rem;
+}
+
+.MonthYear{
+    padding: 1rem;
+    display: flex;
+}
