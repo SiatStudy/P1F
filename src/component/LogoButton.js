@@ -44,11 +44,11 @@ const LogoButton = ({ type, onClick }) => {
   switch (type) {
     case "naver":
       logoImageSrc = "/assets/naverlogo.svg";
-      buttonText = "네이버";
+      buttonText = "네이버 로그인";
       break;
     case "kakao":
       logoImageSrc = "/assets/kakaologo.svg";
-      buttonText = "카카오";
+      buttonText = "카카오 로그인";
       break;
     default:
       // 올바른 값이 들어오지 않았을 경우 수행

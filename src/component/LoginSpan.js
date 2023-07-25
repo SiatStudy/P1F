@@ -6,7 +6,12 @@ font-family: Noto Sans;
 font-style: normal;
 ${({ type }) => {
   switch (type) {
-    case "findIdPw":
+    //findLink는 아이디/비밀번호 찾기 span
+    //signUpLink는 회원가입 link span
+    //blackMessage는 까만 안내문구 span
+    //redMessage는 빨간 안내문구 span
+    //디폴트는 회원가입 link옆의 까만 글씨
+    case "findLink":
       return `
       color: #B2BEC3;
       text-align: right;
@@ -15,7 +20,7 @@ ${({ type }) => {
       line-height: 1rem; 
       letter-spacing: 0.02063rem;
     `
-    case "link":
+    case "signUpLink":
       return `
       color: #3E54AC;
       font-size: 0.75rem;
@@ -45,7 +50,7 @@ ${({ type }) => {
       color: var(--yoda-admin-template-blacks-b-80, #636E72);
       font-size: 0.75rem;
       font-weight: 700;
-      line-height: 1.125rem; /* 150% */
+      line-height: 1.125rem;
       letter-spacing: 0.0225rem;
     `
   }
@@ -53,9 +58,9 @@ ${({ type }) => {
 `;
 
 
-const LoginSpan = ({children, type}) => {
+const LoginSpan = ({children, type, onClick}) => {
   return (
-    <CustomSpan type={type}>{children}</CustomSpan>
+    <CustomSpan type={type} onClick={onClick}>{children}</CustomSpan>
   );
 };
 

@@ -4,7 +4,7 @@ import LoginContainer from '../content/LoginContainer';
 
 const LoginPage = () => {
   return (
-    <div className={style.page}>
+    <div className={style.loginPage}>
       <LoginContainer></LoginContainer>
     </div>
   );

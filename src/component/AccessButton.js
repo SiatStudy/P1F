@@ -20,6 +20,8 @@ line-height: 1rem;
 
 ${({ type }) => {
   switch (type) {
+    //findIdPw가 아이디/비밀번호 찾기 페이지의 버튼
+    //디폴트가 로그인 페이지의 버튼
     case "findIdPw":
       return `
       height: 3.8125rem;
@@ -38,7 +40,7 @@ ${({ type }) => {
 `;
 
 const AccessButton = ({children, type, onClick}) => {
-  //children은 외부에서 AccessButton 태그 안쪽에 넣는 내용을 받아옴
+  //children은 외부에서 해당 태그 안쪽에 넣는 내용을 받아옴
   //type은 버튼의 디자인을 지정
   //onClick은 onClick 이벤트 메서드를 받아온다
   return (

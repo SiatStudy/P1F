@@ -3,11 +3,12 @@ import styled from 'styled-components';
 
 const CustomH1 = styled.h1`
 color: #3E54AC;
+text-align: center;
 font-family: Noto Sans;
 font-size: 2.625rem;
 font-style: normal;
 font-weight: 600;
-line-height: 3rem; 
+line-height: 3rem;
 letter-spacing: -0.0525rem;
 `;
 
