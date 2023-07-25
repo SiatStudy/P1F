@@ -33,7 +33,7 @@ ${({ type }) => {
       color: #000;
       font-size: 1.5625rem;
       font-weight: 500;
-      line-height: 1rem; 
+      line-height: 1.8rem; 
       letter-spacing: 0.04688rem;
     `
     case "redMessage":
@@ -42,7 +42,7 @@ ${({ type }) => {
       text-align: center;
       font-size: 1.5625rem;
       font-weight: 500;
-      line-height: 1rem; 
+      line-height: 1.8rem; 
       letter-spacing: 0.04688rem;
     `
     default:

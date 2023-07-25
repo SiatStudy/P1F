@@ -28,7 +28,6 @@ const LoginContainer = () => {
       ...prevInputs,
       [name]: value
     }));
-    console.log(value);
   };
 
   //input아래 문구 유무 토글 메서드
@@ -47,12 +46,10 @@ const LoginContainer = () => {
           {/* inputContainer와 아이디/비밀번호 찾기 span들 감싼 div를 감싸는 div */}
           <div className={style.inputContainer}>
             {/* 아이디 비밀번호 input을 감싸는 div */}
-            <VarInput type="text" label="id" name="id" onChange={onInputChange} 
-            value={vals.input1}></VarInput>
+            <VarInput type="text" label="id" name="id" onChange={onInputChange} value={vals.id} />
             <div className={style.passwordContainer}>
               {/* 비밀번호 input과 아래 경고문구를 감싸는 div */}
-              <PasswordInput label="password" name="password" onChange={onInputChange}
-                value={vals.password}></PasswordInput>
+              <PasswordInput label="password" name="password" onChange={onInputChange} value={vals.password} />
               <InputNote isVisible={isVisible.toString()}>아이디 또는 비밀번호를 확인해주세요</InputNote>
               {/* 아이디, 비밀번호가 일치하지 않을 경우 해당 문구가 보임 */}
             </div>
@@ -74,8 +71,8 @@ const LoginContainer = () => {
         <LineWithText>OR</LineWithText>
         <div className={style.logoButtonContainer}>
           {/* LogoButton 두개를 감싼 div */}
-          <LogoButton mode="naver" onClick={toggleVisibility}></LogoButton>
-          <LogoButton mode="kakao"></LogoButton>
+          <LogoButton type="naver" onClick={toggleVisibility}></LogoButton>
+          <LogoButton type="kakao"></LogoButton>
         </div>
       </div>
       </form>

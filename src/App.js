@@ -1,16 +1,18 @@
 import './App.css';
-// import TestContainer1 from './content/TestContainer1';
-// import TestContainer2 from './content/TestContainer2';
+import FindIdPage from './page/FindIdPage';
+import FindPwPage from './page/FindPwPage';
+import IdCheckPage from './page/IdCheckPage';
 import LoginPage from './page/LoginPage';
+import PwChangePage from './page/PwChangePage';
 
 function App() {
   return (
     <div className="mainContainer">
-      {/* 테스트 컨테이너1 */}
-      {/* <TestContainer1></TestContainer1> */}
-      {/* 테스트 컨테이너2 */}
-      {/* <TestContainer2></TestContainer2> */}
-      <LoginPage></LoginPage>
+      {/* <LoginPage></LoginPage> */}
+      {/* <FindIdPage></FindIdPage> */}
+      {/* <FindPwPage></FindPwPage> */}
+      <PwChangePage></PwChangePage>
+      {/* <IdCheckPage></IdCheckPage> */}
     </div>
   );
 }

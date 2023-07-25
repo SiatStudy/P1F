@@ -19,8 +19,8 @@ const CustomButton1 = styled.button`
   font-size: 0.9375rem;
   letter-spacing: 0.02813rem;
 
-  ${({ mode }) => {
-    switch (mode) {
+  ${({ type }) => {
+    switch (type) {
       case "naver":
         return `
         background: #03C75A;
@@ -35,13 +35,13 @@ const CustomButton1 = styled.button`
   }}
 `;
 
-const LogoButton = ({ mode, onClick}) => {
+const LogoButton = ({ type, onClick}) => {
   //type은 로고 종류에 따른 버튼의 디자인을 지정
   //onClick은 onClick 이벤트 메서드를 받아온다
 
   // 로고 유형에 따라 이미지 소스와 텍스트를 정의
   let logoImageSrc, buttonText;
-  switch (mode) {
+  switch (type) {
     case "naver":
       logoImageSrc = "/assets/naverlogo.svg";
       buttonText = "네이버 로그인";
@@ -60,8 +60,8 @@ const LogoButton = ({ mode, onClick}) => {
   }
 
   return (
-    <CustomButton1 mode={mode} onClick={onClick}>
-      <img src={logoImageSrc} alt={mode} />
+    <CustomButton1 type={type} onClick={onClick}>
+      <img src={logoImageSrc} alt={type} />
       {buttonText}
     </CustomButton1>
   );

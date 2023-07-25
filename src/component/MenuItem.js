@@ -1,6 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const object = {
+  //기존 switch문 대신 객체로 스타일 지정
+  blue : `
+    background: #E3F6FF;
+    color: #3E54AC;
+  `,
+  white : `
+    color: var(--yoda-admin-template-blacks-b-80, #636E72);
+  `
+};
+
 //아이디 찾기, 비밀번호 찾기 컴포넌트 파일
 const CustomDiv = styled.div`
   display: flex;
@@ -20,41 +31,13 @@ const CustomDiv = styled.div`
   line-height: 1.5rem;
   letter-spacing: 0.03rem;
 
-  ${({type}) => {
-    switch(type){
-      case "id" :
-        return `
-        background: #E3F6FF;
-        color: #3E54AC;
-        `
-      default :
-        return `
-        color: var(--yoda-admin-template-blacks-b-80, #636E72);
-      `
-  }
-}}
+  ${prop => object[prop.color]}
 `;
 
-const MenuItem = ({type}) => {
+const MenuItem = ({color, children}) => {
   //type은 메뉴 아이콘의 디자인을 지정
-  let divText;
-  switch (type) {
-    case "id":
-      divText = "ID 찾기";
-      break;
-    case "pw":
-      divText = "비밀번호 찾기";
-      break;
-    default:
-      // 올바른 값이 들어오지 않았을 경우 수행
-      try {
-        throw "MenuItem에 올바른 prop가 들어오지 않았어요"
-      } catch (e){
-        console.log(e);
-      }
-  }
   return (
-    <CustomDiv type={type}>{divText}</CustomDiv>
+    <CustomDiv color={color}>{children}</CustomDiv>
   );
 };
 

@@ -14,23 +14,23 @@ const CustomInput = styled.input`
   background: var(--yoda-admin-template-blacks-b-0, #FFF);
   `;
 
-  const CustomLabel = styled.label`
+const CustomLabel = styled.label`
   color: var(--yoda-admin-template-blacks-b-100, #2D3436);
   font-family: Noto Sans;
   font-size: 0.875rem;
   font-style: normal;
-  font-weight: 500;
+  font-weight : ${props => props.size};
   line-height: 1rem;; 
 `;
 const CustomDiv = styled.div`
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-align-self: stretch;
-gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  gap: 0.5rem;
 `
 
-const VarInput = ({type, label, name, onChange, value}) => {
+const VarInput = ({ type, label, size, name, onChange, value }) => {
   //type에서 해당 input의 타입 지정
   //label에서 해당 input의 라밸 지정
   //name에서 외부에서 받아온 해당 input의 name 지정
@@ -39,14 +39,15 @@ const VarInput = ({type, label, name, onChange, value}) => {
 
   return (
     <CustomDiv>
-      <CustomLabel>{label} : </CustomLabel>
+      <CustomLabel size={size}>{label} : </CustomLabel>
       <CustomInput type={type} name={name} onChange={onChange} value={value}></CustomInput>
     </CustomDiv>
   );
 };
 
 VarInput.defaultProps = {
-  type: 'text'
+  type: 'text',
+  size: '500'
 };
 
 export default VarInput;
