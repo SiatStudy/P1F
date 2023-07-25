@@ -1,6 +1,6 @@
 import Modal from "react-modal";
 import { useState } from "react";
-import {ReactComponent as Addfill } from "../svg/Addfill.svg";
+import {ReactComponent as Addfill } from "./svg/Addfill.svg";
 import "./Datepicker.css";
 import DatepickerContent from "./DatepickerContent";
 import style from './DatepickerModal.module.css';

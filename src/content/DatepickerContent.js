@@ -4,36 +4,15 @@ import './Datepicker.css';
 import "react-datepicker/dist/react-datepicker.css";
 import { ko } from "date-fns/locale";
 import { getYear,getMonth } from "date-fns";
-import {ReactComponent as Vector} from "../svg/Vector.svg";
-import {ReactComponent as Closefill } from "../svg/Closefill.svg";
-import {ReactComponent as LeftArrow } from "../svg/LeftArrow.svg";
-import {ReactComponent as RightArrow } from "../svg/RightArrow.svg";
+import {ReactComponent as Vector} from "./svg/Vector.svg";
+import {ReactComponent as Closefill } from "./svg/Closefill.svg";
+import {ReactComponent as LeftArrow } from "./svg/LeftArrow.svg";
+import {ReactComponent as RightArrow } from "./svg/RightArrow.svg";
 import CustomPopupBtn from "../component/CustomPopupBtn";
 import CustomPopupInput from "../component/CustomPopupInput";
 import CustomPopupLabel from "../component/CustomPopupLabel";
 import CustomPopupArea from "../component/CustomPopupArea";
 import CustomPopupDiv from "../component/CustomPopupDiv";
-import { rest } from "msw";
-import { setupWorker } from "msw";
-import axios from "axios";
-
-// Mock Service Worker 설정
-const worker = setupWorker(
-  rest.post("https://example-api.com/data", (req, res, ctx) => {
-    const { title_value, start_date, end_date, memo_value } = req.body;
-    return res(
-      ctx.status(200),
-      ctx.json({
-        message: "데이터 전송 성공",
-        title_value,
-        start_date,
-        end_date,
-        memo_value,
-      })
-    );
-  })
-);
-worker.start();
 
 const ExComp = ({onChangeModal}) => { // onChangeModal로 팝업창 state 값 가져오기
   const [startDate, setStartDate] = useState(new Date()); // 시작 날짜 state
@@ -50,7 +29,7 @@ const ExComp = ({onChangeModal}) => { // onChangeModal로 팝업창 state 값 �
       <Vector className="Vt-custom" onClick={onClick}/>
     </>
   ));
-
+  
   const handleChangeTitle = (event) => {
     const value = event.target.value;
     setTitleVal(value);
@@ -70,11 +49,10 @@ const ExComp = ({onChangeModal}) => { // onChangeModal로 팝업창 state 값 �
     return currentDate < selectedDate;
   }
 
+  // startDate 백으로 보낼 데이터
   const remakeStartDate = startDate.getFullYear() + '-' + (startDate.getMonth()+1) + '-' + startDate.getDate() + ' ' + startDate.getHours().toString().padStart(2, '0') + ':' + startDate.getMinutes().toString().padStart(2, '0');
+  // endDate 백으로 보낼 데이터
   const remakeEndDate = endDate.getFullYear() + '-' + (endDate.getMonth()+1) + '-' + endDate.getDate() + ' ' + endDate.getHours().toString().padStart(2, '0') + ':' + endDate.getMinutes().toString().padStart(2, '0');
-
-  // console.log(remakeStartDate);
-  // console.log(remakeEndDate);
 
     const dpCustomHeader = ({
       date,
@@ -100,27 +78,11 @@ const ExComp = ({onChangeModal}) => { // onChangeModal로 팝업창 state 값 �
       </div>
     )
 
-    const handleSubmit = (event) => {
+    const handleSubmit = (event) => { // form 전송
       if(startDate <= endDate){
         event.preventDefault();
         onChangeModal(false);
-        
-        // API 요청 보내기
-        axios.post("https://example-api.com/data", {
-          title_value: titleVal,
-          start_date: remakeStartDate,
-          end_date: remakeEndDate,
-          memo_value: memoVal,
-        })
-        .then((response) => {
-          console.log("Response:", response.data);
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
-      } else {
-        setDisabled(true);
-        onChangeModal(true);
+      } else { // 데이터 오입력시
         event.preventDefault();
         setShow(true);
       }
