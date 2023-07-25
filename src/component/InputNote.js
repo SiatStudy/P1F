@@ -8,7 +8,7 @@ font-size: 0.625rem;
 font-style: normal;
 line-height: 0.875rem; 
 letter-spacing: 0.0125rem;
-visibility: ${props => props.isVisible ? 'visible' : 'hidden'};
+visibility: ${props => props.isVisable ? 'visible' : 'hidden'};
 ${({ type }) => {
   switch (type) {
     case "check":
@@ -26,12 +26,12 @@ ${({ type }) => {
 }}
 `;
 
-const InputNote = ({children, type, isVisible}) => {
+const InputNote = ({children, type, isVisable}) => {
   //children은 외부에서 해당 태그 안쪽에 넣는 내용을 받아옴
   //type은 문장의 디자인을 지정
   //isVisible은 해당 문장의 보이기 여부 지정
   return (
-    <CustomP type={type} isVisible={isVisible}>{children}</CustomP>
+    <CustomP type={type} isVisable={isVisable}>{children}</CustomP>
   );
 };
 

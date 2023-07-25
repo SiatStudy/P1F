@@ -53,7 +53,7 @@ const LoginContainer = () => {
               {/* 비밀번호 input과 아래 경고문구를 감싸는 div */}
               <PasswordInput label="password" name="password" onChange={onInputChange}
                 value={vals.password}></PasswordInput>
-              <InputNote isVisible={isVisible}>아이디 또는 비밀번호를 확인해주세요</InputNote>
+              <InputNote isVisible={isVisible.toString()}>아이디 또는 비밀번호를 확인해주세요</InputNote>
               {/* 아이디, 비밀번호가 일치하지 않을 경우 해당 문구가 보임 */}
             </div>
           </div>
@@ -74,8 +74,8 @@ const LoginContainer = () => {
         <LineWithText>OR</LineWithText>
         <div className={style.logoButtonContainer}>
           {/* LogoButton 두개를 감싼 div */}
-          <LogoButton type="naver"></LogoButton>
-          <LogoButton type="kakao"></LogoButton>
+          <LogoButton mode="naver" onClick={toggleVisibility}></LogoButton>
+          <LogoButton mode="kakao"></LogoButton>
         </div>
       </div>
       </form>

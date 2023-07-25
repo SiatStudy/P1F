@@ -59,6 +59,9 @@ ${({ type }) => {
 
 
 const LoginSpan = ({children, type, onClick}) => {
+  //children은 외부에서 해당 태그 안쪽에 넣는 내용을 받아옴
+  //type은 버튼의 디자인을 지정
+  //onClick은 onClick 이벤트 메서드를 받아온다
   return (
     <CustomSpan type={type} onClick={onClick}>{children}</CustomSpan>
   );

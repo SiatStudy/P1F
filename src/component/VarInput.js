@@ -33,9 +33,9 @@ gap: 0.5rem;
 const VarInput = ({type, label, name, onChange, value}) => {
   //type에서 해당 input의 타입 지정
   //label에서 해당 input의 라밸 지정
-  //외부에서 받아온 해당 input의 name 지정
-  //외부에서 받아온 해당 input의 onChange 이벤트 지정
-  // 
+  //name에서 외부에서 받아온 해당 input의 name 지정
+  //onChange에서 외부에서 받아온 해당 input의 onChange 이벤트 지정
+  //value에서 외부 state값을 value에 저장
 
   return (
     <CustomDiv>
