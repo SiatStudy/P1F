@@ -1,64 +1,97 @@
-import { isEventValue } from '../util/validation/isEventValue';
+import { isEventObjFront } from '../util/validation/isEventObjFront';
 import { isIDPattern } from '../util/validation/isIDPattern';
 import { isPWPattern } from '../util/validation/isPWPattern';
 import { isNumber } from '../util/validation/isNumber';
 import { isString } from '../util/validation/isString';
-describe('isEventValue function', () => {
+describe('isEventObjFront function', () => {
     test('잘못 된 값을 줄 때 에러를 제대로 보여주는지 확인', () => {
         const state = {
-            id: 1,
-            eventName: 'Event 1',
-            plan: 'Plan 1',
-            end: '2023-07-16',
+            title : 'Event 1',
+            start : 'Plan 1',
+            end : '2023-07-16',
+            state : true
+        };
+
+        expect(() => {
+            isEventObjFront(state);
+        }).toThrowError('[ERROR] extendedProps의 자료형이 잘못되었습니다.');
+    });
+
+    test('[Type 1] 시간값을 잘못 줬을 때 에러를 제대로 보여주는지 확인', () => {
+       const state = {
+           title: 'Event 1',
+           extendedProps : {
+               eventContent : "test"
+           },
+           start : "2023.03.12",
+           end : "2023-06-12",
+           constraint : {
+               startTime : "03:12",
+               endTime : "03:12"
+           },
+           state: true
+       };
+
+        expect(() => {
+            isEventObjFront(state);
+        }).toThrowError('[ERROR] start의 형식이 올바르지 않습니다. (올바른 형식: YYYY-MM-DD)');
+    });
+
+    test('[Type 2] 시간값을 잘못 줬을 때 에러를 제대로 보여주는지 확인', () => {
+        const state = {
+            title: 'Event 1',
+            extendedProps : {
+                eventContent : "test"
+            },
+            start : "2023-03-12",
+            end : "2023-06-12",
+            constraint : {
+                startTime : "03-12",
+                endTime : "03:12"
+            },
             state: true
         };
 
         expect(() => {
-            isEventValue(state);
-        }).toThrowError('[ERROR] This state is missing the following keys: eventContent, plan, end');
+            isEventObjFront(state);
+        }).toThrowError('[ERROR] constraint의 startTime의 형식이 올바르지 않습니다. (올바른 형식: hh:mm)');
     });
 
     test('값안의 잘못 된 값을 줄 때 에러를 제대로 보여주는지 확인', () => {
         const state = {
-            id: 1,
-            eventName: 'Event 1',
-            plan: {
-                data : 10
+            title: 'Event 1',
+            extendedProps : {
+                eventContent : "test"
             },
-            end: {
-                date : "2023-07-24",
-                time : "09:30"
+            start : "2023-04-21",
+            end : "2023-06-12",
+            constraint : {
+              startTime : [1,2,3,4],
+              endTime : "03:12"
             },
             state: true
         };
 
         expect(() => {
-            isEventValue(state);
-        }).toThrowError(`[ERROR] This state is missing the following keys: eventContent, plan's date, plan's time`);
+            isEventObjFront(state);
+        }).toThrowError(`[ERROR] constraint의 startTime 값의 자료형이 잘못되었습니다.`);
     });
 
     test('제대로 된 값을 줄 경우 작동하는지 확인', () => {
         const state = {
-            id: 1,
-            eventName: 'Event 1',
-            eventContent: 'Content 1',
-            plan: {
-                date : {
-                    from : "2023-07-23",
-                    to : "2023-07-24"
-                },
-                time : {
-                    from : "03:30",
-                    to : "10:30"
-                },
+            title: 'Event 1',
+            extendedProps : {
+                eventContent : "test"
             },
-            end: {
-                date : "2023-07-24",
-                time : "09:30"
+            start : "2023-04-21",
+            end : "2023-06-12",
+            constraint : {
+                startTime : "03:11",
+                endTime : "03:12"
             },
-            state: true,
+            state: true
         };
-        expect(isEventValue(state)).toEqual(state);
+        expect(isEventObjFront(state)).toEqual(state);
     });
 });
 
