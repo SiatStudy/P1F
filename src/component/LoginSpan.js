@@ -31,18 +31,18 @@ ${({ type }) => {
     case "blackMessage":
       return `
       color: #000;
-      font-size: 1.5625rem;
+      font-size: 1.4375rem
       font-weight: 500;
-      line-height: 1.8rem; 
+      line-height: 1rem; 
       letter-spacing: 0.04688rem;
     `
     case "redMessage":
       return `
       color: #D83A3A;
       text-align: center;
-      font-size: 1.5625rem;
+      font-size: 1.4375rem
       font-weight: 500;
-      line-height: 1.8rem; 
+      line-height: 1rem; 
       letter-spacing: 0.04688rem;
     `
     default:

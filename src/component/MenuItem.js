@@ -9,6 +9,9 @@ const object = {
   `,
   white : `
     color: var(--yoda-admin-template-blacks-b-80, #636E72);
+  `,
+  whiteBlue : `
+    color: #3E54AC;
   `
 };
 
@@ -34,10 +37,10 @@ const CustomDiv = styled.div`
   ${prop => object[prop.color]}
 `;
 
-const MenuItem = ({color, children}) => {
+const MenuItem = ({color, children, onClick}) => {
   //type은 메뉴 아이콘의 디자인을 지정
   return (
-    <CustomDiv color={color}>{children}</CustomDiv>
+    <CustomDiv color={color} onClick={onClick}>{children}</CustomDiv>
   );
 };
 

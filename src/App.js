@@ -9,9 +9,9 @@ function App() {
   return (
     <div className="mainContainer">
       {/* <LoginPage></LoginPage> */}
-      {/* <FindIdPage></FindIdPage> */}
+      <FindIdPage></FindIdPage>
       {/* <FindPwPage></FindPwPage> */}
-      <PwChangePage></PwChangePage>
+      {/* <PwChangePage></PwChangePage> */}
       {/* <IdCheckPage></IdCheckPage> */}
     </div>
   );

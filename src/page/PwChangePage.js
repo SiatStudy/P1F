@@ -25,7 +25,7 @@ const PwChangePage = () => {
       {/* 요소 전체를 묶는 컨테이너 */}
       <div className={style.mainContainer}>
         <div className={style.headContainer}>
-          <MenuItem color="white">비밀번호 찾기</MenuItem>
+          <MenuItem color="whiteBlur">비밀번호 찾기</MenuItem>
         </div>
 
         {/* 컨테이너에서 정의한 input 두개 묶은 div를 불러옴 */}
