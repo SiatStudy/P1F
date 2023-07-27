@@ -1,0 +1,10 @@
+.container{
+  display: flex;
+width: 75.6875rem;
+height: 26.5625rem;
+padding: 2.5rem 0rem;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: 1.6875rem;
+}

@@ -1,4 +1,5 @@
 import './App.css';
+import MypageContainer from './content/MypageContainer';
 import FindIdPage from './page/FindIdPage';
 import FindPwPage from './page/FindPwPage';
 import IdCheckPage from './page/IdCheckPage';
@@ -13,6 +14,7 @@ function App() {
       {/* <FindPwPage></FindPwPage> */}
       {/* <PwChangePage></PwChangePage> */}
       {/* <IdCheckPage></IdCheckPage> */}
+      <MypageContainer></MypageContainer>
     </div>
   );
 }
