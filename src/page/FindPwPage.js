@@ -40,6 +40,7 @@ const FindPwPage = () => {
             name: 'email',
             label: 'E-mail'
           }}
+
         />
         <AccessButton type="findIdPw">비밀번호 찾기</AccessButton>
       </div>

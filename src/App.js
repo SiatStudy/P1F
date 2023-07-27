@@ -1,5 +1,5 @@
 import './App.css';
-import MypageContainer from './content/MypageContainer';
+import MyPageContainer from './content/MyPageContainer';
 import FindIdPage from './page/FindIdPage';
 import FindPwPage from './page/FindPwPage';
 import IdCheckPage from './page/IdCheckPage';
@@ -10,11 +10,11 @@ function App() {
   return (
     <div className="mainContainer">
       {/* <LoginPage></LoginPage> */}
-      <FindIdPage></FindIdPage>
+      {/* <FindIdPage></FindIdPage> */}
       {/* <FindPwPage></FindPwPage> */}
       {/* <PwChangePage></PwChangePage> */}
       {/* <IdCheckPage></IdCheckPage> */}
-      <MypageContainer></MypageContainer>
+      <MyPageContainer></MyPageContainer>
     </div>
   );
 }
