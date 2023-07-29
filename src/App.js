@@ -1,5 +1,5 @@
 import './App.css';
-import MypageContainer from './content/MypageContainer';
+import MypageContainer from './content/MyPageContainer';
 import FindIdPage from './page/FindIdPage';
 import FindPwPage from './page/FindPwPage';
 import IdCheckPage from './page/IdCheckPage';
