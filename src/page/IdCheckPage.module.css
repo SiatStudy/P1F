@@ -8,9 +8,9 @@
 }
 .mainContainer{
   display: flex;
-  width: 36.875rem;
+  width: 37.0625rem;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 12.3125rem;
   flex-shrink: 0;
 }
