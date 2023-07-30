@@ -4,11 +4,11 @@ import CustomMyPageH1 from "../component/CustomMyPageH1";
 import CustomMyPageRow from "../component/CustomMyPageRow";
 
 
-const MypageContainer = () => {
+const MyPageContainer = () => {
   //편집 상태 전환 state
   const [editMode, setEditMode] = useState(false);
   //마이페이지 값을 담는 state 객체
-  const [obj, setObj] = useState({
+  const [dataObj, setDateObj] = useState({
     name: "홍길동",
     nickName: "aaa",
     email: "aaaa@gmail.com",
@@ -16,22 +16,22 @@ const MypageContainer = () => {
     birthDay: "2000/01/01",
     address: "무슨시 무슨동",
   });
-  const [editedObj, setEditedObj] = useState({ ...obj });
+  const [editedObj, setEditedObj] = useState({ ...dataObj });
   // 편집 중인 내용을 따로 저장하는 state 객체
 
   const toggleEditMode = () => {
     if (editMode) {
       // "확인" 버튼을 눌렀을 때
-      setObj({ ...editedObj }); // 편집한 내용을 저장하고
+      setDateObj({ ...editedObj }); // 편집한 내용을 저장하고
     } else {
       // "수정" 버튼을 눌렀을 때
-      setEditedObj({ ...obj }); // 현재 obj를 편집 중인 내용으로 초기화
+      setEditedObj({ ...dataObj }); // 현재 dataObj를 편집 중인 내용으로 초기화
     }
     setEditMode((mode) => !mode); // editMode를 토글
   };
   //취소 버튼을 눌렀을 때
   const cancellEditMode = () => {
-    setEditedObj({ ...obj }); // 현재 obj를 편집 중인 내용으로 초기화
+    setEditedObj({ ...dataObj }); // 현재 obj를 편집 중인 내용으로 초기화
     setEditMode((mode) => !mode); // editMode를 토글
   };
 
@@ -44,7 +44,7 @@ const MypageContainer = () => {
 
   return (
     <div className={style.mainContainer}>
-      <div className={style.MypageContainer}>
+      <div className={style.MyPageContainer}>
         <div className={style.title}>
           <CustomMyPageH1>마이페이지</CustomMyPageH1>
           {editMode && <button className={style.button} onClick={cancellEditMode}>취소</button>}
@@ -55,43 +55,43 @@ const MypageContainer = () => {
         <div className={style.list}>
           <CustomMyPageRow
             title="이름"
-            value={editMode ? editedObj.name : obj.name}
+            value={editMode ? editedObj.name : dataObj.name}
             $mode={editMode}
             onChange={(value) => onInputChange("name", value)}
           ></CustomMyPageRow>
           <CustomMyPageRow
             title="닉네임"
-            value={editMode ? editedObj.nickName : obj.nickName}
+            value={editMode ? editedObj.nickName : dataObj.nickName}
             $mode={editMode}
             onChange={(value) => onInputChange("nickName", value)}
           ></CustomMyPageRow>
           <CustomMyPageRow
             title="Email"
-            value={editMode ? editedObj.email : obj.email}
+            value={editMode ? editedObj.email : dataObj.email}
             $mode={editMode}
             onChange={(value) => onInputChange("email", value)}
           ></CustomMyPageRow>
           <CustomMyPageRow
             title="휴대폰 번호"
-            value={editMode ? editedObj.phoneNumber : obj.phoneNumber}
+            value={editMode ? editedObj.phoneNumber : dataObj.phoneNumber}
             $mode={editMode}
             onChange={(value) => onInputChange("phoneNumber", value)}
           ></CustomMyPageRow>
           <CustomMyPageRow
             title="생년월일"
-            value={editMode ? editedObj.birthDay : obj.birthDay}
+            value={editMode ? editedObj.birthDay : dataObj.birthDay}
             $mode={editMode}
             onChange={(value) => onInputChange("birthDay", value)}
           ></CustomMyPageRow>
           <CustomMyPageRow
             title="주소"
-            value={editMode ? editedObj.address : obj.address}
+            value={editMode ? editedObj.address : dataObj.address}
             $mode={editMode}
             onChange={(value) => onInputChange("address", value)}
           ></CustomMyPageRow>
         </div>
       </div>
-      <div className={style.MypageContainer}>
+      <div className={style.MyPageContainer}>
         <div className={style.title}>
           <CustomMyPageH1>버전</CustomMyPageH1>
         </div>
@@ -105,4 +105,4 @@ const MypageContainer = () => {
   );
 };
 
-export default MypageContainer;
+export default MyPageContainer;
