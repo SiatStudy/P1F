@@ -9,6 +9,7 @@ font-style: normal;
 font-weight: 700;
 line-height: 150%; /* 2.8125rem */
 letter-spacing: -0.0375rem;
+flex: 1;
 `;
 
 export default CustomMyPageH1;

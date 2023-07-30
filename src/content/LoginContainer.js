@@ -71,8 +71,8 @@ const LoginContainer = () => {
         <LineWithText>OR</LineWithText>
         <div className={style.logoButtonContainer}>
           {/* LogoButton 두개를 감싼 div */}
-          <LogoButton type="naver" onClick={toggleVisibility}></LogoButton>
-          <LogoButton type="kakao"></LogoButton>
+          <LogoButton $logo="naver" onClick={toggleVisibility}></LogoButton>
+          <LogoButton $logo="kakao"></LogoButton>
         </div>
       </div>
       </form>

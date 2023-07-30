@@ -20,6 +20,7 @@ font-style: normal;
 font-weight: 400;
 line-height: 1.3125rem; /* 105% */
 letter-spacing: 0.025rem;
+display: ${props => (props.$mode ? 'none' : 'block')};
 `;
 
 const OutDiv = styled.div`
@@ -29,12 +30,25 @@ gap: 2.5rem;
 align-self: stretch;
 `;
 
-const CustomMyPageRow = ({title, value}) => {
+const CustomInput = styled.input`
+flex: 1 0 0;
+
+border-radius: 0.25rem;
+border: 1px solid #000;
+display: ${props => (props.$mode ? 'block' : 'none')};
+`;
+
+const CustomMyPageRow = ({title, value, $mode, onChange}) => {
+  // title : 제목
+  // value : 내용
+  // $mode : 상태 전환
+  // onChange : 이벤트
   
   return (
     <OutDiv>
       <KeyDiv>{title}</KeyDiv>
-      <CustomH3>{value}</CustomH3>
+      <CustomH3 $mode={$mode}>{value}</CustomH3>
+      <CustomInput type="text" $mode={$mode} value={value} onChange={(e) => onChange(e.target.value)}></CustomInput>
     </OutDiv>
   );
 };
