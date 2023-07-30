@@ -7,7 +7,7 @@ import CustomMyPageRow from "../component/CustomMyPageRow";
 const MypageContainer = () => {
   //편집 상태 전환 state
   const [editMode, setEditMode] = useState(false);
-  //마이페이지 값을 담는 객체
+  //마이페이지 값을 담는 state 객체
   const [obj, setObj] = useState({
     name: "홍길동",
     nickName: "aaa",
@@ -17,7 +17,7 @@ const MypageContainer = () => {
     address: "무슨시 무슨동",
   });
   const [editedObj, setEditedObj] = useState({ ...obj });
-  // 편집 중인 내용을 따로 저장하는 상태
+  // 편집 중인 내용을 따로 저장하는 state 객체
 
   const toggleEditMode = () => {
     if (editMode) {
@@ -29,6 +29,7 @@ const MypageContainer = () => {
     }
     setEditMode((mode) => !mode); // editMode를 토글
   };
+  //취소 버튼을 눌렀을 때
   const cancellEditMode = () => {
     setEditedObj({ ...obj }); // 현재 obj를 편집 중인 내용으로 초기화
     setEditMode((mode) => !mode); // editMode를 토글

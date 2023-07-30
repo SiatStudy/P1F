@@ -9,11 +9,6 @@ import PwChangePage from './page/PwChangePage';
 function App() {
   return (
     <div className="mainContainer">
-      {/* <LoginPage></LoginPage> */}
-      {/* <FindIdPage></FindIdPage> */}
-      {/* <FindPwPage></FindPwPage> */}
-      {/* <PwChangePage></PwChangePage> */}
-      {/* <IdCheckPage></IdCheckPage> */}
       <MyPageContainer></MyPageContainer>
     </div>
   );
