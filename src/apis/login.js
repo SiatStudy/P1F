@@ -1,12 +1,52 @@
-import axios from 'axios';
+import axios from 'axios'
+import errorFunc from '../util/errorFunc'
 
-async const loginUser = ({ postData }) => {
-    try {
-        const req = await axios.post('/login', postData);
-    } catch (err) {
-        console.error(err);
-    }
+const login = async ({ url, userData }) => {
+    return axios
+        .post(url + '/login', userData)
+        .then(res => {
 
-    return req.result.sectionId;
+        })
+        .catch(err => {
+            errorFunc(err);
+        });
+};
+
+const searchUserData = async ({ url, userData, mode }) => {
+    return mode === "id"
+        ? axios
+            .post(url + "/id", userData)
+            .then(res => {
+
+
+            })
+            .catch(err => {
+                errorFunc(err);
+            })
+        : axios
+            .post(url + "/password", userData)
+            .then(res => {
+
+
+            })
+            .catch(err => {
+                errorFunc(err);
+            });
+};
+
+const signup = async ({ url, userData, mode }) => {
+    return mode === "duple"
+        ? axios
+            .post(url + '/duple', userData)
+            .then(res => {
+
+
+            })
+            .catch(err => {
+                errorFunc(err);
+            })
+        : axios
+            .post(ulr + '')
 }
 
+export { login, searchUserData };
