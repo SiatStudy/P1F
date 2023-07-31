@@ -8,9 +8,15 @@
 }
 
 .Side{
-    
+    display: flex;
+    flex-direction: column;
+    background: #FFF;
+    width: 15%;
+    justify-content: space-between;
 }
 
 .Main{
+    width: 85%;
+    height: 100%;
     padding: 0.5rem;
 }

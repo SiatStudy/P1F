@@ -10,6 +10,8 @@
     align-items: center;
     flex-direction: column;
     height: 6rem;
+    align-items: center;
+    padding-top: 4rem;
 }
 
 .NavMain{
@@ -22,6 +24,11 @@
     display: flex;
     flex-direction: column;
     padding: 1.5rem;
+}
+
+.NavItem{
+    display: flex;
+    flex-direction: row;
 }
 
 .NavBotPic{

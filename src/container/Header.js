@@ -1,18 +1,20 @@
 import React from "react";
-import Title from "../component/Title";
-import HeaderSearch from "../component/HeaderSearch";
 import style from "./Header.module.css";
+import CustomMainPageInput from "../component/CustomMainPageInput";
+import CustomMainPageImg from "../component/CustomMainPageImg";
+import CustomMainPageP from "../component/CustomMainPageP";
 
 
-function Header({children}){
+function Header(props){
 
     return(
         <div className={style.Header}>
             <div className={style.Title}>
-                <Title>{children}</Title>
+                <CustomMainPageP $title>{props.title}</CustomMainPageP>
             </div>
             <div className={style.Search}>
-                <HeaderSearch></HeaderSearch>
+                <CustomMainPageInput $headerinput type="text" placeholder="검색"></CustomMainPageInput>
+                <CustomMainPageImg $headerinputicon src={ '/asset/img/SearchIcon.svg' }></CustomMainPageImg>
             </div>
         </div>
     )

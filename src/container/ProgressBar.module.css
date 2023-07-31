@@ -1,0 +1,27 @@
+.ProgressBar{
+    display: flex;
+    flex-direction: column;
+    margin: 0.2rem;
+}
+
+.MonthTitle{
+    padding: 1rem;
+    display: flex;
+}
+
+.Progress{
+    display: flex;
+    flex-grow: 3;
+    padding: 1rem;
+    align-items: center;
+    background: var(--yoda-admin-template-blacks-b-0, #FFF);
+    width: 100%;
+}
+
+.ProgressUnder{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    color: #000;
+    text-align: center;
+}
