@@ -1,7 +1,7 @@
 .mainContainer{
-/*  
-  width: 75.6875rem;
-  height: 26.5625rem; */
+ 
+  /* width: 85rem; */
+  /* height: 26.5625rem; */
   display: inline-flex;
   padding: 4.0625rem 3.3125rem 4.125rem 3.25rem;
   flex-direction: column;

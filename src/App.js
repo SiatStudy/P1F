@@ -1,10 +1,12 @@
 import './App.css';
 import MyPageContainer from './content/MyPageContainer';
+import SearchPageContainer from './content/SearchPageContainer';
 
 function App() {
   return (
     <div className="mainContainer">
-      <MyPageContainer></MyPageContainer>
+      {/* <MyPageContainer></MyPageContainer> */}
+      <SearchPageContainer></SearchPageContainer>
     </div>
   );
 }

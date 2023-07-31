@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import style from "./MyPageContainer.module.css";
-import CustomMyPageH1 from "../component/CustomMyPageH1";
-import CustomMyPageRow from "../component/CustomMyPageRow";
+import CustomMainPageH1 from "../component/CustomMainPageH1";
+import CustomMainPageRow from "../component/CustomManinPageRow";
 
 
 const MyPageContainer = () => {
@@ -46,59 +46,59 @@ const MyPageContainer = () => {
     <div className={style.mainContainer}>
       <div className={style.MyPageContainer}>
         <div className={style.title}>
-          <CustomMyPageH1>마이페이지</CustomMyPageH1>
+          <CustomMainPageH1 $myPage >마이페이지</CustomMainPageH1>
           {editMode && <button className={style.button} onClick={cancellEditMode}>취소</button>}
           <button className={style.button} onClick={toggleEditMode}>
             {editMode ? "확인" : "수정"}
           </button>
         </div>
         <div className={style.list}>
-          <CustomMyPageRow
+          <CustomMainPageRow
             title="이름"
             value={editMode ? editedObj.name : dataObj.name}
             $mode={editMode}
             onChange={(value) => onInputChange("name", value)}
-          ></CustomMyPageRow>
-          <CustomMyPageRow
+          ></CustomMainPageRow>
+          <CustomMainPageRow
             title="닉네임"
             value={editMode ? editedObj.nickName : dataObj.nickName}
             $mode={editMode}
             onChange={(value) => onInputChange("nickName", value)}
-          ></CustomMyPageRow>
-          <CustomMyPageRow
+          ></CustomMainPageRow>
+          <CustomMainPageRow
             title="Email"
             value={editMode ? editedObj.email : dataObj.email}
             $mode={editMode}
             onChange={(value) => onInputChange("email", value)}
-          ></CustomMyPageRow>
-          <CustomMyPageRow
+          ></CustomMainPageRow>
+          <CustomMainPageRow
             title="휴대폰 번호"
             value={editMode ? editedObj.phoneNumber : dataObj.phoneNumber}
             $mode={editMode}
             onChange={(value) => onInputChange("phoneNumber", value)}
-          ></CustomMyPageRow>
-          <CustomMyPageRow
+          ></CustomMainPageRow>
+          <CustomMainPageRow
             title="생년월일"
             value={editMode ? editedObj.birthDay : dataObj.birthDay}
             $mode={editMode}
             onChange={(value) => onInputChange("birthDay", value)}
-          ></CustomMyPageRow>
-          <CustomMyPageRow
+          ></CustomMainPageRow>
+          <CustomMainPageRow
             title="주소"
             value={editMode ? editedObj.address : dataObj.address}
             $mode={editMode}
             onChange={(value) => onInputChange("address", value)}
-          ></CustomMyPageRow>
+          ></CustomMainPageRow>
         </div>
       </div>
       <div className={style.MyPageContainer}>
         <div className={style.title}>
-          <CustomMyPageH1>버전</CustomMyPageH1>
+          <CustomMainPageH1 $myPage >버전</CustomMainPageH1>
         </div>
         <div className={style.list}>
-          <CustomMyPageRow title="언어" value="한국어"></CustomMyPageRow>
-          <CustomMyPageRow title="업데이트" value="2000.01.01"></CustomMyPageRow>
-          <CustomMyPageRow title="버전" value="1.1.1"></CustomMyPageRow>
+          <CustomMainPageRow title="언어" value="한국어"></CustomMainPageRow>
+          <CustomMainPageRow title="업데이트" value="2000.01.01"></CustomMainPageRow>
+          <CustomMainPageRow title="버전" value="1.1.1"></CustomMainPageRow>
         </div>
       </div>
     </div>
