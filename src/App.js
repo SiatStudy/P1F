@@ -1,3 +1,4 @@
+// import logo from './logo.svg';
 import './App.css';
 import MyPageContainer from './content/MyPageContainer';
 import SearchPageContainer from './content/SearchPageContainer';
