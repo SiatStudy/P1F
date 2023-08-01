@@ -7,8 +7,9 @@ import Dday from './page/Dday';
 function App() {
   return (
     <div className="mainContainer">
-      <MyPageContainer></MyPageContainer>
-      {/* <SearchPageContainer></SearchPageContainer> */}
+      <div className='div1'></div>
+      {/* <MyPageContainer></MyPageContainer> */}
+      <SearchPageContainer></SearchPageContainer>
       {/* <Dday></Dday> */}
     </div>
   );

@@ -1,19 +1,15 @@
 .mainContainer{
- 
-  /* width: 85rem; */
-  /* height: 26.5625rem; */
   display: flex;
-  padding: 4.0625rem 3.3125rem 4.125rem 3.25rem;
+  padding: 2.0625rem 2.3125rem 2.125rem 2.25rem;
   flex-direction: column;
-  /* justify-content: center; */
   background: #FFF;
 }
 .title{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 0.9375rem;
-  padding: 0.9375rem 0;
+  gap: 0.2375rem;
+  padding: 0.375rem 0;
   flex: 1 0 0;
   border-bottom: 0.0625rem solid #A6A6A6;
 }
@@ -21,21 +17,20 @@
   display: flex;
   width: 6.25rem;
   height: 3.125rem;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 0.5rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 0.4375rem;
+  border: none;
   background: #E3F6FF;
 }
 .list{
   display: flex;
-  /* width: 75.6875rem; */
   flex : 1;
-  /* align-self: stretch; */
-  padding: 2.5rem 0rem;
+  padding: 1.5rem 0rem;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  gap: 1.6875rem;
+  
 }
