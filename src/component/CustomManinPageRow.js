@@ -48,12 +48,12 @@ const obj = {
     `,
     customH3 :`
     color: #3E54AC;
-font-family: Noto Sans;
-font-size: 0.75rem;
-font-style: normal;
-font-weight: 400;
-line-height: 0rem; /* 0% */
-letter-spacing: 0.075rem;
+    font-family: Noto Sans;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 0rem; /* 0% */
+    letter-spacing: 0.075rem;
     `
   }
 };
