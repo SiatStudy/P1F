@@ -3,6 +3,7 @@ import style from './SearchPageContainer.module.css'
 import CustomMainPageH1 from '../component/CustomMainPageH1';
 import CustomMainPageRow from '../component/CustomManinPageRow';
 
+const SearchPageContainer = () => {
 const [searchDataObj, setSearchDateObj] = useState({
   firstMonth: {
     firstWork:{
@@ -57,7 +58,7 @@ const [searchDataObj, setSearchDateObj] = useState({
   }
 });
 
-const SearchPageContainer = () => {
+
   return (
     <div className={style.mainContainer}>
       <div className={style.searchMonth}>
