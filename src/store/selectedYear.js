@@ -11,9 +11,12 @@ let selectedYear = createSlice({
         },
         resetYear : (state, action) => {
             state.selectedYear = new Date().getFullYear().toString();
+        },
+        returnYear : (state, action) => {
+            return state.selectedYear;
         }
     }
 });
 
-export const { setCurrentYear, resetYear } = selectedYear.actions;
+export const { setCurrentYear, resetYear, returnYear } = selectedYear.actions;
 export default selectedYear.reducer;
