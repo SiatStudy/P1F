@@ -59,7 +59,6 @@ const SearchPageContainer = () => {
       }
       groupedData[month].push(data);
     });
-    console.log(groupedData);
 
     // 각 월별로 최대 3개까지만 출력하도록 필터링
     const filteredData = Object.entries(groupedData).reduce((acc, [month, data]) => {
@@ -76,17 +75,26 @@ const SearchPageContainer = () => {
 
   return (
     <div className={style.mainContainer}>
+      {/* 월별로 그룹화된 작업 데이터 순회 (각 월별 작업 표시) */}
       {Object.entries(filteredData).map(([month, works]) => (
+        // 각 월별 컨테이너 생성 (월의 이름을 key로 설정)
         <div className={style.searchMonth} key={month}>
+          {/* 월별 컨테이너 제목 영역 */}
           <div className={style.titleDiv}>
+            {/* 월의 이름 표시 */}
             <div className={style.monthTitle}>{month}월</div>
+            {/* CustomMainPageH1 컴포넌트는 특정 스타일을 적용하는 역할로 사용 */}
             <CustomMainPageH1 $searchPageYear>{2021}</CustomMainPageH1>
           </div>
+          {/* 월별로 그룹화된 작업 데이터 순회 (작업별 CustomMainPageRow 컴포넌트 생성) */}
           {works.map((work, index) => (
+            // CustomMainPageRow 컴포넌트를 작업 데이터에 맞게 생성
             <CustomMainPageRow
               key={index}
               $page="searchPage"
+              // 작업 기간이 하루인 경우에는 단일 날짜를 표시하고, 아닌 경우에는 작업 기간을 표시하는 title 설정
               title={work.startDay === work.endDay ? `${work.startDay}일` : `${work.startDay}일 - ${work.endDay}일`}
+              // 작업 제목을 표시
               value={work.workTitle}
             />
           ))}
@@ -94,6 +102,7 @@ const SearchPageContainer = () => {
       ))}
     </div>
   );
+  
 };
 
 export default SearchPageContainer;
