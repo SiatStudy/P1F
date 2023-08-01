@@ -4,6 +4,7 @@ export const objFromBack = (event) => {
     const getObj = isEventObjBack(event);
 
     return {
+        id : getObj.id,
         title : getObj.title,
         extendedProps : {
             eventContent : getObj.content

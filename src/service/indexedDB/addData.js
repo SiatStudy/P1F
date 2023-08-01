@@ -12,7 +12,7 @@ export const addData = (key, data) => {
             // 새로운 Object Store 생성
             if (!db.objectStoreNames.contains(key)) {
                 const objectStore = db.createObjectStore(key, { keyPath: "id", autoIncrement: true });
-                //TODO: backend 요청 함수
+                objectStore.add(data);
             }
         };
 

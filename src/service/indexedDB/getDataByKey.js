@@ -1,16 +1,25 @@
-export const getDataByKey = (db, objectStoreName, key) => {
-    const transaction = db.transaction(objectStoreName, "readonly");
-    const objectStore = transaction.objectStore(objectStoreName);
-
-    const req = objectStore.get(key);
-
+export const getDataByKey = (key) => {
     return new Promise((res, rej) => {
-        req.onsuccess = ({ target }) => {
-            res(target.result);
+        const req = indexedDB.open(process.env.PUBLIC_INDEXED_DB_NAME, process.env.PUBLIC_INDEXED_DB_VERSION);
+
+        req.onerror = (event) => {
+            rej('[ERROR] Failed to open the database');
         };
 
-        req.onerror = ({ target }) => {
-            rej(false);
+        req.onsuccess = ({ target }) => {
+            const db = target.result;
+
+            const transaction = db.transaction(key, 'readonly');
+            const objectStore = transaction.objectStore(key);
+            const req = objectStore.getAll(key);
+
+            req.onsuccess = ({ target }) => {
+                res(target.result);
+            };
+
+            req.onerror = ({ target }) => {
+                rej(false);
+            };
         };
     });
 };

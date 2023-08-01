@@ -1,4 +1,4 @@
-const errorFunc = (data) => {
-    throw new Error("[ERROR] " + data);
+const errorFunc = (locate, data) => {
+    throw new Error(`[${locate} ERROR] ` + data);
 };
 export default errorFunc;

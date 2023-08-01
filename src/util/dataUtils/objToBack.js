@@ -4,7 +4,7 @@ export const objToBack = (event) => {
     const sendObj = isEventObjFront(event);
 
     return {
-        //TODO: id 추가
+        id : sendObj.id,
         title : sendObj.title,
         content : sendObj.extendedProps.eventContent,
         startDate : `${sendObj.start}T${sendObj.constraint.startTime}`,

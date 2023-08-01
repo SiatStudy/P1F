@@ -2,6 +2,7 @@ import errorFunc from "../errorFunc.js";
 
 const isEventObjFront = (state) => {
     const objKeys = {
+        id : { type : 'int' },
         title: { type: 'string' },
         extendedProps : { type: 'object', validator : validateExtended },
         start : { type: 'string', validator : validateDateFormat, dateFormat : "YYYY-MM-DD" },
@@ -14,7 +15,7 @@ const isEventObjFront = (state) => {
         const { type, validator, dateFormat } = objKeys[key];
 
         if (typeof state[key] !== type) {
-            errorFunc(`${key}의 자료형이 잘못되었습니다.`);
+            errorFunc('isEventObjFront', `${key}의 자료형이 잘못되었습니다.`);
         } else if (validator) {
             if(key === "start" || key === "end") {
                 validator(state[key], dateFormat, key);
@@ -29,7 +30,7 @@ const isEventObjFront = (state) => {
 
 const validateExtended = (state, parentKey) => {
     if (typeof state["eventContent"] !== "string") {
-        errorFunc(`${parentKey}의 eventContent 값의 자료형이 잘못되었습니다.`)
+        errorFunc('validateExtended', `${parentKey}의 eventContent 값의 자료형이 잘못되었습니다.`)
     }
 }
 
@@ -43,7 +44,7 @@ const validateConstraint = (state, parentKey) => {
         const { type, format } = objKey[key];
 
         if(typeof state[key] !== type) {
-            errorFunc(`${parentKey}의 ${key} 값의 자료형이 잘못되었습니다.`)
+            errorFunc('validateConstraint', `${parentKey}의 ${key} 값의 자료형이 잘못되었습니다.`)
         } else if (format) {
             validateDateFormat(state[key], format, `${parentKey}의 ${key}`);
         }
@@ -54,7 +55,7 @@ const validateDateFormat = (dateString, format, parentKey) => {
     const parsedDate = new Date(dateString);
 
     if (parsedDate instanceof Date && !isNaN(parsedDate) && parsedDate.toISOString().slice(0,10) !== dateString) {
-        errorFunc(`${parentKey}의 형식이 올바르지 않습니다. (올바른 형식: ${format})`);
+        errorFunc('validateDateFormat', `${parentKey}의 형식이 올바르지 않습니다. (올바른 형식: ${format})`);
     }
 }
 
