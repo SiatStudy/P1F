@@ -4,6 +4,7 @@ import CustomMainPageH1 from '../component/CustomMainPageH1';
 import CustomMainPageRow from '../component/CustomManinPageRow';
 
 const SearchPageContainer = () => {
+  const [currentMonth, setCurrentMonth] = useState(5);
   const [searchDataArr, setSearchDataArr] = useState([
     {
       month: 4,
@@ -31,13 +32,11 @@ const SearchPageContainer = () => {
     }
   ]);
 
-  const correntMonth = 5;
-
   // 월별 작업 데이터 정렬 및 필터링하는 함수
   const getFilteredData = () => {
     // 현재 월 범위 계산
-    const minMonth = correntMonth - 1;
-    const maxMonth = correntMonth + 1;
+    let minMonth = currentMonth - 1;
+    let maxMonth = currentMonth + 1;
 
     // 데이터 정렬 (낮은 순으로 정렬 -> 같은 월일 경우 startDay로 정렬 -> 같은 월, startDay일 경우 endDay로 정렬)
     const sortedData = searchDataArr.sort((a, b) => {
