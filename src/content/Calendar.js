@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import FullCalendar from "@fullcalendar/react";
@@ -7,49 +7,64 @@ import momentPlugin from '@fullcalendar/moment';
 import interactionPlugin from '@fullcalendar/interaction'
 import listPlugin from '@fullcalendar/list'
 import Modal from "react-modal";
+import { debounce } from "../service/redux/debounce";
 
-import { getDataByKey } from "../service/indexedDB/getDataByKey";
 import { setCurrentYear } from "../store/selectedYear";
 import { useSectionReturn } from "../store/userLogin";
 import { findWidthObject } from "../util/dataUtils/findWidthObject";
-import todoData from "../apis/apis";
-import "./Datepicker.scss";
+import { todoData } from "../apis/apis";
+import errorFunc from "../util/errorFunc";
 import DatepickerContent from "./DatepickerContent";
+
+import "./Datepicker.scss";
 import style from './DatepickerModal.module.scss';
 
 
 /**
  * Calendar 컨테이너
  * @param {Object} options - 함수에 필요한 옵션 객체
- * @param {string} options.width- window의 width 값을 받아옴
  * @param {string} options.mode - 실행 모드 ("list", "calendar")
  * @returns {Promise} Promise 객체를 반환하며, 조회 또는 성공 시 해당 결과를 반환합니다.
  */
 
-export const Calendar = ({ width, mode }) => {
+export const Calendar = ({ mode }) => {
     const currentYear = useSelector(state => state.selectedYear);
     const dispatch = useDispatch();
 
     const [event, setEvent] = useState([]);
-    const [modalIsOpen, setModalIsOpen] = useState(false); // 팝업창 열고 닫기 state
+    const [width, setWidth] = useState(window.innerWidth);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+
+    const handleResize = () => {
+        setWidth(window.innerWidth);
+    }
+
+    useEffect(() => {
+        window.addEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
 
     const dateSetFunc = dateInfo => {
         const calendarDate = dateInfo.view.calendar.getDate();
-
-        if(currentYear !== calendarDate.getFullYear()) {
-            dispatch(setCurrentYear(calendarDate.getFullYear()));
-            getDataByKey(currentYear.selectedYear).then(res => {
-                if(res) {
-                    setEvent(res);
-                } else {
-                    const Data = {
-                        ID : dispatch(useSectionReturn),
-                        yDate : currentYear
-                    };
-                    //TODO : todoData(process.env.MAIN_URL + '/todos', Data, "general").then(res => setEvent(res));
-                }
-            });
+        const Data = {
+            sectionId : dispatch(useSectionReturn),
+            yDate : currentYear
         }
+
+        // if(currentYear !== calendarDate.getFullYear()) {
+        //     dispatch(setCurrentYear(calendarDate.getFullYear()));
+        //     const url = `/todos`;
+        //
+        //     todoData(url, Data, "general")
+        //         .then(({ data }) => {
+        //             setEvent(data);
+        //         })
+        //         .catch(err => {
+        //             errorFunc('dataCalendar', err);
+        //         });
+        // }
     };
 
     const handlemodal = (data) =>{
