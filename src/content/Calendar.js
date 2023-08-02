@@ -19,7 +19,7 @@ import style from './DatepickerModal.module.scss';
 
 
 /**
- * Todo 데이터 조작 함수
+ * Calendar 컨테이너
  * @param {Object} options - 함수에 필요한 옵션 객체
  * @param {string} options.width- window의 width 값을 받아옴
  * @param {string} options.mode - 실행 모드 ("list", "calendar")
