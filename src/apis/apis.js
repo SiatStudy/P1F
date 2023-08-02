@@ -40,7 +40,7 @@ const login = async ( url, userData, mode ) => {
 
             if (res.data.message) {
                 // 로그인이 성공적으로 이루어졌을 때, Redux 액션을 사용하여 유저 정보를 업데이트합니다.
-                dispatch(userLogin(res.data.message.result.sectionId));
+                dispatch(userLogin(document.cookie));
                 // 로그인된 유저의 이메일 정보를 Redux로 반환합니다.
                 return dispatch(userEmailReturn());
             } else {
