@@ -62,6 +62,14 @@ const SearchPageContainer = () => {
     }
   ]);
 
+  // 현재 월을 currentMonth에 받아오는 메서드 일단 주석 처리
+  // const getCurrentMonth = () => {
+  //   const currentDate = new Date();
+  //   setCurrentMonth(currentDate.getMonth() + 1);
+  //   // 월은 0부터 시작하므로 1을 더해서 1월부터 12월까지의 숫자로 표현
+  //   return currentMonth;
+  // };
+
   // 월별 작업 데이터 정렬 및 필터링하는 함수
   const getFilteredData = () => {
     // 현재 월 범위 계산
@@ -131,7 +139,7 @@ const SearchPageContainer = () => {
       ))}
     </div>
   );
-  
+
 };
 
 export default SearchPageContainer;
