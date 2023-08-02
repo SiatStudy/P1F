@@ -1,10 +1,15 @@
 export const getDataByKey = (key) => {
     return new Promise((res, rej) => {
-        const req = indexedDB.open(process.env.PUBLIC_INDEXED_DB_NAME, process.env.PUBLIC_INDEXED_DB_VERSION);
+        const req = indexedDB.open(process.env.REACT_APP_PUBLIC_INDEXED_DB_NAME, process.env.REACT_APP_PUBLIC_INDEXED_DB_VERSION);
+
 
         req.onerror = (event) => {
             rej('[ERROR] Failed to open the database');
         };
+
+        req.onupgradeneeded = (event) => {
+            return false;
+        }
 
         req.onsuccess = ({ target }) => {
             const db = target.result;
