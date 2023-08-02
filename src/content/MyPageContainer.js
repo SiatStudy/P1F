@@ -1,31 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./MyPageContainer.module.css";
 import CustomMainPageH1 from "../component/CustomMainPageH1";
 import CustomMainPageRow from "../component/CustomManinPageRow";
-
+import {dummyData1 as dummy} from '../apis/dummyData1';
 
 const MyPageContainer = () => {
   //편집 상태 전환 state
   const [editMode, setEditMode] = useState(false);
   //마이페이지 값을 담는 state 객체
-  const [dataObj, setDateObj] = useState({
-    name: "홍길동",
-    nickName: "aaa",
-    email: "aaaa@gmail.com",
-    phoneNumber: "000-000-0000",
-    birthDay: "2000/01/01",
-    address: "무슨시 무슨동",
-  });
-  const [editedObj, setEditedObj] = useState({ ...dataObj });
+  const [dataObj, setDataObj] = useState({});
+  const [editedObj, setEditedObj] = useState({});
   // 편집 중인 내용을 따로 저장하는 state 객체
+
+  //처음 랜더링 시에만 실행
+  //더미데이터를 state객체에 할당
+  useEffect(() => {
+    setDataObj(dummy[5]);
+  }, []);
 
   const toggleEditMode = () => {
     if (editMode) {
       // "확인" 버튼을 눌렀을 때
-      setDateObj({ ...editedObj }); // 편집한 내용을 저장하고
+      setDataObj({ ...editedObj }); // 편집한 내용을 저장하고
     } else {
       // "수정" 버튼을 눌렀을 때
-      setEditedObj({ ...dataObj }); // 현재 dataObj를 편집 중인 내용으로 초기화
+      setEditedObj({ ...dataObj }); // 현재 dataObj를 편집 중인 내용으로 초useEffect기화
     }
     setEditMode((mode) => !mode); // editMode를 토글
   };

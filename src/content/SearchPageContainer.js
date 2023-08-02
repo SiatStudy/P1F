@@ -2,80 +2,26 @@ import React, { useState, useEffect } from 'react';
 import style from './SearchPageContainer.module.css'
 import CustomMainPageH1 from '../component/CustomMainPageH1';
 import CustomMainPageRow from '../component/CustomManinPageRow';
+import { dummyData2 } from '../apis/dummyData2';
 
 const SearchPageContainer = () => {
-  const [currentMonth, setCurrentMonth] = useState(5);
-  const [searchDataArr, setSearchDataArr] = useState([
-    {
-      month: 4,
-      startDay: 21,
-      endDay: 25,
-      workTitle: "해야할 일1",
-    },
-    {
-      month: 6,
-      startDay: 1,
-      endDay: 15,
-      workTitle: "해야할 일3",
-    },
-    {
-      month: 5,
-      startDay: 23,
-      endDay: 26,
-      workTitle: "해야할 일5",
-    },
-    {
-      month: 4,
-      startDay: 10,
-      endDay: 30,
-      workTitle: "해야할 일7",
-    },
-    {
-      month: 5,
-      startDay: 10,
-      endDay: 30,
-      workTitle: "해야할 일7",
-    },
-    {
-      month: 6,
-      startDay: 10,
-      endDay: 30,
-      workTitle: "해야할 일7",
-    },
-    {
-      month: 4,
-      startDay: 10,
-      endDay: 30,
-      workTitle: "해야할 일7",
-    },
-    {
-      month: 5,
-      startDay: 10,
-      endDay: 30,
-      workTitle: "해야할 일7",
-    },
-    {
-      month: 6,
-      startDay: 10,
-      endDay: 30,
-      workTitle: "해야할 일7",
-    }
-  ]);
+  const [currentMonth, setCurrentMonth] = useState(6);
+  const [currentYear, setCurrentYear] = useState(2000);
+  const [searchDataArr, setSearchDataArr] = useState([]);
+  const [searWord, setSearchWord] = useState("준비");
 
-  // 현재 월을 currentMonth에 받아오는 메서드 일단 주석 처리
-  // const getCurrentMonth = () => {
-  //   const currentDate = new Date();
-  //   setCurrentMonth(currentDate.getMonth() + 1);
-  //   // 월은 0부터 시작하므로 1을 더해서 1월부터 12월까지의 숫자로 표현
-  //   return currentMonth;
-  // };
+  //처음 랜더링 시에만 실행
+  //더미데이터를 state배열에 할당
+  useEffect(() => {
+    const currentDate = new Date();
+    setCurrentMonth(currentDate.getMonth() + 1);
+    setCurrentYear(currentDate.getFullYear())
+    setSearchDataArr(dummyData2);
+  }, []);
 
   // 월별 작업 데이터 정렬 및 필터링하는 함수
   const getFilteredData = () => {
-    // 현재 월 범위 계산
-    let minMonth = currentMonth - 1;
-    let maxMonth = currentMonth + 1;
-
+ 
     // 데이터 정렬 (낮은 순으로 정렬 -> 같은 월일 경우 startDay로 정렬 -> 같은 월, startDay일 경우 endDay로 정렬)
     const sortedData = searchDataArr.sort((a, b) => {
       if (a.month !== b.month) {
@@ -99,7 +45,7 @@ const SearchPageContainer = () => {
 
     // 각 월별로 최대 3개까지만 출력하도록 필터링
     const filteredData = Object.entries(groupedData).reduce((acc, [month, data]) => {
-      if (parseInt(month, 10) >= minMonth && parseInt(month, 10) <= maxMonth) {
+      if (parseInt(month, 10) >= (currentMonth - 1) && parseInt(month, 10) <= (currentMonth + 1)) {
         acc[month] = data.slice(0, 3);
       }
       return acc;
@@ -121,7 +67,7 @@ const SearchPageContainer = () => {
             {/* 월의 이름 표시 */}
             <div className={style.monthTitle}>{month}월</div>
             {/* CustomMainPageH1 컴포넌트는 특정 스타일을 적용하는 역할로 사용 */}
-            <CustomMainPageH1 $searchPageYear>{2021}</CustomMainPageH1>
+            <CustomMainPageH1 $searchPageYear>{currentYear}</CustomMainPageH1>
           </div>
           {/* 월별로 그룹화된 작업 데이터 순회 (작업별 CustomMainPageRow 컴포넌트 생성) */}
           {works.map((work, index) => (
