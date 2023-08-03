@@ -1,13 +1,14 @@
 // import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import Dday from './page/Dday';
+import Listday from './page/Listday';
 
 function App() {
 
   return (
     <div>
-      <Dday></Dday>
+      <Listday />
+      
     </div>
   );
 }

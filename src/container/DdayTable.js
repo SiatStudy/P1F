@@ -1,3 +1,5 @@
+// 목표 달성 페이지 테이블
+
 import React from "react";
 import style from "./DdayTable.module.css";
 import CustomMainPageDiv from "../component/CustomMainPageDiv";
@@ -29,10 +31,10 @@ function DdayTable(props){
                     <CustomMainPageP $tableheader>D-DAY</CustomMainPageP>
                 </div>
                 <div className={style.TableMain}>
-                    {array1.map(i => ( <div className={style.TableInner}>
-                        <CustomMainPageDiv $t1>{i.text1}</CustomMainPageDiv>
-                        <CustomMainPageDiv $t1>{i.text2}</CustomMainPageDiv>
-                        <CustomMainPageDiv $t2>{i.text3}</CustomMainPageDiv>
+                    {array1.map((str,i) => ( <div key={i} className={style.TableInner}>
+                        <CustomMainPageDiv $t1>{str.text1}</CustomMainPageDiv>
+                        <CustomMainPageDiv $t1>{str.text2}</CustomMainPageDiv>
+                        <CustomMainPageDiv $t2>{str.text3}</CustomMainPageDiv>
                                 </div>))}
                 </div>
             </div>
