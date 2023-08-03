@@ -1,25 +1,25 @@
 import React from 'react';
-import style from "./SamplePage.module.css";
+import style from "./MyPage.module.css";
 import Header from '../container/Header';
 import SideMenu from '../container/SideMenu';
 import UserInfo from '../container/UserInfo';
 import ProgressBar from '../container/ProgressBar';
 import DdayTable from '../container/DdayTable';
+import MyPageContainer from '../content/MyPageContainer';
 
-function SamplePage() {
+function MyPage() {
   return (
-    <div className={style.SamplePage}>
+    <div className={style.Dday}>
       <div className={style.Side}>
         <SideMenu></SideMenu>
         <UserInfo></UserInfo>
       </div>
       <div className={style.Main}>
-        <Header>목표 달성 D-day</Header>
-        <ProgressBar></ProgressBar>
-        <DdayTable></DdayTable>
+        <Header>그래프로 한 눈에 보기</Header>
+        <MyPageContainer></MyPageContainer>
       </div>
     </div>
   );
 }
 
-export default SamplePage;
+export default MyPage;
