@@ -3,11 +3,12 @@ import style from "./Header.module.css";
 import CustomMainPageInput from "../component/CustomMainPageInput";
 import CustomMainPageImg from "../component/CustomMainPageImg";
 import CustomMainPageP from "../component/CustomMainPageP";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 
 function Header(props){
 
+    const navigate = useNavigate();
     return(
         <div className={style.Header}>
             <div className={style.Title}>
@@ -15,7 +16,7 @@ function Header(props){
             </div>
             <div className={style.Search}>
                 <CustomMainPageInput $headerinput type="text" placeholder="검색"></CustomMainPageInput>
-                <CustomMainPageImg $headerinputicon src={ '/asset/img/SearchIcon.svg' } onClick={Navigate("/page/search")}></CustomMainPageImg>
+                <CustomMainPageImg $headerinputicon src={ '/asset/img/SearchIcon.svg' } onClick={navigate("/search")}></CustomMainPageImg>
             </div>
         </div>
     )

@@ -1,13 +1,11 @@
 import React from 'react';
-import style from "./MyPage.module.css";
+import style from "./SearchPage.module.css";
 import Header from '../container/Header';
 import SideMenu from '../container/SideMenu';
 import UserInfo from '../container/UserInfo';
-import ProgressBar from '../container/ProgressBar';
-import DdayTable from '../container/DdayTable';
-import MyPageContainer from '../content/MyPageContainer';
+import SearchPageContainer from '../content/SearchPageContainer';
 
-function MyPage() {
+function Dday() {
   return (
     <div className={style.Dday}>
       <div className={style.Side}>
@@ -15,11 +13,11 @@ function MyPage() {
         <UserInfo></UserInfo>
       </div>
       <div className={style.Main}>
-        <Header title = "그래프로 한 눈에 보기"></Header>
-        <MyPageContainer></MyPageContainer>
+        <Header>List Day</Header>
+        <SearchPageContainer></SearchPageContainer>
       </div>
     </div>
   );
 }
 
-export default MyPage;
+export default Dday;
