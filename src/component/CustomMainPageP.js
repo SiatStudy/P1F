@@ -3,7 +3,7 @@ import styled, {css} from "styled-components";
 const CustomMainPageP = styled.p`
     display: flex;
 
-    ${props => props.$navmenup && css`
+    ${props => props.$navmenu && css`
         align-items: center;
         border-radius: 7px;
         color: #B2BEC3;
@@ -24,6 +24,7 @@ const CustomMainPageP = styled.p`
         font-weight: 400;
         line-height: 1.3125rem; /* 150% */
         letter-spacing: 0.0175rem;
+        width: 3rem;
     `}
 
     ${props => props.$title && css`
@@ -37,6 +38,12 @@ const CustomMainPageP = styled.p`
     `}
 
     ${props => props.$tableheader && css`
+        display: flex;
+        height: 2.5rem;
+        justify-content: center;
+        align-items: center;
+        flex: 1 0 0;
+        background: #F7FAFC;
         color: #3E54AC;
         font-family: Noto Sans;
         font-size: 0.875rem;
@@ -44,12 +51,6 @@ const CustomMainPageP = styled.p`
         font-weight: 400;
         line-height: 1.3125rem; /* 150% */
         letter-spacing: 0.0175rem;
-        display: flex;
-        height: 2.5rem;
-        justify-content: center;
-        align-items: center;
-        flex: 1 0 0;
-        background-color: #DFE6E9; 
     `}
 `;
 
