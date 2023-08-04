@@ -8,12 +8,8 @@ import CustomMainPageLabel from "../component/CustomMainPageLabel";
 import CustomMainPageP from "../component/CustomMainPageP";
 // import dataAverage from "../util/dataUtils/dataAverage"; //프로그래스바 밸류값 전달 함수 "value={avg1}"
 
-function ProgressBar(props) {
-  const [progress, setProgress] = useState(0);
 
-  const onChange = () => {
-    setProgress(progress);
-  };
+function ProgressBar(props){
 
     // const [avg1, setAvg1] = useState(0);
 
@@ -44,25 +40,7 @@ function ProgressBar(props) {
                 <CustomMainPageLabel $progressr>100%</CustomMainPageLabel>
             </div>
         </div>
-        <div className={style.ProgressBar}>
-          <CustomMainPageProgress
-            onChange={onChange}
-            $progressbar
-            min="0"
-            max="100"
-            value={props.progress}
-          ></CustomMainPageProgress>
-          <div className={style.ProgressUnder}>
-            <CustomMainPageLabel $progressunder>20%</CustomMainPageLabel>
-            <CustomMainPageLabel $progressunder>40%</CustomMainPageLabel>
-            <CustomMainPageLabel $progressunder>60%</CustomMainPageLabel>
-            <CustomMainPageLabel $progressunder>80%</CustomMainPageLabel>
-          </div>
-        </div>
-        <CustomMainPageLabel $progressr>100%</CustomMainPageLabel>
-      </div>
-    </div>
-  );
+    )
 }
 
 ProgressBar.defaultProps = {

@@ -3,8 +3,16 @@ import style from './SearchPageContainer.module.css'
 import CustomMainPageH1 from '../component/CustomMainPageH1';
 import CustomMainPageRow from '../component/CustomManinPageRow';
 import { dummyData2 } from '../apis/dummyData2';
+import { useSelector, useDispatch } from "react-redux";
+import { returnData } from "../store/searchData";
+
 
 const SearchPageContainer = () => {
+  // useSelector를 통해 리듀서에 저장된 데이터에 접근이 가능해짐
+  const state = useSelector(state => state);
+  // dispatch와 actionCreater 함수를 조합해서 action을 생성한다.
+  const dispatch = useDispatch();
+
   const [currentMonth, setCurrentMonth] = useState(6);
   const [currentYear, setCurrentYear] = useState(2023);
   const [searchDataArr, setSearchDataArr] = useState([]);
@@ -14,10 +22,11 @@ const SearchPageContainer = () => {
   //더미데이터를 state배열에 할당
   useEffect(() => {
     const currentDate = new Date();
-    setCurrentMonth(currentDate.getMonth() + 1);
+    setCurrentMonth(currentDate.getMonth() + 4);
     setCurrentYear(currentDate.getFullYear())
     setSearchDataArr(dummyData2);
-    setSearchWord("");
+    setSearchWord(dispatch(returnData()));
+    console.log(searchDataArr);
   }, []);
 
   // 월별 작업 데이터 정렬 및 필터링하는 함수

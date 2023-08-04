@@ -242,8 +242,8 @@ const todoData = async ( url, userData, mode ) => {
             // 에러 핸들링을 위해 errorFunc 유틸리티 사용
             errorFunc('todoGetAxios', error);
         }
-    } else if (mode === "remove") {
-        // Todo 아이템 삭제
+    } else if (mode === "modify") {
+        // Todo 아이템 수정
         try {
             const response = await axios.patch(url, userData);
             // 삭제 성공 시 true 반환, 실패 시 false 반환

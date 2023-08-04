@@ -1402,26 +1402,28 @@ export const dummyData2 = ()=>{
     workTitle: '학업 준비',
   }
 ];
-const filteredArr1 = arr1.filter((event, index, self) => {
-  // 배열에서 현재 객체와 동일한 모든 객체들의 인덱스를 찾습니다.
-  const duplicateIndexes = self.reduce((acc, obj, currentIndex) => {
-    if (
-      obj.year === event.year &&
-      obj.month === event.month &&
-      obj.startDay === event.startDay &&
-      obj.endDay === event.endDay &&
-      obj.workTitle === event.workTitle &&
-      currentIndex !== index // 현재 객체 자신을 제외합니다.
-    ) {
-      acc.push(currentIndex);
-    }
-    return acc;
-  }, []);
+// const filteredArr1 = arr1.filter((event, index, self) => {
+//   // 배열에서 현재 객체와 동일한 모든 객체들의 인덱스를 찾습니다.
+//   const duplicateIndexes = self.reduce((acc, obj, currentIndex) => {
+//     if (
+//       obj.year === event.year &&
+//       obj.month === event.month &&
+//       obj.startDay === event.startDay &&
+//       obj.endDay === event.endDay &&
+//       obj.workTitle === event.workTitle &&
+//       currentIndex !== index // 현재 객체 자신을 제외합니다.
+//     ) {
+//       acc.push(currentIndex);
+//     }
+//     return acc;
+//   }, []);
 
-  // 중복된 객체가 존재하지 않으면 true를 반환하여 유지됩니다.
-  return duplicateIndexes.length === 0;
-});
+//   // 중복된 객체가 존재하지 않으면 true를 반환하여 유지됩니다.
+//   return duplicateIndexes.length === 0;
+// });
 
-// 결과 출력
-return filteredArr1;
+// // 결과 출력
+// return filteredArr1;
+
+return arr1;
 }

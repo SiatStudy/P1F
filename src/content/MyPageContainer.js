@@ -53,12 +53,6 @@ const MyPageContainer = () => {
         </div>
         <div className={style.list}>
           <CustomMainPageRow
-            title="이름"
-            value={editMode ? editedObj.name : dataObj.name}
-            $mode={editMode}
-            onChange={(value) => onInputChange("name", value)}
-          ></CustomMainPageRow>
-          <CustomMainPageRow
             title="닉네임"
             value={editMode ? editedObj.nickName : dataObj.nickName}
             $mode={editMode}
@@ -70,28 +64,10 @@ const MyPageContainer = () => {
             $mode={editMode}
             onChange={(value) => onInputChange("email", value)}
           ></CustomMainPageRow>
-          <CustomMainPageRow
-            title="휴대폰 번호"
-            value={editMode ? editedObj.phoneNumber : dataObj.phoneNumber}
-            $mode={editMode}
-            onChange={(value) => onInputChange("phoneNumber", value)}
-          ></CustomMainPageRow>
-          <CustomMainPageRow
-            title="생년월일"
-            value={editMode ? editedObj.birthDay : dataObj.birthDay}
-            $mode={editMode}
-            onChange={(value) => onInputChange("birthDay", value)}
-          ></CustomMainPageRow>
-          <CustomMainPageRow
-            title="주소"
-            value={editMode ? editedObj.address : dataObj.address}
-            $mode={editMode}
-            onChange={(value) => onInputChange("address", value)}
-          ></CustomMainPageRow>
         </div>
       </div>
       <div className={style.MyPageContainer}>
-        <div className={style.title}>
+        <div className={style.versionTitle}>
           <CustomMainPageH1 $myPage >버전</CustomMainPageH1>
         </div>
         <div className={style.list}>
