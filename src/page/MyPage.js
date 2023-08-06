@@ -3,8 +3,6 @@ import style from "./MyPage.module.css";
 import Header from '../container/Header';
 import SideMenu from '../container/SideMenu';
 import UserInfo from '../container/UserInfo';
-import ProgressBar from '../container/ProgressBar';
-import DdayTable from '../container/DdayTable';
 import MyPageContainer from '../content/MyPageContainer';
 
 function MyPage() {

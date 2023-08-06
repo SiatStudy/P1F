@@ -4,8 +4,10 @@ import Header from '../container/Header';
 import SideMenu from '../container/SideMenu';
 import UserInfo from '../container/UserInfo';
 import SearchPageContainer from '../content/SearchPageContainer';
+import { useParams } from 'react-router-dom';
 
-function Dday() {
+function SearchPage() {
+  const { word } = useParams();
   return (
     <div className={style.Dday}>
       <div className={style.Side}>
@@ -14,11 +16,11 @@ function Dday() {
       </div>
       <div className={style.Main}>
         <Header>List Day</Header>
-        <SearchPageContainer></SearchPageContainer>
+        <SearchPageContainer word={word}></SearchPageContainer>
       </div>
     </div>
   );
 }
 
-export default Dday;
+export default SearchPage;
 

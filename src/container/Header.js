@@ -4,17 +4,9 @@ import CustomMainPageInput from "../component/CustomMainPageInput";
 import CustomMainPageImg from "../component/CustomMainPageImg";
 import CustomMainPageP from "../component/CustomMainPageP";
 import { Navigate, useNavigate } from "react-router-dom";
-import {isString} from '../util/validation/isString';
-import { useSelector, useDispatch } from "react-redux";
-import { setSearchData } from "../store/searchData";
+import { isString } from '../util/validation/isString';
 
-function Header(props){
-
-    // useSelector를 통해 리듀서에 저장된 데이터에 접근이 가능해짐
-    const state = useSelector(state => state);
-    // dispatch와 actionCreater 함수를 조합해서 action을 생성한다.
-    const dispatch = useDispatch();
-
+function Header(props) {
     const [val, setVal] = useState("");
     const navigate = useNavigate();
 
@@ -23,23 +15,29 @@ function Header(props){
         setVal(value);
     };
 
-    const onBtnClick = ()=>{
-        if(isString(val)){
-            dispatch(setSearchData(val));
-            navigate("/search");
+    const onSubmitForm = (e) => {
+        e.preventDefault(); // 기본 서브밋 동작 방지
+        if (val.length >= 2 && val.length <= 10) {
+            navigate(`/search/${val}`);
         }
-    }
-    
-    return(
+    };
+
+    return (
         <div className={style.Header}>
             <div className={style.Title}>
                 <CustomMainPageP $title>{props.title}</CustomMainPageP>
             </div>
-            <div className={style.Search}>
-                <CustomMainPageInput $headerinput type="text" onChange={onInputChange} 
-                value={val} placeholder="검색"></CustomMainPageInput>
-                <CustomMainPageImg $headerinputicon src={ '/asset/img/SearchIcon.svg' } onClick={onBtnClick}></CustomMainPageImg>
-            </div>
+            <form onSubmit={onSubmitForm}>
+                <div className={style.Search}>
+                    <CustomMainPageInput $headerinput type="text" onChange={onInputChange}
+                        value={val} 
+                        placeholder="검색" required></CustomMainPageInput>
+                    <button><CustomMainPageImg $headerinputicon src={'/asset/img/SearchIcon.svg'}
+                        ></CustomMainPageImg></button>
+                </div>
+                {/* pattern="/^[ㄱ-ㅎ가-힣a-zA-Z0-9]{2,10}$/" title="2~10글자를 입력해 주세요" */}
+                {/* pattern건거 무조건 안된다고 떠서 빼서 주석처리 */}
+            </form>
         </div>
     )
 }

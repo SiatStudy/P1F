@@ -3,20 +3,12 @@ import style from './SearchPageContainer.module.css'
 import CustomMainPageH1 from '../component/CustomMainPageH1';
 import CustomMainPageRow from '../component/CustomManinPageRow';
 import { dummyData2 } from '../apis/dummyData2';
-import { useSelector, useDispatch } from "react-redux";
-import { returnData } from "../store/searchData";
 
-
-const SearchPageContainer = () => {
-  // useSelector를 통해 리듀서에 저장된 데이터에 접근이 가능해짐
-  const state = useSelector(state => state);
-  // dispatch와 actionCreater 함수를 조합해서 action을 생성한다.
-  const dispatch = useDispatch();
-
+const SearchPageContainer = ({word}) => {
   const [currentMonth, setCurrentMonth] = useState(6);
   const [currentYear, setCurrentYear] = useState(2023);
   const [searchDataArr, setSearchDataArr] = useState([]);
-  const [searchWord, setSearchWord] = useState("");
+  const [searchWord, setSearchWord] = useState(word);
 
   //처음 랜더링 시에만 실행
   //더미데이터를 state배열에 할당
@@ -25,8 +17,6 @@ const SearchPageContainer = () => {
     setCurrentMonth(currentDate.getMonth() + 4);
     setCurrentYear(currentDate.getFullYear())
     setSearchDataArr(dummyData2);
-    setSearchWord(dispatch(returnData()));
-    console.log(searchDataArr);
   }, []);
 
   // 월별 작업 데이터 정렬 및 필터링하는 함수
@@ -34,7 +24,6 @@ const SearchPageContainer = () => {
     let thisYearData = searchDataArr.filter(obj => (obj.year == parseInt(currentYear)));
     const regex = new RegExp(searchWord, "gi");
     thisYearData = thisYearData.filter(obj=>(obj.workTitle.match(regex)));
-
 
     // 데이터 정렬 (낮은 순으로 정렬 -> 같은 월일 경우 startDay로 정렬 -> 같은 월, startDay일 경우 endDay로 정렬)
     const sortedData = thisYearData.sort((a, b) => {
