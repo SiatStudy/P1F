@@ -8,8 +8,8 @@ function App() {
   return (
     <div className="mainContainer">
       <div className='div1'></div>
-      {/* <MyPageContainer></MyPageContainer> */}
-      <SearchPageContainer></SearchPageContainer>
+      <MyPageContainer></MyPageContainer>
+      {/* <SearchPageContainer></SearchPageContainer> */}
       {/* <Dday></Dday> */}
     </div>
   );
