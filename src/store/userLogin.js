@@ -21,9 +21,12 @@ let userLogIn = createSlice({
         },
         userEmailReturn : (state, action) => {
             return state.emailVerfied;
+        },
+        useSectionReturn : (state, action) => {
+            return state.sectionID;
         }
     }
 });
 
-export const { userLogin, userLogout, userEmailAdd, userEmailReturn } = userLogIn.actions;
+export const { userLogin, userLogout, userEmailAdd, userEmailReturn, useSectionReturn } = userLogIn.actions;
 export default userLogIn.reducer;

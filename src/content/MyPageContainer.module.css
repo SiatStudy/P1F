@@ -1,6 +1,7 @@
 .mainContainer{
   display: flex;
-  padding: 2.0625rem 2.3125rem 2.125rem 2.25rem;
+  height: 100%;
+  padding: 2.0625rem 2.3125rem 0rem 2.25rem;
   flex-direction: column;
   background: #FFF;
 }
@@ -10,6 +11,15 @@
   align-items: center;
   gap: 0.2375rem;
   padding: 0.375rem 0;
+  flex: 1 0 0;
+  border-bottom: 0.0625rem solid #A6A6A6;
+}
+.versionTitle{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.2375rem;
+  padding: 1rem 0;
   flex: 1 0 0;
   border-bottom: 0.0625rem solid #A6A6A6;
 }

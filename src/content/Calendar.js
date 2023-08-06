@@ -1,31 +1,80 @@
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentYear } from "../store/selectedYear";
 
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from '@fullcalendar/daygrid';
 import momentPlugin from '@fullcalendar/moment';
 import interactionPlugin from '@fullcalendar/interaction'
 import listPlugin from '@fullcalendar/list'
+import Modal from "react-modal";
+import { debounce } from "../service/redux/debounce";
 
+import { setCurrentYear } from "../store/selectedYear";
+import { useSectionReturn } from "../store/userLogin";
 import { findWidthObject } from "../util/dataUtils/findWidthObject";
+import { todoData } from "../apis/apis";
+import errorFunc from "../util/errorFunc";
+import DatepickerContent from "./DatepickerContent";
 
-export const Calendar = ({ width, mode }) => {
+import "./Datepicker.scss";
+import style from './DatepickerModal.module.scss';
+
+
+/**
+ * Calendar 컨테이너
+ * @param {Object} options - 함수에 필요한 옵션 객체
+ * @param {string} options.mode - 실행 모드 ("list", "calendar")
+ * @returns {Promise} Promise 객체를 반환하며, 조회 또는 성공 시 해당 결과를 반환합니다.
+ */
+
+export const Calendar = ({ mode }) => {
     const currentYear = useSelector(state => state.selectedYear);
     const dispatch = useDispatch();
 
+    const [event, setEvent] = useState([]);
+    const [width, setWidth] = useState(window.innerWidth);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+
+    const handleResize = () => {
+        setWidth(window.innerWidth);
+    }
+
+    useEffect(() => {
+        window.addEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
     const dateSetFunc = dateInfo => {
         const calendarDate = dateInfo.view.calendar.getDate();
-
-        if(currentYear !== calendarDate.getFullYear()) {
-            dispatch(setCurrentYear(calendarDate.getFullYear()));
-            //TODO: 년도 바뀔 때 indexedDB 검색 없을 경우 Backend 요청
+        const Data = {
+            sectionId : dispatch(useSectionReturn),
+            yDate : currentYear
         }
+
+        // if(currentYear !== calendarDate.getFullYear()) {
+        //     dispatch(setCurrentYear(calendarDate.getFullYear()));
+        //     const url = `/todos`;
+        //
+        //     todoData(url, Data, "general")
+        //         .then(({ data }) => {
+        //             setEvent(data);
+        //         })
+        //         .catch(err => {
+        //             errorFunc('dataCalendar', err);
+        //         });
+        // }
     };
+
+    const handlemodal = (data) =>{
+        setModalIsOpen(data);
+    }
 
     const AddButton = {
         text : "+",
         click : function () {
-            //TODO: 이벤트 추가 팝업 이벤트
+            setModalIsOpen(true)
         }
     };
 
@@ -77,7 +126,7 @@ export const Calendar = ({ width, mode }) => {
                     dayHeaderFormat={findWidthObject(width, widthObject).dayHeaderFormat}
                     titleFormat={findWidthObject(width, widthObject).titleFormat}
                     customButtons={{AddEvent: AddButton}}
-                    //event Object
+                    events={event}
                     datesSet={dataInfo => dateSetFunc(dataInfo)}
                     initialView={"dayGridMonth"}
                 />
@@ -92,6 +141,9 @@ export const Calendar = ({ width, mode }) => {
                     initialView={"listWeek"}
                 />
             }
+            <Modal isOpen={modalIsOpen} className={style.modalCustom}>
+                <DatepickerContent onChangeModal={handlemodal} />
+            </Modal>
         </>
     );
 }

@@ -1,4 +1,4 @@
-import { login } from '../apis/login';
+import login from '../apis/apis';
 import axios from 'axios'
 
 const testServer = "https://5a52d2d2-b3df-456a-a975-3b8bbf65f215.mock.pstmn.io";
