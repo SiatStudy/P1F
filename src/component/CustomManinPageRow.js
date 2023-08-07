@@ -81,7 +81,7 @@ border: 1px solid #000;
 display: ${props => (props.$mode ? 'block' : 'none')};
 `;
 
-const CustomMainPageRow = ({title, value, $mode, onChange, $page}) => {
+const CustomMainPageRow = ({title, value, $mode, onChange, $page, pattern, $inputTitle}) => {
   // title : 제목
   // value : 내용
   // $mode : 상태 전환
@@ -91,7 +91,8 @@ const CustomMainPageRow = ({title, value, $mode, onChange, $page}) => {
     <OutDiv $page={$page}>
       <KeyDiv $page={$page}>{title}</KeyDiv>
       <CustomH3 $page={$page} $mode={$mode}>{value}</CustomH3>
-      <CustomInput type="text" $mode={$mode} value={value} onChange={(e) => onChange(e.target.value)}></CustomInput>
+      <CustomInput type="text" $mode={$mode} value={value} onChange={(e) => onChange(e.target.value)}
+      pattern={pattern} title={$inputTitle}></CustomInput>
     </OutDiv>
   );
 };

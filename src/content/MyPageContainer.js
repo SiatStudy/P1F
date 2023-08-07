@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import style from "./MyPageContainer.module.css";
 import CustomMainPageH1 from "../component/CustomMainPageH1";
 import CustomMainPageRow from "../component/CustomManinPageRow";
-import {dummyData1 as dummy} from '../apis/dummyData1';
+import { dummyData1 as dummy } from "../apis/dummyData1";
 
 const MyPageContainer = () => {
   //편집 상태 전환 state
@@ -37,45 +37,59 @@ const MyPageContainer = () => {
   const onInputChange = (property, value) => {
     setEditedObj((editedObj) => ({
       ...editedObj,
-      [property]: value
+      [property]: value,
     }));
   };
 
+  const onSubmitForm = (e) => {
+    e.preventDefault(); // 기본 서브밋 동작 방지
+    toggleEditMode();
+};
+
   return (
     <div className={style.mainContainer}>
-      <div className={style.MyPageContainer}>
-        <div className={style.title}>
-          <CustomMainPageH1 $myPage >마이페이지</CustomMainPageH1>
-          {editMode && <button className={style.button} onClick={cancellEditMode}>취소</button>}
-          <button className={style.button} onClick={toggleEditMode}>
-            {editMode ? "확인" : "수정"}
-          </button>
+      <form onSubmit={onSubmitForm}>
+        <div className={style.MyPageContainer}>
+          <div className={style.title}>
+            <CustomMainPageH1 $myPage>마이페이지</CustomMainPageH1>
+            {editMode && (
+              <button className={style.button} onClick={cancellEditMode}>
+                취소
+              </button>
+            )}
+            <button className={style.button} >
+              {editMode ? "확인" : "수정"}
+            </button>
+          </div>
+          <div className={style.list}>
+            <CustomMainPageRow
+              title="닉네임"
+              value={editMode ? editedObj.nickName : dataObj.nickName}
+              $mode={editMode}
+              pattern="[a-zA-Z가-힣]{3,16}"
+              $inputTitle="3~16 글자를 입력해야 합니다."
+              onChange={(value) => onInputChange("nickName", value)}
+            ></CustomMainPageRow>
+            <CustomMainPageRow
+              title="Email"
+              value={dataObj.email}
+            ></CustomMainPageRow>
+          </div>
         </div>
-        <div className={style.list}>
-          <CustomMainPageRow
-            title="닉네임"
-            value={editMode ? editedObj.nickName : dataObj.nickName}
-            $mode={editMode}
-            onChange={(value) => onInputChange("nickName", value)}
-          ></CustomMainPageRow>
-          <CustomMainPageRow
-            title="Email"
-            value={editMode ? editedObj.email : dataObj.email}
-            $mode={editMode}
-            onChange={(value) => onInputChange("email", value)}
-          ></CustomMainPageRow>
+        <div className={style.MyPageContainer}>
+          <div className={style.versionTitle}>
+            <CustomMainPageH1 $myPage>버전</CustomMainPageH1>
+          </div>
+          <div className={style.list}>
+            <CustomMainPageRow title="언어" value="한국어"></CustomMainPageRow>
+            <CustomMainPageRow
+              title="업데이트"
+              value="2023.08.10"
+            ></CustomMainPageRow>
+            <CustomMainPageRow title="버전" value="1.0.1"></CustomMainPageRow>
+          </div>
         </div>
-      </div>
-      <div className={style.MyPageContainer}>
-        <div className={style.versionTitle}>
-          <CustomMainPageH1 $myPage >버전</CustomMainPageH1>
-        </div>
-        <div className={style.list}>
-          <CustomMainPageRow title="언어" value="한국어"></CustomMainPageRow>
-          <CustomMainPageRow title="업데이트" value="2000.01.01"></CustomMainPageRow>
-          <CustomMainPageRow title="버전" value="1.1.1"></CustomMainPageRow>
-        </div>
-      </div>
+      </form>
     </div>
   );
 };
