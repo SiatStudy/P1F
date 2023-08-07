@@ -9,7 +9,7 @@ function UserInfo(props){
     return(
         <div className={style.UserInfo}>
             <div className={style.NavBotPic}>
-                <CustomMainPageImg $navbotpic src={'../asset/img/NavBotPic.svg'}></CustomMainPageImg>
+                <CustomMainPageImg $navbotpic src={'/asset/img/NavBotPic.svg'}></CustomMainPageImg>
             </div>
             <div className={style.NavFooter}>
                 <div className={style.NavFooterInner}>

@@ -20,6 +20,7 @@ function ProgressBar(props){
     return(
         <div className={style.Progress}>
             <div className={style.MonthTitle}>
+                {/* 월 받아오기 필요 */}
                 <CustomMainPageDiv $month>{props.month}</CustomMainPageDiv>
                 <CustomMainPageP $title>달성도</CustomMainPageP>    
             </div>

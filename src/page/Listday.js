@@ -5,23 +5,26 @@ import SideMenu from '../container/SideMenu';
 import UserInfo from '../container/UserInfo';
 import { Calendar } from '../content/Calendar';
 
+
 function Listday() {
 
-  const [titleh, setTitleh] = useState("");
+  const [titleh, setTitleh] = useState("List Day");
 
   return (
     <div className={style.Listday}>
       <div className={style.Side}>
-        <SideMenu titleh={titleh} setTitleh={setTitleh} />
-        <UserInfo />
+          <SideMenu titleh={titleh} setTitleh={setTitleh}>
+          </SideMenu>
+          <UserInfo />
       </div>
       <div className={style.Main}>
-        <Header $titleh={titleh} />
-        <div className={style.Calendar}>
-          <Calendar mode={"calendar"} />
-        </div>
+          <Header $titleh={titleh} />
+          <div className={style.Calendar}>
+            <Calendar mode={"list"} />  
+          </div>
       </div>
     </div>
+
   );
 }
 

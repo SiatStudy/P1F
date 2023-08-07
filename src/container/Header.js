@@ -15,7 +15,7 @@ function Header(props){
             </div>
             <div className={style.Search}>
                 <CustomMainPageInput $headerinput type="text" placeholder="검색"></CustomMainPageInput>
-                <CustomMainPageImg $headerinputicon src={ '/src/asset/img/SearchIcon.svg' }></CustomMainPageImg>
+                <CustomMainPageImg $headerinputicon src={ '/asset/img/SearchIcon.svg' }></CustomMainPageImg>
             </div>
         </div>
     )

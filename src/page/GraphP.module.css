@@ -1,4 +1,4 @@
-.Listday{
+.GraphP{
     display: flex;
     flex-direction: row;
     gap: 4px;
@@ -20,7 +20,7 @@
     width: 100%;
 }
 
-.Calendar{
+.GraphM{
     margin-top: 1rem;
     background-color: white;
     width: 100%;

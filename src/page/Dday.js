@@ -8,7 +8,7 @@ import DdayTable from '../container/DdayTable';
 
 function Dday() {
 
-  const [titleh, setTitleh] = useState("");
+  const [titleh, setTitleh] = useState("목표 달성 D-day");
 
   return (
     <div className={style.Dday}>
