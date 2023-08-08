@@ -3,7 +3,9 @@ import style from "./MyPageContainer.module.css";
 import CustomMainPageH1 from "../component/CustomMainPageH1";
 import CustomMainPageRow from "../component/CustomManinPageRow";
 import { dummyData1 as dummy } from "../apis/dummyData1";
-import { getMypageData } from '../apis/apis';
+import { useDispatch, useSelector } from "react-redux";
+import { setUserNickName } from "../store/userData";
+import { changeNickName } from "../apis/apis";
 
 const MyPageContainer = () => {
   //편집 상태 전환 state
@@ -12,12 +14,15 @@ const MyPageContainer = () => {
   const [dataObj, setDataObj] = useState({});
   const [editedObj, setEditedObj] = useState({});
   // 편집 중인 내용을 따로 저장하는 state 객체
+  const state = useSelector((state) => state.userData);
+  const dispatch = useDispatch();
 
   //처음 랜더링 시에만 실행
   //더미데이터를 state객체에 할당
   useEffect(() => {
-    //더미값 매핑, 본 사용시 아래 settingBackData 함수로 교체
-    setDataObj(dummy[5]);
+    //더미값 매핑, 본 사용시 아래 settingUserData 함수로 교체
+    // setDataObj(dummy[5]);
+    settingUserData();
   }, []);
 
   //백엔드에서 데이터를 받아 세팅
@@ -25,15 +30,22 @@ const MyPageContainer = () => {
   //  nickName : nickName, 닉네임을 받음
   //  email : email        이메일을 받음
   //}
-  const settingBackData = () =>{
-    const data = getMypageData(`http://localhost:8080/api/users/update`);
-    setDataObj(data);
-  }
+  const settingUserData = () => {
+    let data = {
+      nickName: state.userNiceName,
+      email: state.userEmail,
+    };
+    setDataObj(...data);
+  };
 
   const toggleEditMode = () => {
     if (editMode) {
       // "확인" 버튼을 눌렀을 때
-      setDataObj({ ...editedObj }); // 편집한 내용을 저장하고
+      if (editedObj.nickName != dataObj.nickName) {
+        setDataObj({ ...editedObj }); // 편집한 내용을 저장하고
+        changeNickName(editedObj.nickName); // 백엔드 DB에 새 닉네임 저장
+        dispatch(setUserNickName(editedObj.nickName)); //리덕스의 닉네임 변경
+      }
     } else {
       // "수정" 버튼을 눌렀을 때
       setEditedObj({ ...dataObj }); // 현재 dataObj를 편집 중인 내용으로 초useEffect기화
@@ -56,7 +68,7 @@ const MyPageContainer = () => {
   const onSubmitForm = (e) => {
     e.preventDefault(); // 기본 서브밋 동작 방지
     toggleEditMode();
-};
+  };
 
   return (
     <div className={style.mainContainer}>
@@ -69,7 +81,7 @@ const MyPageContainer = () => {
                 취소
               </button>
             )}
-            <button className={style.button} >
+            <button className={style.button}>
               {editMode ? "확인" : "수정"}
             </button>
           </div>

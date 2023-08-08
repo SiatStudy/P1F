@@ -9,8 +9,8 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path={"/"} element={<Dday />}></Route>
-        {/* 합칠때 주소를 '/page/dday'로 수정 필요 */}
+        
+        
         <Route path={"/mypage"} element={<MyPage />}></Route>
         <Route path={"/search/:word"} element={<SearchPage />}></Route>
         <Route path={"*"} element={<h1>잘못된 페이지 요청입니다.</h1>}></Route>

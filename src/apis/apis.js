@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useDispatch } from "react-redux";
-
 import errorFunc from "../util/errorFunc";
 import { userLogin, userEmailReturn } from "../store/userLogin";
+
 
 /**
  * 로그인 및 중복 데이터 확인을 처리하는 함수
@@ -281,7 +281,7 @@ const todoData = async (url, userData, mode) => {
   }
 };
 
-const getSearchData = async (url) => {
+const getTodoData = async (url) => {
   // Todo 데이터 검색시 사용하는 함수 추가 제작
   try {
     const response = await axios.get(url);
@@ -294,20 +294,21 @@ const getSearchData = async (url) => {
     }
   } catch (error) {
     // 에러 핸들링을 위해 errorFunc 유틸리티 사용
-    errorFunc("todoGetAxios", error);
+    errorFunc("getSearchAxios", error);
   }
 };
 
-const getMypageData = async (url) => {
-  // 닉네임, 이메일 받는 함수 추가 제작
+const getUserData = async (url) => {
+  // 유저 닉네임, 이메일 받는 함수 추가 제작
+
   try {
     const response = await axios.get(url);
     if (response.data.success) {
-      let nickName = response.data.userNickName;
-      let email = response.data.userEmail;
+      let email = response.data.useremail;
+      let nickName = response.data.username;
       let obj = {
-        nickName : nickName,
-        email : email
+        email : email,
+        nickName : nickName
       }
       return obj;
     } else {
@@ -316,8 +317,12 @@ const getMypageData = async (url) => {
     }
   } catch (error) {
     // 에러 핸들링을 위해 errorFunc 유틸리티 사용
-    errorFunc("todoGetAxios", error);
+    errorFunc("getMypageAxios", error);
   }
 };
 
-export { login, searchUserData, signup, todoData, getSearchData, getMypageData };
+const changeNickName = (str) =>{
+  axios.patch(`http://localhost:8080/api/user/info/${str}`);
+};
+
+export { login, searchUserData, signup, todoData, getTodoData, getUserData, changeNickName };

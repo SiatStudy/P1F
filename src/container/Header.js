@@ -3,8 +3,7 @@ import style from "./Header.module.css";
 import CustomMainPageInput from "../component/CustomMainPageInput";
 import CustomMainPageImg from "../component/CustomMainPageImg";
 import CustomMainPageP from "../component/CustomMainPageP";
-import { Navigate, useNavigate } from "react-router-dom";
-import { isString } from '../util/validation/isString';
+import { useNavigate } from "react-router-dom";
 
 function Header(props) {
     const [val, setVal] = useState("");
@@ -25,7 +24,7 @@ function Header(props) {
     return (
         <div className={style.Header}>
             <div className={style.Title}>
-                <CustomMainPageP $title>{props.title}</CustomMainPageP>
+                <CustomMainPageP $title>{props.$titleh}</CustomMainPageP>
             </div>
             <form onSubmit={onSubmitForm}>
                 <div className={style.Search}>
