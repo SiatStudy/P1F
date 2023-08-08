@@ -10,12 +10,13 @@
     padding: 1rem;
 }
 
-.ProgressInner{
+.ProgressOuter{
     display: flex;
     padding: 1rem;
     align-items: center;
     background: var(--yoda-admin-template-blacks-b-0, #FFF);
     flex-shrink: 0;
+    flex-grow: 1;
 }
 
 .ProgressUnder{

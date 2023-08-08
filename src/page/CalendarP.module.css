@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: row;
     background-color: #E3F6FF;
+    flex-grow: 1;
 }
 
 .Side{
@@ -10,19 +11,18 @@
     background: #FFF;
     flex-shrink: 0;
     justify-content: space-between;
-    height: auto;
 }
 
 .Main{
     display: flex;
     flex-direction: column;
-    width: 100%;
     padding: 1rem;
+    flex-grow: 1;
 }
 
 .CalendarM{
     margin-top: 1rem;
     background-color: white;
     padding: 1rem;
-    padding: 0.5rem;
+    flex-grow: 1;
 }

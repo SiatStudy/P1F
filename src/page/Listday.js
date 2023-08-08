@@ -19,7 +19,7 @@ function Listday() {
       </div>
       <div className={style.Main}>
           <Header $titleh={titleh} />
-          <div className={style.Calendar}>
+          <div className={style.List}>
             <Calendar mode={"list"} />  
           </div>
       </div>

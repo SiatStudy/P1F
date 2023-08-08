@@ -6,7 +6,7 @@ import UserInfo from '../container/UserInfo';
 import ProgressBar from '../container/ProgressBar';
 import DdayTable from '../container/DdayTable';
 
-function Dday() {
+function Dday(props) {
 
   const [titleh, setTitleh] = useState("목표 달성 D-day");
 
@@ -14,12 +14,14 @@ function Dday() {
     <div className={style.Dday}>
       <div className={style.Side}>
         <SideMenu titleh={titleh} setTitleh={setTitleh}></SideMenu>
-        <UserInfo></UserInfo>
+        <UserInfo name="Hyunwoo Kim"></UserInfo>
       </div>
       <div className={style.Main}>
         <Header $titleh={titleh}></Header>
-        <ProgressBar></ProgressBar>
-        <DdayTable></DdayTable>
+        <div className={style.Section}>
+          <ProgressBar month="6월"></ProgressBar>
+          <DdayTable month="6월" year="2023"></DdayTable>
+        </div>
       </div>
     </div>
   );

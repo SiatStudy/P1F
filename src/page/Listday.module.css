@@ -1,7 +1,6 @@
 .Listday{
     display: flex;
     flex-direction: row;
-    gap: 4px;
     background-color: #E3F6FF;
 }
 
@@ -16,12 +15,14 @@
 .Main{
     display: flex;
     flex-direction: column;
-    padding: 0.5rem;
-    width: 100%;
+    padding: 1rem;
+    flex-shrink: 0;
+    flex-grow: 1;
 }
 
-.Calendar{
+.List{
     margin-top: 1rem;
     background-color: white;
-    width: 100%;
+    padding: 1rem;
+    flex-grow: 1;
 }

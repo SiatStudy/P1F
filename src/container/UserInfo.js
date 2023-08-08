@@ -15,7 +15,7 @@ function UserInfo(props){
                 <div className={style.NavFooterInner}>
                     <div className={style.AvaName}>
                         <CustomMainPageImg $navfooterava src={ '/asset/img/Avatar.svg' }></CustomMainPageImg>
-                        <CustomMainPageP $navfootername>{props.$name}</CustomMainPageP> {/* 이름 데이터 받아오기 필요 */}
+                        <CustomMainPageP $navfootername>{props.name}</CustomMainPageP> {/* 이름 데이터 받아오기 필요 */}
                     </div>
                     <CustomMainPageImg $navfooterset src={ '/asset/img/SettingsIcon.svg' }></CustomMainPageImg>
                 </div>

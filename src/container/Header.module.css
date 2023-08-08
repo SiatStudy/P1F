@@ -5,15 +5,13 @@
     background-color: #FFF;
     height: 4rem;
     align-items: center;
-    flex-wrap: wrap;
-    align-self: stretch;
     justify-content: space-between;
     padding-left: 2rem;
+    flex-shrink: 0;
 }
 
 .Title{
     display: flex;
-    align-content: stretch;
 }
 
 .Search{

@@ -10,7 +10,7 @@ function Header(props){
 
     return(
         <div className={style.Header}>
-            <div className={style.$title}>
+            <div className={style.Title}>
                 <CustomMainPageP $title>{props.$titleh}</CustomMainPageP>
             </div>
             <div className={style.Search}>

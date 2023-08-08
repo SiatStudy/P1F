@@ -5,7 +5,7 @@ const CustomMainPageProgress = styled.progress`
     
 
     ${props => props.$progressbar && css`
-        width: 77rem;
+    flex-grow: 1;
     `}
 `;
 
