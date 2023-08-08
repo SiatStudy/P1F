@@ -1,7 +1,6 @@
 .Dday{
     display: flex;
     flex-direction: row;
-    gap: 4px;
     background-color: #E3F6FF;
 }
 
@@ -16,5 +15,11 @@
 .Main{
     display: flex;
     flex-direction: column;
-    padding: 0.5rem;
+    padding: 1rem;
+    flex-grow: 1;
 }
+
+.Section{
+    margin-top: 1rem;
+}
+

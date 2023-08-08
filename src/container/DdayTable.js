@@ -8,7 +8,8 @@ import CustomMainPageP from "../component/CustomMainPageP";
 
 function DdayTable(props){
 
-    const array1 = [
+    // array1 에 작성 날짜, 작업명, D-day 데이터 필요
+    const array1 = [ 
         {text1:'2023년 6월 2일', text2:'페이지 작업1', text3:'D-2'},
         {text1:'2023년 6월 7일', text2:'페이지 작업2', text3:'D-4'},
         {text1:'2023년 6월 8일', text2:'페이지 작업3', text3:'D-5'},
@@ -21,6 +22,7 @@ function DdayTable(props){
     return(
         <div className={style.DdayTable}>
             <div className={style.MonthYear}>
+                {/* 월, 년도 데이터 받아오기 필요 */}
                 <CustomMainPageDiv $month>{props.month}</CustomMainPageDiv>
                 <CustomMainPageDiv $year>{props.year}</CustomMainPageDiv>    
             </div>

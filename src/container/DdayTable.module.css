@@ -1,6 +1,7 @@
 .DdayTable{
     display: flex;
     flex-direction: column;
+    padding-top: 1rem;
 }
 
 .MonthYear{
@@ -12,7 +13,6 @@
 .Table{
     display: flex;
     flex-direction: column;
-    width: 100%;
     flex-grow: 1;
 }
 

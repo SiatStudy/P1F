@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import ApexCharts from "react-apexcharts";
 import {resetYear} from "../store/selectedYear";
 
-import dataAverage from "../util/dataUtils/dataAverage";
+// import dataAverage from "../util/dataUtils/dataAverage";
 
 export const Graph = () => {
     const currentYear = useSelector(state => state.selectedYear);
@@ -39,3 +39,6 @@ export const Graph = () => {
         />
     );
 }
+
+
+export default Graph;

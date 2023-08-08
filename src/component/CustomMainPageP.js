@@ -35,6 +35,7 @@ const CustomMainPageP = styled.p`
         font-style: normal;
         font-weight: 700;
         line-height: 1rem; /* 53.333% */
+        flex-shrink: 0;
     `}
 
     ${props => props.$tableheader && css`
