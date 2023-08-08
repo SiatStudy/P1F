@@ -4,7 +4,6 @@ import CustomLoginPageInput from '../component/CustomLoginPageInput';
 import CustomLoginPageLabel from '../component/CustomLoginPageLabel';
 import CustomLoginPageBtn from '../component/CustomLoginPageBtn';
 import {NavLink} from 'react-router-dom';
-import {findNoneSel} from '../util/LoginPageUtil';
 
 const FindIdPage = () => {
 
@@ -13,7 +12,7 @@ const FindIdPage = () => {
             <CustomLoginPageDiv $logindiv>
                 <CustomLoginPageDiv $findIdPW>
                     <CustomLoginPageBtn $findSelBtn>ID 찾기</CustomLoginPageBtn>
-                    <NavLink to="/FindPWPage" style={findNoneSel()}><CustomLoginPageBtn $findNoneSelBtn>비밀번호 찾기</CustomLoginPageBtn></NavLink>
+                    <NavLink to="/FindPWPage" className={style.findNoneSel}><CustomLoginPageBtn $findNoneSelBtn>비밀번호 찾기</CustomLoginPageBtn></NavLink>
                 </CustomLoginPageDiv>
 
                 <CustomLoginPageDiv $idpwsection $findidsection>

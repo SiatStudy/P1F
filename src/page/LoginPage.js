@@ -5,7 +5,6 @@ import CustomLoginPageLabel from '../component/CustomLoginPageLabel';
 import CustomLoginPageBtn from '../component/CustomLoginPageBtn';
 import { ReactComponent as Eyeline } from "../svg/Eyeline.svg";
 import {Link} from 'react-router-dom';
-import CustomLoginPageP from '../component/CustomLoginPageP';
 import { useState } from 'react';
 
 function LoginPage () {

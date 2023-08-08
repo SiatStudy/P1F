@@ -1,22 +1,8 @@
 import CustomLoginPageP from '../component/CustomLoginPageP';
 import {searchUserData} from '../apis/apis';
 
-export const findNoneSel = () => {
-    return {
-        display: 'flex',
-        height: '2.5rem',
-        padding: '0.75rem 1.5rem',
-        justifyContent: 'center',
-        alignItems: 'center',
-        gap: '0.625rem',
-        flex: '1 0 0',
-        borderBottom: '3px solid #3E54AC',
-        textDecoration: 'none',
-    };
-};
-
 const idRegex = /^[A-Za-z0-9]{3,8}$/;
-const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':\\|,.<>\/?])[A-Za-z\d!@#$%^&*()_+\-=\[\]{};':\\|,.<>\/?]{8,16}$/;
+const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/;
 const emailRegex = /^[A-Za-z0-9]{1,63}$/;
 const nicknameRegex = /^[A-Za-zㄱ-ㅎㅏ-ㅣ가-힣]{1,15}$/;
 const emailCodeRegex = /^[0-9]{8}$/

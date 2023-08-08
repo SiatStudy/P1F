@@ -55,6 +55,11 @@ function SignUpPage () {
         handleInputsVal(value, setIsVaild, pwVal, setErrorMessage, setButtons, setSignInputs, mode);
     };
     
+    const handleSelChange = (event) => {
+        const value = event.target.value;
+        setSignInputs((prevState) => {return {...prevState, userEmailDomain : value}});
+    };
+
     const handleBtnClick = (event) => {
         const sInputs = signInputs;
         const mode = event.target.dataset.mode;
@@ -82,11 +87,6 @@ function SignUpPage () {
         }
     }
 
-    const handleSelChange = (event) => {
-        const value = event.target.value;
-        setSignInputs((prevState) => {return {...prevState, userEmailDomain : value}});
-    }
-
     useEffect(() => {
         let interval;
 
@@ -98,10 +98,9 @@ function SignUpPage () {
           setTimerExpired(true);
           setButtons((prevState) => ({...prevState, sendEmailVerificationButton: false}));
           setTimerStarted(false);
-        } 
-    
+        }   
         return () => clearInterval(interval);
-      }, [timerStarted, timer, timerExpired]);
+    }, [timerStarted, timer, timerExpired]);
 
     return (
         <div className={style.loginPage}>
