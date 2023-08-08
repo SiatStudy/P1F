@@ -298,4 +298,26 @@ const getSearchData = async (url) => {
   }
 };
 
-export { login, searchUserData, signup, todoData, getSearchData };
+const getMypageData = async (url) => {
+  // 닉네임, 이메일 받는 함수 추가 제작
+  try {
+    const response = await axios.get(url);
+    if (response.data.success) {
+      let nickName = response.data.userNickName;
+      let email = response.data.userEmail;
+      let obj = {
+        nickName : nickName,
+        email : email
+      }
+      return obj;
+    } else {
+      // 데이터 조회 실패 시 false 반환
+      return false;
+    }
+  } catch (error) {
+    // 에러 핸들링을 위해 errorFunc 유틸리티 사용
+    errorFunc("todoGetAxios", error);
+  }
+};
+
+export { login, searchUserData, signup, todoData, getSearchData, getMypageData };

@@ -3,6 +3,7 @@ import style from "./MyPageContainer.module.css";
 import CustomMainPageH1 from "../component/CustomMainPageH1";
 import CustomMainPageRow from "../component/CustomManinPageRow";
 import { dummyData1 as dummy } from "../apis/dummyData1";
+import { getMypageData } from '../apis/apis';
 
 const MyPageContainer = () => {
   //편집 상태 전환 state
@@ -15,8 +16,19 @@ const MyPageContainer = () => {
   //처음 랜더링 시에만 실행
   //더미데이터를 state객체에 할당
   useEffect(() => {
+    //더미값 매핑, 본 사용시 아래 settingBackData 함수로 교체
     setDataObj(dummy[5]);
   }, []);
+
+  //백엔드에서 데이터를 받아 세팅
+  //{
+  //  nickName : nickName, 닉네임을 받음
+  //  email : email        이메일을 받음
+  //}
+  const settingBackData = () =>{
+    const data = getMypageData(`http://localhost:8080/api/users/update`);
+    setDataObj(data);
+  }
 
   const toggleEditMode = () => {
     if (editMode) {
