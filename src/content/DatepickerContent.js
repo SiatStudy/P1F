@@ -14,7 +14,7 @@ import CustomPopupLabel from "../component/CustomPopupLabel";
 import CustomPopupArea from "../component/CustomPopupArea";
 import CustomPopupDiv from "../component/CustomPopupDiv";
 
-const ExComp = ({ onChangeModal }) => {
+const DatepickerContent = ({ onChangeModal }) => {
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
     const [disabled, setDisabled] = useState(true);
@@ -160,4 +160,4 @@ const ExComp = ({ onChangeModal }) => {
     );
 };
 
-export default ExComp;
+export default DatepickerContent;

@@ -74,7 +74,7 @@ export const Calendar = ({ mode }) => {
     const AddButton = {
         text : "+",
         click : function () {
-            setModalIsOpen(true)
+            handlemodal(true)
         }
     };
 
