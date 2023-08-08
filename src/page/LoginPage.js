@@ -5,8 +5,13 @@ import CustomLoginPageLabel from '../component/CustomLoginPageLabel';
 import CustomLoginPageBtn from '../component/CustomLoginPageBtn';
 import { ReactComponent as Eyeline } from "../svg/Eyeline.svg";
 import {Link} from 'react-router-dom';
+import CustomLoginPageP from '../component/CustomLoginPageP';
+import { useState } from 'react';
 
 function LoginPage () {
+
+    const [idVal, setIdVal] = useState('');
+    const [pwVal, setPwVal] = useState('');
 
     return(
         <div className={style.loginPage}>
@@ -15,13 +20,13 @@ function LoginPage () {
 
                 <CustomLoginPageDiv $idpwsection>
                     <CustomLoginPageLabel $idlabel>ID :</CustomLoginPageLabel>
-                    <CustomLoginPageInput $idinput />
+                    <CustomLoginPageInput $idinput value={idVal} />
                 </CustomLoginPageDiv>
 
                 <CustomLoginPageDiv $idpwsection>
                     <CustomLoginPageLabel $idlabel>Password :</CustomLoginPageLabel>
                     <CustomLoginPageDiv $pwinputdiv>
-                        <CustomLoginPageInput $pwinput type='password' />
+                        <CustomLoginPageInput $pwinput type='password' value={pwVal} />
                         <Eyeline className={style.eyelineSvg}/>
                     </CustomLoginPageDiv>
                 </CustomLoginPageDiv>
