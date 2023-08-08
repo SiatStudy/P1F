@@ -9,9 +9,10 @@ import {handleInputsVal, handleBtnClickEvent} from "../util/LoginPageUtil";
 import { useState, useEffect } from 'react';
 import CustomLoginPageP from '../component/CustomLoginPageP';
 import {signup} from '../apis/apis';
-import {Link} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 function SignUpPage () {
+    const navigate = useNavigate();
     const [timer, setTimer] = useState(5); // 초 단위로 타이머를 설정, 3분(180초)
     const [timerExpired, setTimerExpired] = useState(false); // 타이머 만료 state
     const [timerStarted, setTimerStarted] = useState(false); // 타이머 시작 state
@@ -63,6 +64,7 @@ function SignUpPage () {
     const handleBtnClick = (event) => {
         const sInputs = signInputs;
         const mode = event.target.dataset.mode;
+        
         handleBtnClickEvent(sInputs, setIsVaild, mode, setButtons, setSignInputs, setErrorMessage);
         if(mode === 'email'){
             setTimerStarted(true);
@@ -81,7 +83,7 @@ function SignUpPage () {
         }
         if (signup("http://localhost:8080/signup",userData,mode)) {
             console.log("전송 완료");
-            <Link to="/"></Link>
+            navigate("/");
         }else{
             console.log("전송 실패");
         }
