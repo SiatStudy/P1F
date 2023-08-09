@@ -75,7 +75,7 @@ const MyPageContainer = () => {
       <form onSubmit={onSubmitForm}>
         <div className={style.MyPageContainer}>
           <div className={style.title}>
-            <CustomMainPageH1 $myPage>마이페이지</CustomMainPageH1>
+            <CustomMainPageH1 $myPage>회원 정보</CustomMainPageH1>
             {editMode && (
               <button className={style.button} onClick={cancellEditMode}>
                 취소

@@ -6,7 +6,7 @@ import UserInfo from '../container/UserInfo';
 import MyPageContainer from '../content/MyPageContainer';
 
 function MyPage() {
-  const [titleh, setTitleh] = useState("그래프로 한 눈에 보기");
+  const [titleh, setTitleh] = useState("마이페이지");
 
   return (
     <div className={style.Dday}>
