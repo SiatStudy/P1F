@@ -14,7 +14,7 @@ const Sasmple = () => {
 
   //처음 페이지 랜딩 시 백엔드에 요청해서 리덕스에 닉네임, 이메일 저장
   useEffect(() => {
-    let obj = getUserData(`http://localhost:8080/api/users/setting`);
+    let obj = getUserData(`/api/users/setting`);
     dispatch(setUserEmail(obj.email));
     dispatch(setUserNickName(obj.nickName));
   }, []);

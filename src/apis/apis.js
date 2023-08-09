@@ -322,7 +322,7 @@ const getUserData = async (url) => {
 };
 
 const changeNickName = (str) =>{
-  axios.patch(`http://localhost:8080/api/user/info/${str}`);
+  axios.patch(`/api/user/info/${str}`);
 };
 
 export { login, searchUserData, signup, todoData, getTodoData, getUserData, changeNickName };

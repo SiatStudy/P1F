@@ -28,7 +28,7 @@ const SearchPageContainer = ({ word }) => {
     //endDate : 종료일
     //title : 일 제목
     let data = [];
-    data = getTodoData(`http://localhost:8080/api/todos/${currentYear}`);
+    data = getTodoData(`/api/todos/${currentYear}`);
 
     // 백엔드에서 받은 배열을 알맞은 형태로 재생성하는 로직
     const transformeArr = data.map(item => {
