@@ -17,8 +17,8 @@ const SearchPageContainer = ({ word }) => {
     setCurrentMonth(currentDate.getMonth() + 1);
     setCurrentYear(currentDate.getFullYear())
     //더미데이터 가져옴. 본 사용시 아래 settingBackData사용 
-    setSearchDataArr(dummyData2);  
-    // settingBackData();
+    // setSearchDataArr(dummyData2);  
+    settingBackData();
   }, []);
 
   //백엔드 데이터 세팅
