@@ -9,7 +9,7 @@
     flex-direction: column;
     align-items: center;
     padding: 1.5rem;
-    
+    flex-shrink: 1;
 }
 
 .NavFooter{
@@ -17,6 +17,7 @@
     flex-direction: row;
     justify-content: center;
     justify-items: center;
+    flex-shrink: 0;
 }
 
 .NavFooterInner{
