@@ -13,10 +13,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Listday />} />
-          <Route path="/Listday" element={<Listday />} />
-          <Route path="/CalendarP" element={<CalendarP />} />
-          <Route path="/Dday" element={<Dday />} />
-          <Route path="/GraphP" element={<GraphP />} />
+          <Route path="/listday" element={<Listday />} />
+          <Route path="/calendarp" element={<CalendarP />} />
+          <Route path="/dday" element={<Dday />} />
+          <Route path="/graphp" element={<GraphP />} />
         </Routes>         
       </BrowserRouter>
     </div>
