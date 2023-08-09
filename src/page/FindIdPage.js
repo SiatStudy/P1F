@@ -31,13 +31,15 @@ const FindIdPage = () => {
     
     const handleSubmit = (event) => {
         event.preventDefault();
+        console.log(res.data.username);
+        console.log(username);
 
-        axios.post("https://example-api.com/data", {
-            userData: userEmail,
-        })
+        axios.post("http://localhost:8080/login/search/id", null,  {params:{userEmail : userEmail}})
         .then(res => {
-            if(res.data.success){
-                navigate("/findidresult", {state : { userid : res.data.userid}});
+            if(res.status === 200){
+                navigate("/findidresult", {state : { username : res.data.username}});
+                console.log(res.data.username);
+                console.log(username);
             }else{
                 setDisabled(true);
                 setEmailError(<CustomLoginPageP $errorMessage $findidp>이메일을 다시 입력해주세요.</CustomLoginPageP>);
