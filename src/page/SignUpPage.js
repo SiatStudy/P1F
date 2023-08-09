@@ -30,7 +30,7 @@ function SignUpPage () {
         userPw : '',
         userConfirmPw : '',
         userEmail : '',
-        userEmailDomain : '',
+        userEmailDomain : '@naver.com',
         userEmailCode : '',
     });
     const [errorMessage, setErrorMessage] = useState({
@@ -63,9 +63,9 @@ function SignUpPage () {
 
     const handleBtnClick = (event) => {
         const sInputs = signInputs;
-        const mode = event.target.dataset.mode;
-        
+        const mode = event.target.dataset.mode;       
         handleBtnClickEvent(sInputs, setIsVaild, mode, setButtons, setSignInputs, setErrorMessage);
+
         if(mode === 'email'){
             setTimerStarted(true);
             setTimer(5);
@@ -81,9 +81,10 @@ function SignUpPage () {
             userPw: signInputs.userPw,
             userEmail: signInputs.userEmail + signInputs.userEmailDomain,
         }
+
         if (signup("http://localhost:8080/signup",userData,mode)) {
             console.log("전송 완료");
-            navigate("/");
+            navigate("/loginpage");
         }else{
             console.log("전송 실패");
         }
@@ -107,127 +108,128 @@ function SignUpPage () {
     return (
         <div className={style.loginPage}>
             <form type='post' onSubmit={handleSubmitClick}>
-            <CustomLoginPageDiv $logindiv>
-                <CustomLoginPageDiv $haedertext>회원가입</CustomLoginPageDiv>
+                <CustomLoginPageDiv $logindiv>
+                    <CustomLoginPageDiv $haedertext>회원가입</CustomLoginPageDiv>
 
-                <CustomLoginPageDiv $mbidsection>
-                    <CustomLoginPageDiv $mbidlabelinp>
-                        <CustomLoginPageLabel $idlabel>아이디 :</CustomLoginPageLabel>
-                        <CustomLoginPageInput 
-                        $mbspid
-                        data-mode='id'
-                        placeholder='ID 입력'
-                        value={signInputs.userName}
-                        onChange={handleInputsChange}/>
+                    <CustomLoginPageDiv $mbidsection>
+                        <CustomLoginPageDiv $mbidlabelinp>
+                            <CustomLoginPageLabel $idlabel>아이디 :</CustomLoginPageLabel>
+                            <CustomLoginPageInput 
+                            $mbspid
+                            data-mode='id'
+                            placeholder='ID 입력'
+                            value={signInputs.userName}
+                            onChange={handleInputsChange}/>
+                        </CustomLoginPageDiv>
+                        <CustomLoginPageBtn 
+                            $mbspidcheck
+                            type='button'
+                            data-mode='id'
+                            onClick={handleBtnClick}
+                            disabled={buttons.checkDuplicateIdButton}
+                        >중복</CustomLoginPageBtn>
                     </CustomLoginPageDiv>
-                    <CustomLoginPageBtn 
-                        $mbspidcheck
-                        type='button'
-                        data-mode='id'
-                        onClick={handleBtnClick}
-                        disabled={buttons.checkDuplicateIdButton}
-                    >중복</CustomLoginPageBtn>
-                </CustomLoginPageDiv>
-                {errorMessage.idError}
+                    {errorMessage.idError}
 
-                <CustomLoginPageDiv $idpwsection>
-                    <CustomLoginPageLabel $idlabel>닉네임 :</CustomLoginPageLabel>
-                    <CustomLoginPageInput 
-                    $idinput
-                    data-mode='nickname'
-                    value={signInputs.userNickname} 
-                    onChange={handleInputsChange} />
-                </CustomLoginPageDiv>
-                {errorMessage.nicknameError}
-
-                <CustomLoginPageDiv $idpwsection>
-                    <CustomLoginPageLabel $idlabel>비밀번호 입력 :</CustomLoginPageLabel>
-                    <CustomLoginPageDiv $pwinputdiv>
-                        <CustomLoginPageInput 
-                        $pwinput
-                        data-mode='pw'
-                        placeholder='Password' 
-                        type='password' 
-                        value={signInputs.userPw} 
-                        onChange={handleInputsChange} />
-                        <Eyeline className={style.eyelineSvg}/>
-                    </CustomLoginPageDiv>
-                </CustomLoginPageDiv>
-                {errorMessage.pwError}
-
-                <CustomLoginPageDiv $idpwsection>
-                    <CustomLoginPageLabel $idlabel>비밀번호 확인 :</CustomLoginPageLabel>
-                    <CustomLoginPageDiv $pwinputdiv>
-                        <CustomLoginPageInput 
-                        $pwinput
-                        data-mode='confirmPw'
-                        placeholder='Password' 
-                        type='password' 
-                        value={signInputs.userConfirmPw} 
-                        onChange={handleInputsChange} />
-                        <Eyeline className={style.eyelineSvg}/>
-                    </CustomLoginPageDiv>
-                </CustomLoginPageDiv>
-                {errorMessage.confirmPwError}
-
-                <CustomLoginPageDiv $mbidsection>
-                    <CustomLoginPageDiv $mbidlabelinp>
-                        <CustomLoginPageLabel $idlabel>이메일 :</CustomLoginPageLabel>
+                    <CustomLoginPageDiv $idpwsection>
+                        <CustomLoginPageLabel $idlabel>닉네임 :</CustomLoginPageLabel>
                         <CustomLoginPageInput 
                         $idinput
-                        data-mode='email'
-                        placeholder='E-mail 입력' 
-                        value={signInputs.userEmail} 
+                        data-mode='nickname'
+                        value={signInputs.userNickname} 
                         onChange={handleInputsChange} />
                     </CustomLoginPageDiv>
-                    <CustomLoginPageDiv $mbemail>@</CustomLoginPageDiv>
-                    <CustomLoginPageSelect $mbemail value={signInputs.userEmailDomain} onChange={handleSelChange}>
-                        <option value='@naver.com' className={style.emailOption}>naver.com</option>
-                        <option value='@gmail.com' className={style.emailOption}>gmail.com</option>
-                        <option value='@kakao.com' className={style.emailOption}>kakao.com</option>
-                        <option value='@nate.com' className={style.emailOption}>nate.com</option>
-                    </CustomLoginPageSelect>
-                    <CustomLoginPageBtn 
-                        $mbspidcheck 
-                        $emailCertify 
-                        data-mode='email'
-                        type='button'
-                        onClick={handleBtnClick}
-                        disabled={buttons.sendEmailVerificationButton}
-                    >인증</CustomLoginPageBtn>
-                </CustomLoginPageDiv>
-                {errorMessage.emailError}
-                {timerStarted ? <CustomLoginPageP $errorMessage $timer>재인증 남은 시간: {Math.floor(timer / 60)}:{timer % 60}</CustomLoginPageP> : ''}
+                    {errorMessage.nicknameError}
 
-                <CustomLoginPageDiv $mbidsection>
-                    <CustomLoginPageDiv $mbidlabelinp>
-                        <CustomLoginPageLabel $idlabel>인증번호 :</CustomLoginPageLabel>
-                        <CustomLoginPageInput 
-                        $mbspid 
-                        data-mode='emailCode' 
-                        placeholder='인증코드 입력'
-                        value={signInputs.userEmailCode} 
-                        onChange={handleInputsChange}
-                        />
+                    <CustomLoginPageDiv $idpwsection>
+                        <CustomLoginPageLabel $idlabel>비밀번호 입력 :</CustomLoginPageLabel>
+                        <CustomLoginPageDiv $pwinputdiv>
+                            <CustomLoginPageInput 
+                            $pwinput
+                            data-mode='pw'
+                            placeholder='Password' 
+                            type='password' 
+                            value={signInputs.userPw} 
+                            onChange={handleInputsChange} />
+                            <Eyeline className={style.eyelineSvg}/>
+                        </CustomLoginPageDiv>
                     </CustomLoginPageDiv>
-                    <CustomLoginPageBtn 
-                        $mbspidcheck
-                        data-mode='emailCode'
-                        type='button'
-                        disabled={buttons.verifyEmailCodeButton} 
-                        onClick={handleBtnClick}
-                    >인증확인</CustomLoginPageBtn>
-                </CustomLoginPageDiv>
-                {errorMessage.emailCodeError}
+                    {errorMessage.pwError}
 
-                <CustomLoginPageBtn
-                    type='submit'
-                    $loginbtn 
-                    $mbspbtn
-                    data-mode='signup' 
-                    disabled={!areAllValid}
-                >회원가입 완료</CustomLoginPageBtn>
-            </CustomLoginPageDiv>
+                    <CustomLoginPageDiv $idpwsection>
+                        <CustomLoginPageLabel $idlabel>비밀번호 확인 :</CustomLoginPageLabel>
+                        <CustomLoginPageDiv $pwinputdiv>
+                            <CustomLoginPageInput 
+                            $pwinput
+                            data-mode='confirmPw'
+                            placeholder='Password' 
+                            type='password' 
+                            value={signInputs.userConfirmPw} 
+                            onChange={handleInputsChange} />
+                            <Eyeline className={style.eyelineSvg}/>
+                        </CustomLoginPageDiv>
+                    </CustomLoginPageDiv>
+                    {errorMessage.confirmPwError}
+
+                    <CustomLoginPageDiv $mbidsection>
+                        <CustomLoginPageDiv $mbidlabelinp>
+                            <CustomLoginPageLabel $idlabel>이메일 :</CustomLoginPageLabel>
+                            <CustomLoginPageInput 
+                            $idinput
+                            $signupemail
+                            data-mode='email'
+                            placeholder='E-mail 입력' 
+                            value={signInputs.userEmail} 
+                            onChange={handleInputsChange} />
+                        </CustomLoginPageDiv>
+                        <CustomLoginPageDiv $mbemail>@</CustomLoginPageDiv>
+                        <CustomLoginPageSelect $mbemail value={signInputs.userEmailDomain} onChange={handleSelChange}>
+                            <option value='@naver.com' className={style.emailOption}>naver.com</option>
+                            <option value='@gmail.com' className={style.emailOption}>gmail.com</option>
+                            <option value='@kakao.com' className={style.emailOption}>kakao.com</option>
+                            <option value='@nate.com' className={style.emailOption}>nate.com</option>
+                        </CustomLoginPageSelect>
+                        <CustomLoginPageBtn 
+                            $mbspidcheck 
+                            $emailCertify 
+                            data-mode='email'
+                            type='button'
+                            onClick={handleBtnClick}
+                            disabled={buttons.sendEmailVerificationButton}
+                        >인증</CustomLoginPageBtn>
+                    </CustomLoginPageDiv>
+                    {errorMessage.emailError}
+                    {timerStarted ? <CustomLoginPageP $errorMessage $timer>재인증 남은 시간: {Math.floor(timer / 60)}:{timer % 60}</CustomLoginPageP> : ''}
+
+                    <CustomLoginPageDiv $mbidsection>
+                        <CustomLoginPageDiv $mbidlabelinp>
+                            <CustomLoginPageLabel $idlabel>인증번호 :</CustomLoginPageLabel>
+                            <CustomLoginPageInput 
+                            $mbspid 
+                            data-mode='emailCode' 
+                            placeholder='인증코드 입력'
+                            value={signInputs.userEmailCode} 
+                            onChange={handleInputsChange}
+                            />
+                        </CustomLoginPageDiv>
+                        <CustomLoginPageBtn 
+                            $mbspidcheck
+                            data-mode='emailCode'
+                            type='button'
+                            disabled={buttons.verifyEmailCodeButton} 
+                            onClick={handleBtnClick}
+                        >인증확인</CustomLoginPageBtn>
+                    </CustomLoginPageDiv>
+                    {errorMessage.emailCodeError}
+
+                    <CustomLoginPageBtn
+                        type='submit'
+                        $loginbtn 
+                        $mbspbtn
+                        data-mode='signup' 
+                        disabled={!areAllValid}
+                    >회원가입 완료</CustomLoginPageBtn>
+                </CustomLoginPageDiv>
             </form>
         </div>
     )

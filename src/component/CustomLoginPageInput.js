@@ -21,7 +21,10 @@ font-style: normal;
 font-weight: 300;
 line-height: 1rem; /* 114.286% */
 letter-spacing: 0.04375rem;
-align-items: center;
+
+    ${props => props.$signupemail && css`
+        width : 8rem;
+    `}
 `}
 
 ${props => props.$pwinput && css`

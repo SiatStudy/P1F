@@ -28,7 +28,7 @@ const CustomLoginPageBtn = styled.button`
         font-weight: 700;
         line-height: 1rem; /* 114.286% */
         letter-spacing: 0.02625rem;
-            ${props => props.$mbspbtn && `margin-top: 1rem;`}
+            ${props => props.$mbspbtn && css `margin-top: 1rem;`}
             ${props => props.disabled ? `
                 color: #9A9A9A;
                 background: #FFF;
@@ -65,7 +65,7 @@ const CustomLoginPageBtn = styled.button`
         font-weight: 600;
         line-height: 1rem; /* 114.286% */
             ${props => props.$emailCertify && css`
-                width : 5rem;        
+                width : 5rem;
             `}
             ${props => props.disabled ? `
                 color: #9A9A9A;
@@ -95,6 +95,10 @@ const CustomLoginPageBtn = styled.button`
         font-weight: 500;
         line-height: 1.5rem; /* 160% */
         letter-spacing: 0.01875rem;
+            ${props => props.$resultpw && css`
+                background: #FFF;
+                color: var(--yoda-admin-template-blacks-b-80, #636E72);
+    `}
     `}
 
     ${props => props.$findNoneSelBtn && css`

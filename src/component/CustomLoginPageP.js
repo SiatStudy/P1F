@@ -33,6 +33,15 @@ const CustomLoginPageP = styled.p`
         ${props => props.$timer && css`
             margin : -1.3rem 0 -1rem 15rem;
         `}
+        ${props => props.$findidp && css`
+            margin : -6.5rem auto 4rem 0;
+        `}
+        ${props => props.$findpwp && css`
+            margin : -2.5rem auto 0.5rem 0;
+        `}
+        ${props => props.$loginerr && css`
+            margin : -1rem auto 1 0;
+        `}
     `}
 `;
 

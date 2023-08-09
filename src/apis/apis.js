@@ -62,7 +62,7 @@ const signup = async ({ url, userData, mode }) => {
     // 회원가입 또는 유저 정보 업데이트를 담당하는 함수
     if (mode === "signup") {
         // 회원가입
-        axios.post(url + '/signup', userData)
+        axios.post(url, userData)
             .then(res => {
                 if (res.data.registration) {
                     // 회원가입이 실패하면 false 반환

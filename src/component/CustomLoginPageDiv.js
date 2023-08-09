@@ -89,12 +89,12 @@ const CustomLoginPageDiv = styled.div`
     `}
 
     ${props => props.$mbidlabelinp && css`
-    display: flex;
-flex-direction: column;
-align-items: flex-start;
-gap: 0.5rem;
-flex: 1 0 0;
-align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        flex: 1 0 0;
+        align-self: stretch;
     `}
 
     ${props => props.$mbemail && css`

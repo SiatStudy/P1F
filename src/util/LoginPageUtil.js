@@ -116,7 +116,6 @@ export const handleBtnClickEvent = (sInputs, setIsVaild, mode, setButtons, setSi
 
         const setIdError = () => {
             if (searchUserData("http://localhost:8080/duple/id", userName,mode)) {
-            // if (!setButtons((prevState) => ({...prevState, checkDuplicateIdButton: false}))) {
                 setButtons((prevState) => ({...prevState, checkDuplicateIdButton: true}));
                 setIsVaild((prevState) => ({...prevState, checkId : true}));
                 return <CustomLoginPageP $errorMessage $resultMessage>중복 확인이 완료되었습니다.</CustomLoginPageP>;
@@ -131,7 +130,6 @@ export const handleBtnClickEvent = (sInputs, setIsVaild, mode, setButtons, setSi
 
         const setEmailError = () => {
             if (searchUserData("http://localhost:8080/duple/email", userEmail,mode)) {
-            // if (!setButtons((prevState) => ({...prevState, sendEmailVerificationButton: false}))) {
                 setButtons((prevState) => ({...prevState, sendEmailVerificationButton: true}));
                 setButtons((prevState) => ({...prevState, verifyEmailCodeButton: false}));
                 setIsVaild((prevState) => ({...prevState, checkEmail : true}));
@@ -147,8 +145,7 @@ export const handleBtnClickEvent = (sInputs, setIsVaild, mode, setButtons, setSi
         setErrorMessage((prevState) => ({...prevState, emailCodeError : setEmailCodeError()}));
 
         const setEmailCodeError = () => {
-            if (searchUserData("http://localhost:8080/duple/",userEmailCode,mode)) {
-            // if (!setButtons((prevState) => ({...prevState, verifyEmailCodeButton: false}))) {
+            if (searchUserData("http://localhost:8080/duple/emailCode",userEmailCode,mode)) {
                 setButtons((prevState) => ({...prevState, verifyEmailCodeButton: true}));
                 setIsVaild((prevState) => ({...prevState, checkEmailCode : true})); 
                 return <CustomLoginPageP $errorMessage $resultMessage>인증이 완료 되었습니다.</CustomLoginPageP>
