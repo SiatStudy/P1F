@@ -34,9 +34,9 @@ const FindIdPage = () => {
         console.log(res.data.username);
         console.log(username);
 
-        axios.post("http://localhost:8080/login/search/id", null,  {params:{userEmail : userEmail}})
+        axios.post("http://localhost:8080/api/login/search/id", null,  {params:{userEmail : userEmail}})
         .then(res => {
-            if(res.status === 200){
+            if(res.data.isValid){
                 navigate("/findidresult", {state : { username : res.data.username}});
                 console.log(res.data.username);
                 console.log(username);
