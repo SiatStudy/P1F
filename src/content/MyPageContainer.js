@@ -5,7 +5,7 @@ import CustomMainPageRow from "../component/CustomManinPageRow";
 import { dummyData1 as dummy } from "../apis/dummyData1";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserNickName } from "../store/userData";
-import { changeNickName } from "../apis/apis";
+// import { changeNickName } from "../apis/apis";
 
 const MyPageContainer = () => {
   //편집 상태 전환 state
@@ -43,7 +43,7 @@ const MyPageContainer = () => {
       // "확인" 버튼을 눌렀을 때
       if (editedObj.nickName != dataObj.nickName) {
         setDataObj({ ...editedObj }); // 편집한 내용을 저장하고
-        changeNickName(editedObj.nickName); // 백엔드 DB에 새 닉네임 저장
+        // changeNickName(editedObj.nickName); // 백엔드 DB에 새 닉네임 저장
         dispatch(setUserNickName(editedObj.nickName)); //리덕스의 닉네임 변경
       }
     } else {

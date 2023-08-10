@@ -12,12 +12,12 @@ function UserInfo(props){
         navigate(`/mypage`);
     }
     return(
-        <div className={style.UserInfo} onClick={onDivClick}>
+        <div className={style.UserInfo}>
             <div className={style.NavBotPic}>
-                <CustomMainPageImg $navbotpic src={'/asset/img/NavBotPic.svg'}></CustomMainPageImg>
+                <CustomMainPageImg $navbotpic src={'../asset/img/NavBotPic.svg'}></CustomMainPageImg>
             </div>
             <div className={style.NavFooter}>
-                <div className={style.NavFooterInner}>
+                <div className={style.NavFooterInner} onClick={onDivClick}>
                     <div className={style.AvaName}>
                         <CustomMainPageImg $navfooterava src={ '/asset/img/Avatar.svg' }></CustomMainPageImg>
                         <CustomMainPageP $navfootername>{props.name}</CustomMainPageP> {/* 이름 데이터 받아오기 필요 */}

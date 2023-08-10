@@ -281,55 +281,56 @@ const todoData = async (url, userData, mode) => {
   }
 };
 
-const getTodoData = async (url) => {
-  // Todo 데이터 검색시 사용하는 함수 추가 제작
-  try {
-    const response = await axios.get(url);
-    if (response.data.success) {
-      // 조회된 데이터를 반환
-      return response.data;// 여기 배열 전체 듪어감
-      //배열의 0번째 인덱스에서 키값이tdid 이걸 받아오면 됨
-      //삭제할 객체의 tdid를 보내주면 그걸 삭제
-      //수정할거면 수정할 거의 tdid, 수정할 키값, 그 value?
-      //프론트가 tdid받아서 참조가 가능
-      //제목, 내용, 시작일, 종료일 수정가능
-      //실제 종료일(완료일)
-      //실제 완료일 굳이?
-      //완료버튼 누른 시간 DB에 저장
-    } else {
-      // 데이터 조회 실패 시 false 반환
-      return false;
-    }
-  } catch (error) {
-    // 에러 핸들링을 위해 errorFunc 유틸리티 사용
-    errorFunc("getSearchAxios", error);
-  }
-};
+// const getTodoData = async (url) => {
+//   // Todo 데이터 검색시 사용하는 함수 추가 제작
+//   try {
+//     const response = await axios.get(url);
+//     if (response.data.success) {
+//       // 조회된 데이터를 반환
+//       return response.data;// 여기 배열 전체 듪어감
+//       //배열의 0번째 인덱스에서 키값이tdid 이걸 받아오면 됨
+//       //삭제할 객체의 tdid를 보내주면 그걸 삭제
+//       //수정할거면 수정할 거의 tdid, 수정할 키값, 그 value?
+//       //프론트가 tdid받아서 참조가 가능
+//       //제목, 내용, 시작일, 종료일 수정가능
+//       //실제 종료일(완료일)
+//       //실제 완료일 굳이?
+//       //완료버튼 누른 시간 DB에 저장
+//     } else {
+//       // 데이터 조회 실패 시 false 반환
+//       return false;
+//     }
+//   } catch (error) {
+//     // 에러 핸들링을 위해 errorFunc 유틸리티 사용
+//     errorFunc("getSearchAxios", error);
+//   }
+// };
 
-const getUserData = async (url) => {
-  // 유저 닉네임, 이메일 받는 함수 추가 제작
+// const getUserData = async (url) => {
+//   // 유저 닉네임, 이메일 받는 함수 추가 제작
 
-  try {
-    const response = await axios.get(url);
-    if (response.data.success) {
-      let email = response.data.useremail;
-      let nickName = response.data.username;
-      let obj = {
-        email : email,
-        nickName : nickName
-      }
-    } catch (error) {
-      // 에러 핸들링을 위해 errorFunc 유틸리티 사용
-      errorFunc("getSearchAxios", error);
-    }
-  } catch (error) {
-    // 에러 핸들링을 위해 errorFunc 유틸리티 사용
-    errorFunc("getUserDataAxios", error);
-  }
-};
+//   try {
+//     const response = await axios.get(url);
+//     if (response.data.success) {
+//       let email = response.data.useremail;
+//       let nickName = response.data.username;
+//       let obj = {
+//         email : email,
+//         nickName : nickName
+//       }
+//     } catch (error) {
+//       // 에러 핸들링을 위해 errorFunc 유틸리티 사용
+//       errorFunc("getSearchAxios", error);
+//     }
+//   } catch (error) {
+//     // 에러 핸들링을 위해 errorFunc 유틸리티 사용
+//     errorFunc("getUserDataAxios", error);
+//   }
+// };
 
-const changeNickName = (str) =>{
-  axios.patch(`/api/user/info/${str}`);
-};
+// const changeNickName = (str) =>{
+//   axios.patch(`/api/user/info/${str}`);
+// };
 
-export { login, searchUserData, signup, todoData, getTodoData, getUserData, changeNickName };
+export { login, searchUserData, signup, todoData };
+// export { login, searchUserData, signup, todoData, getTodoData, getUserData, changeNickName };

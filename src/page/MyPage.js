@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import style from "./MyPage.module.css";
+import style from "./Page.module.css";
 import Header from '../container/Header';
 import SideMenu from '../container/SideMenu';
 import UserInfo from '../container/UserInfo';
@@ -9,7 +9,7 @@ function MyPage() {
   const [titleh, setTitleh] = useState("마이페이지");
 
   return (
-    <div className={style.Dday}>
+    <div className={style.Page}>
       <div className={style.Side}>
       <SideMenu titleh={titleh} setTitleh={setTitleh}></SideMenu>
         <UserInfo></UserInfo>

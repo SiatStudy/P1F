@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import style from "./GraphP.module.css";
+import style from "./Page.module.css";
 import Header from '../container/Header';
 import SideMenu from '../container/SideMenu';
 import UserInfo from '../container/UserInfo';
@@ -10,7 +10,7 @@ function GraphP() {
   const [titleh, setTitleh] = useState("그래프로 한 눈에 보기");
 
   return (
-    <div className={style.GraphP}>
+    <div className={style.Page}>
       <div className={style.Side}>
         <SideMenu titleh={titleh} setTitleh={setTitleh} />
         <UserInfo />

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import style from "./SearchPage.module.css";
+import style from "./Page.module.css";
 import Header from "../container/Header";
 import SideMenu from "../container/SideMenu";
 import UserInfo from "../container/UserInfo";
@@ -11,7 +11,7 @@ function SearchPage() {
   let { word } = useParams();
 
   return (
-    <div className={style.Dday}>
+    <div className={style.Page}>
       <div className={style.Side}>
       <SideMenu titleh={titleh} setTitleh={setTitleh}></SideMenu>
         <UserInfo></UserInfo>

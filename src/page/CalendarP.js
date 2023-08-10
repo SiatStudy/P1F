@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import style from "./CalendarP.module.css";
+import style from "./Page.module.css";
 import Header from '../container/Header';
 import SideMenu from '../container/SideMenu';
 import UserInfo from '../container/UserInfo';
@@ -10,7 +10,7 @@ function CalendarP() {
   const [titleh, setTitleh] = useState("Calendar");
 
   return (
-    <div className={style.CalendarP}>
+    <div className={style.Page}>
       <div className={style.Side}>
         <SideMenu titleh={titleh} setTitleh={setTitleh} />
         <UserInfo />
