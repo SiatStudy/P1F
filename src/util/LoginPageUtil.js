@@ -92,6 +92,11 @@ export const handleBtnClickEvent = (sInputs, setIsVaild, mode, setButtons, setSi
     const userName = sInputs.userName;
     const userEmail = sInputs.userEmail+sInputs.userEmailDomain;
     const userEmailCode = sInputs.userEmailCode;
+    const userData = {
+        address : userEmail,
+        title : '',
+        content
+    }
 
     if(mode === 'id'){
         setErrorMessage((prevState) => ({...prevState, idError : setIdError()}));
@@ -111,7 +116,7 @@ export const handleBtnClickEvent = (sInputs, setIsVaild, mode, setButtons, setSi
         setErrorMessage((prevState) => ({...prevState, emailError : setEmailError()}));
 
         const setEmailError = () => {
-            if (searchUserData("http://localhost:8080/api/login/duple/email", userEmail, mode)) {
+            if (searchUserData("http://localhost:8080/api/login/duple/email", userData, mode)) {
                 setButtons((prevState) => ({...prevState, sendEmailVerificationButton: true}));
                 setButtons((prevState) => ({...prevState, verifyEmailCodeButton: false}));
                 setIsVaild((prevState) => ({...prevState, checkEmail : true}));
@@ -127,7 +132,7 @@ export const handleBtnClickEvent = (sInputs, setIsVaild, mode, setButtons, setSi
         setErrorMessage((prevState) => ({...prevState, emailCodeError : setEmailCodeError()}));
 
         const setEmailCodeError = () => {
-            if (searchUserData("http://localhost:8080/api/mail/send", userEmailCode, mode)) {
+            if (searchUserData("http://localhost:8080/api/mail/check", userEmailCode, mode)) {
                 setButtons((prevState) => ({...prevState, verifyEmailCodeButton: true}));
                 setIsVaild((prevState) => ({...prevState, checkEmailCode : true})); 
                 return <CustomLoginPageP $errorMessage $resultMessage>인증이 완료 되었습니다.</CustomLoginPageP>
