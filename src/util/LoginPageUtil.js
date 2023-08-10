@@ -95,7 +95,7 @@ export const handleBtnClickEvent = (sInputs, setIsVaild, mode, setButtons, setSi
     const userData = {
         address : userEmail,
         title : '',
-        content
+        content : '',
     }
 
     if(mode === 'id'){
