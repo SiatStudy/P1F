@@ -10,13 +10,13 @@ function DdayTable(props){
 
     // array1 에 작성 날짜, 작업명, D-day 데이터 필요
     const array1 = [ 
-        {text1:'2023년 6월 2일', text2:'페이지 작업1', text3:'D-2'},
-        {text1:'2023년 6월 7일', text2:'페이지 작업2', text3:'D-4'},
-        {text1:'2023년 6월 8일', text2:'페이지 작업3', text3:'D-5'},
-        {text1:'2023년 6월 18일', text2:'페이지 작업4', text3:'D-8'},
-        {text1:'2023년 6월 28일', text2:'페이지 작업5', text3:'D-10'},
-        {text1:'2023년 6월 28일', text2:'페이지 작업6', text3:'D-11'},
-        {text1:'2023년 6월 28일', text2:'페이지 작업7', text3:'D-18'}
+        {text1:'2023년 8월 3일', text2:'컴포넌트 작업', text3:'D-2'},
+        {text1:'2023년 8월 7일', text2:'컨테이너 작업', text3:'D-4'},
+        {text1:'2023년 8월 8일', text2:'페이지 작업', text3:'D-5'},
+        {text1:'2023년 8월 13일', text2:'라우팅 작업', text3:'D-8'},
+        {text1:'2023년 8월 17일', text2:'동기/비동기 통신 작업', text3:'D-10'},
+        {text1:'2023년 8월 20일', text2:'Jest테스팅', text3:'D-11'},
+        {text1:'2023년 8월 22일', text2:'빌드 작업', text3:'D-18'}
     ]
 
     return(

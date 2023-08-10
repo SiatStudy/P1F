@@ -19,8 +19,8 @@ function Dday(props) {
       <div className={style.Main}>
         <Header $titleh={titleh}></Header>
         <div className={style.Section}>
-          <ProgressBar month="6월"></ProgressBar>
-          <DdayTable month="6월" year="2023"></DdayTable>
+          <ProgressBar month="8월"></ProgressBar>
+          <DdayTable month="8월" year="2023"></DdayTable>
         </div>
       </div>
     </div>

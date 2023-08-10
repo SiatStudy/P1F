@@ -14,28 +14,31 @@ const MyPageContainer = () => {
   const [dataObj, setDataObj] = useState({});
   const [editedObj, setEditedObj] = useState({});
   // 편집 중인 내용을 따로 저장하는 state 객체
-  const state = useSelector((state) => state.userData);
   const dispatch = useDispatch();
+  const userData = useSelector((state) => state.userData);
 
   //처음 랜더링 시에만 실행
   //더미데이터를 state객체에 할당
   useEffect(() => {
     //더미값 매핑, 본 사용시 아래 settingUserData 함수로 교체
-    setDataObj(dummy[5]);
-    // settingUserData();
+    console.log("useEffect실행");
+    // setDataObj(dummy[6]);
+    settingUserData();
   }, []);
 
-  //백엔드에서 데이터를 받아 세팅
+  //리덕스에서 데이터를 받아 세팅
   //{
   //  nickName : nickName, 닉네임을 받음
   //  email : email        이메일을 받음
   //}
   const settingUserData = () => {
+    console.log("email리덕스: "+userData.userEmail);
+    console.log("nickName리덕스: "+userData.userNickName);
     let data = {
-      nickName: state.userNiceName,
-      email: state.userEmail,
+      nickName: userData.userNickName,
+      email: userData.userEmail
     };
-    setDataObj(...data);
+    setDataObj({...data});
   };
 
   const toggleEditMode = () => {
@@ -43,7 +46,7 @@ const MyPageContainer = () => {
       // "확인" 버튼을 눌렀을 때
       if (editedObj.nickName != dataObj.nickName) {
         setDataObj({ ...editedObj }); // 편집한 내용을 저장하고
-        changeNickName(editedObj.nickName); // 백엔드 DB에 새 닉네임 저장
+        // changeNickName(editedObj.nickName); // 백엔드 DB에 새 닉네임 저장
         dispatch(setUserNickName(editedObj.nickName)); //리덕스의 닉네임 변경
       }
     } else {
@@ -81,7 +84,7 @@ const MyPageContainer = () => {
                 취소
               </button>
             )}
-            <button className={style.button}>
+            <button className={style.button} onClick={toggleEditMode}>
               {editMode ? "확인" : "수정"}
             </button>
           </div>

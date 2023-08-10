@@ -141,22 +141,57 @@ export const Calendar = ({ mode }) => {
                         events={[
                             {
                                 id : 1,
-                                title : "test",
+                                title : "delectus aut autem",
                                 start : "2023-08-10",
                                 end : "2023-08-11",
                                 state : true
                             },
                             {
                                 id : 2,
-                                title : "test2",
+                                title : "quis ut nam facilis et officia qui",
                                 start : "2023-08-12",
                                 end : "2023-08-13",
                                 state : true
                             },
+                            {
+                                id : 5,
+                                title : "laboriosam mollitia et enimtest2",
+                                start : "2023-08-17",
+                                end : "2023-08-18",
+                                state : true
+                            },
+                            {
+                                id : 6,
+                                title : "illo expedita",
+                                start : "2023-08-19",
+                                end : "2023-08-20",
+                                state : true
+                            },
+                            {
+                                id : 7,
+                                title : "quo adipisci",
+                                start : "2023-08-20",
+                                end : "2023-08-21",
+                                state : true
+                            },
+                            {
+                                id : 8,
+                                title : "molestiae perspiciati",
+                                start : "2023-08-23",
+                                end : "2023-08-24",
+                                state : true
+                            },
+                            {
+                                id : 9,
+                                title : "illo est ratione doloremque",
+                                start : "2023-08-25",
+                                end : "2023-08-26",
+                                state : true
+                            }
                         ]}
 
                         titleFormat={"YYYY.MM.({DD})"}
-                        initialView={"listWeek"}
+                        initialView={"listMonth"}
                     />
                 )
             }

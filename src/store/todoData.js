@@ -34,7 +34,7 @@ let todoData = createSlice({
             // 할일 삭제 시 삭제할 tdid 받아서 삭제
             return state.filter((item)=>item.tdid!=action.payload);            
         } 
-    } // 이렇게 추가, 수정, 삭제하는 axios api로직도 만들어야됨
+    } // 이렇게 추가, 수정, 삭제하는 axios api로직도 만들어야됨KsK
 });
 
 export const { setTodoData, addTodoData, modifyTodoData, delTodoData } = todoData.actions;
