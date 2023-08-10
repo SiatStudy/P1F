@@ -21,8 +21,8 @@ const MyPageContainer = () => {
   //더미데이터를 state객체에 할당
   useEffect(() => {
     //더미값 매핑, 본 사용시 아래 settingUserData 함수로 교체
-    // setDataObj(dummy[5]);
-    settingUserData();
+    setDataObj(dummy[5]);
+    // settingUserData();
   }, []);
 
   //백엔드에서 데이터를 받아 세팅

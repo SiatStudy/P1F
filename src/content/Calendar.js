@@ -6,7 +6,6 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import momentPlugin from '@fullcalendar/moment';
 import interactionPlugin from '@fullcalendar/interaction'
 import listPlugin from '@fullcalendar/list'
-import Modal from "react-modal";
 import { debounce } from "../service/redux/debounce";
 
 import { setCurrentYear } from "../store/selectedYear";
@@ -17,7 +16,7 @@ import errorFunc from "../util/errorFunc";
 import DatepickerContent from "./DatepickerContent";
 
 import "./Datepicker.scss";
-import style from './DatepickerModal.module.scss';
+import { dummyData2 } from "../apis/dummyData2";
 
 
 /**
@@ -118,32 +117,49 @@ export const Calendar = ({ mode }) => {
     };
 
     return (
-        <>
-            {mode === "calendar" ?
-                <FullCalendar
-                    plugins={[dayGridPlugin, momentPlugin, interactionPlugin]}
-                    headerToolbar={findWidthObject(width, widthObject).headerToolbar}
-                    dayHeaderFormat={findWidthObject(width, widthObject).dayHeaderFormat}
-                    titleFormat={findWidthObject(width, widthObject).titleFormat}
-                    customButtons={{AddEvent: AddButton}}
-                    events={event}
-                    datesSet={dataInfo => dateSetFunc(dataInfo)}
-                    initialView={"dayGridMonth"}
-                />
-                : <FullCalendar
-                    plugins={[listPlugin, momentPlugin]}
-                    headerToolbar={{
-                        start : "title",
-                        center : "",
-                        end : ""
-                    }}
-                    titleFormat={"YYYY.MM.({DD})"}
-                    initialView={"listWeek"}
-                />
+        <div>
+            {modalIsOpen ? <DatepickerContent onChangeModal={handlemodal} />
+                :
+                (mode === "calendar" ?
+                        <FullCalendar
+                        plugins={[dayGridPlugin, momentPlugin, interactionPlugin]}
+                        headerToolbar={findWidthObject(width, widthObject).headerToolbar}
+                        dayHeaderFormat={findWidthObject(width, widthObject).dayHeaderFormat}
+                        titleFormat={findWidthObject(width, widthObject).titleFormat}
+                        customButtons={{AddEvent: AddButton}}
+                        events={event}
+                        datesSet={dataInfo => dateSetFunc(dataInfo)}
+                        initialView={"dayGridMonth"}
+                        />
+                    : <FullCalendar
+                        plugins={[listPlugin, momentPlugin]}
+                        headerToolbar={{
+                            start : "title",
+                            center : "",
+                            end : ""
+                        }}
+                        events={[
+                            {
+                                id : 1,
+                                title : "test",
+                                start : "2023-08-10",
+                                end : "2023-08-11",
+                                state : true
+                            },
+                            {
+                                id : 2,
+                                title : "test2",
+                                start : "2023-08-12",
+                                end : "2023-08-13",
+                                state : true
+                            },
+                        ]}
+
+                        titleFormat={"YYYY.MM.({DD})"}
+                        initialView={"listWeek"}
+                    />
+                )
             }
-            <Modal isOpen={modalIsOpen} className={style.modalCustom}>
-                <DatepickerContent onChangeModal={handlemodal} />
-            </Modal>
-        </>
+        </div>
     );
 }
