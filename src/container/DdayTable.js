@@ -19,6 +19,23 @@ function DdayTable(props){
         {text1:'2023년 6월 28일', text2:'페이지 작업7', text3:'D-18'}
     ]
 
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+
+    //     axios.post("http://localhost:8080/api/login/search/id", null,  {params:{userEmail : userEmail}})
+    //     .then(res => {
+    //         if(res.data.isValid){
+    //             navigate("/findidresult", {state : { username : res.data.username}});
+    //         }else{
+    //             setDisabled(true);
+    //             setEmailError(<CustomLoginPageP $errorMessage $findidp>이메일을 다시 입력해주세요.</CustomLoginPageP>);
+    //         }
+    //     })
+    //     .catch(err => {
+    //         // 에러 핸들링을 위해 errorFunc 유틸리티 사용
+    //         errorFunc('dupleAxios', err)
+    //     })
+
     return(
         <div className={style.DdayTable}>
             <div className={style.MonthYear}>
