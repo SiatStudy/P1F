@@ -9,7 +9,7 @@ const emailCodeRegex = /^[0-9]{8}$/
 
 export const handleInputsVal = (value, setIsVaild, pwVal, setErrorMessage, setButtons, setSignInputs, mode) => {
     if(mode === 'id'){
-        setSignInputs((prevState) => {return {...prevState, userName : value}});
+        setSignInputs((prevState) => {return {...prevState, username : value}});
         setErrorMessage((prevState) => ({...prevState, idError : setIdError(value)}));
 
         const setIdError = () => {
@@ -22,7 +22,7 @@ export const handleInputsVal = (value, setIsVaild, pwVal, setErrorMessage, setBu
             }
         }
     }else if(mode === 'nickname'){
-        setSignInputs((prevState) => {return {...prevState, userNickname : value}});
+        setSignInputs((prevState) => {return {...prevState, usernickname : value}});
         setErrorMessage((prevState) => ({...prevState, nicknameError : setNicknameError(value)}));
     
         const setNicknameError = () => {
@@ -35,7 +35,7 @@ export const handleInputsVal = (value, setIsVaild, pwVal, setErrorMessage, setBu
             }
         }
     }else if (mode === 'pw'){
-        setSignInputs((prevState) => {return {...prevState, userPw : value}});
+        setSignInputs((prevState) => {return {...prevState, userpassword : value}});
         setErrorMessage((prevState) => ({...prevState, pwError : setPwError(value)}));
     
         const setPwError = () => {
@@ -48,7 +48,7 @@ export const handleInputsVal = (value, setIsVaild, pwVal, setErrorMessage, setBu
             }
         }
     }else if (mode === 'confirmPw'){
-        setSignInputs((prevState) => {return {...prevState, userConfirmPw : value}});
+        setSignInputs((prevState) => {return {...prevState, userpasswordchk : value}});
         setErrorMessage((prevState) => ({...prevState, confirmPwError : setConfirmPwError(value)}));
 
         const setConfirmPwError = () => {
@@ -61,7 +61,7 @@ export const handleInputsVal = (value, setIsVaild, pwVal, setErrorMessage, setBu
             }
         }
     }else if (mode === 'email'){
-        setSignInputs((prevState) => {return {...prevState, userEmail : value}});
+        setSignInputs((prevState) => {return {...prevState, useremail : value}});
         setErrorMessage((prevState) => ({...prevState, emailError : setEmailError(value)}));
 
         const setEmailError = () => {
@@ -73,7 +73,7 @@ export const handleInputsVal = (value, setIsVaild, pwVal, setErrorMessage, setBu
             }
         }
     }else if (mode === 'emailCode'){
-        setSignInputs((prevState) => {return {...prevState, userEmailCode : value}});
+        setSignInputs((prevState) => {return {...prevState, code : value}});
         setErrorMessage((prevState) => ({...prevState, emailCodeError : setEmailCodeError(value)}));
 
         const setEmailCodeError = () => {
@@ -89,11 +89,11 @@ export const handleInputsVal = (value, setIsVaild, pwVal, setErrorMessage, setBu
 };
 
 export const handleBtnClickEvent = (sInputs, setIsVaild, mode, setButtons, setSignInputs, setErrorMessage) => {
-    const userName = sInputs.userName;
-    const userEmail = sInputs.userEmail+sInputs.userEmailDomain;
-    const userEmailCode = sInputs.userEmailCode;
-    const userData = {
-        address : userEmail,
+    const username = sInputs.username;
+    const useremail = sInputs.useremail+sInputs.userEmailDomain;
+    const code = sInputs.code;
+    const userdata = {
+        address : useremail,
         title : '',
         content : '',
     }
@@ -102,7 +102,7 @@ export const handleBtnClickEvent = (sInputs, setIsVaild, mode, setButtons, setSi
         setErrorMessage((prevState) => ({...prevState, idError : setIdError()}));
 
         const setIdError = () => {
-            if (searchUserData("http://localhost:8080/api/login/duple/id", userName, mode)) {
+            if (searchUserData("http://localhost:8080/api/login/duple/id", username, mode)) {
                 setButtons((prevState) => ({...prevState, checkDuplicateIdButton: true}));
                 setIsVaild((prevState) => ({...prevState, checkId : true}));
                 return <CustomLoginPageP $errorMessage $resultMessage>중복 확인이 완료되었습니다.</CustomLoginPageP>;
@@ -116,7 +116,7 @@ export const handleBtnClickEvent = (sInputs, setIsVaild, mode, setButtons, setSi
         setErrorMessage((prevState) => ({...prevState, emailError : setEmailError()}));
 
         const setEmailError = () => {
-            if (searchUserData("http://localhost:8080/api/login/duple/email", userData, mode)) {
+            if (searchUserData("http://localhost:8080/api/login/duple/email", userdata, mode)) {
                 setButtons((prevState) => ({...prevState, sendEmailVerificationButton: true}));
                 setButtons((prevState) => ({...prevState, verifyEmailCodeButton: false}));
                 setIsVaild((prevState) => ({...prevState, checkEmail : true}));
@@ -132,7 +132,7 @@ export const handleBtnClickEvent = (sInputs, setIsVaild, mode, setButtons, setSi
         setErrorMessage((prevState) => ({...prevState, emailCodeError : setEmailCodeError()}));
 
         const setEmailCodeError = () => {
-            if (searchUserData("http://localhost:8080/api/mail/check", userEmailCode, mode)) {
+            if (searchUserData("http://localhost:8080/api/mail/check", code, mode)) {
                 setButtons((prevState) => ({...prevState, verifyEmailCodeButton: true}));
                 setIsVaild((prevState) => ({...prevState, checkEmailCode : true})); 
                 return <CustomLoginPageP $errorMessage $resultMessage>인증이 완료 되었습니다.</CustomLoginPageP>

@@ -11,8 +11,8 @@ import axios from "axios";
 import errorFunc from '../util/errorFunc';
 
 function FindPWResult () {
-    const [userPw, setUserPw] = useState('');
-    const [userConfirmPw, setUserConfirmPw] = useState('');
+    const [userpassword, setUserpassword] = useState('');
+    const [userpasswordchk, setUserpasswordchk] = useState('');
     const [pwError, setPwError] = useState('');
     const [confirmPwError, setConfirmPwError] = useState('');
     const [isVaild, setIsVaild] = useState({
@@ -26,7 +26,7 @@ function FindPWResult () {
     const handlePWChange = (event) => {
         const value = event.target.value;
         const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/;
-        setUserPw(value);
+        setUserpassword(value);
 
         if (value.trim() === "" || !passwordRegex.test(value)) {
             setIsVaild((prevState) => ({...prevState, checkPw : false}));
@@ -38,9 +38,9 @@ function FindPWResult () {
     }
     const handleConfirmPWChange = (event) => {
         const value = event.target.value;
-        setUserConfirmPw(value);
+        setUserpasswordchk(value);
 
-        if (value.trim() === "" || userPw !== value) {
+        if (value.trim() === "" || userpassword !== value) {
             setIsVaild((prevState) => ({...prevState, checkConfirmPw : false}));
             return setConfirmPwError(<CustomLoginPageP $errorMessage $findpwp>비밀번호랑 동일하게 입력해주세요.</CustomLoginPageP>);
         }else{
@@ -51,12 +51,8 @@ function FindPWResult () {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const userData = {
-            userPw: userPw,
-            userConfirmPw: userConfirmPw,
-        }
 
-        axios.post("http://localhost:8080/api/find/userpwupdate", null,  {params:{userData : userData}})
+        axios.post("http://localhost:8080/api/users/find/userpwupdate", null,  {params:{userpassword : userpassword, userpasswordchk : userpasswordchk }})
         .then(res => {
             if(res.data.isValid){
                 navigate("/loginpage");
@@ -88,7 +84,7 @@ function FindPWResult () {
                                 <CustomLoginPageInput 
                                 $pwinput 
                                 type='password' 
-                                value={userPw} 
+                                value={userpassword} 
                                 onChange={handlePWChange}/>
                                 <Eyeline className={style.eyelineSvg}/>
                             </CustomLoginPageDiv>
@@ -101,7 +97,7 @@ function FindPWResult () {
                                 <CustomLoginPageInput 
                                 $pwinput 
                                 type='password' 
-                                value={userConfirmPw} 
+                                value={userpasswordchk} 
                                 onChange={handleConfirmPWChange}/>
                                 <Eyeline className={style.eyelineSvg}/>
                             </CustomLoginPageDiv>
