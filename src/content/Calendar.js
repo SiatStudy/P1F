@@ -53,18 +53,18 @@ export const Calendar = ({ mode }) => {
             yDate : currentYear
         }
 
-        // if(currentYear !== calendarDate.getFullYear()) {
-        //     dispatch(setCurrentYear(calendarDate.getFullYear()));
-        //     const url = `/todos`;
-        //
-        //     todoData(url, Data, "general")
-        //         .then(({ data }) => {
-        //             setEvent(data);
-        //         })
-        //         .catch(err => {
-        //             errorFunc('dataCalendar', err);
-        //         });
-        // }
+        if(currentYear !== calendarDate.getFullYear()) {
+            dispatch(setCurrentYear(calendarDate.getFullYear()));
+            const url = `/todos`;
+        
+            todoData(url, Data, "general")
+                .then(({ data }) => {
+                    setEvent(data);
+                })
+                .catch(err => {
+                    errorFunc('dataCalendar', err);
+                });
+        }
     };
 
     const handlemodal = (data) =>{

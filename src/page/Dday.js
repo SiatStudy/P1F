@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import style from "./Page.module.css";
-import Header from '../container/Header';
-import SideMenu from '../container/SideMenu';
-import UserInfo from '../container/UserInfo';
-import ProgressBar from '../container/ProgressBar';
-import DdayTable from '../container/DdayTable';
+import Header from '../content/Header';
+import SideMenu from '../content/SideMenu';
+import UserInfo from '../content/UserInfo';
+import ProgressBar from '../content/ProgressBar';
+import DdayTable from '../content/DdayTable';
 
 function Dday(props) {
 

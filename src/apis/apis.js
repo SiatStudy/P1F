@@ -334,3 +334,14 @@ const todoData = async (url, userData, mode) => {
 
 export { login, searchUserData, signup, todoData };
 // export { login, searchUserData, signup, todoData, getTodoData, getUserData, changeNickName };
+
+
+/**
+ * 사용자 정보 검색 함수
+ * @param {Object} options - 함수에 필요한 옵션 객체
+ * @param {string} options.url - 서버 URL
+ * @param {Object} options.userData - 사용자 데이터
+ * @param {string} options.mode - 검색 모드 ("id" 또는 "pw")
+ * @returns {Promise} Promise 객체를 반환하며, 아이디 검색 시 아이디를, 비밀번호 검색 시 true를 반환합니다.
+ */
+
