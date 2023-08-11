@@ -5,7 +5,7 @@ import CustomMainPageRow from "../component/CustomManinPageRow";
 import { dummyData1 as dummy } from "../apis/dummyData1";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserNickName } from "../store/userData";
-import { changeNickName } from "../apis/apis";
+// import { changeNickName } from "../apis/apis";
 
 const MyPageContainer = () => {
   //편집 상태 전환 state

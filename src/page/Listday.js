@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import style from "./Listday.module.css";
-import Header from "../container/Header";
-import SideMenu from "../container/SideMenu";
-import UserInfo from "../container/UserInfo";
+import style from "./Page.module.css";
+import Header from '../content/Header';
+import SideMenu from '../content/SideMenu';
+import UserInfo from '../content/UserInfo';
 import { Calendar } from "../content/Calendar";
 import { getUserData } from "../apis/apis";
 import { useDispatch, useSelector } from "react-redux";
@@ -39,7 +39,7 @@ function Listday() {
   
 
   return (
-    <div className={style.Listday}>
+    <div className={style.Page}>
       <div className={style.Side}>
         <SideMenu titleh={titleh} setTitleh={setTitleh}></SideMenu>
         <UserInfo />

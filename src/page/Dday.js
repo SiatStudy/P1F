@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import style from "./Dday.module.css";
-import Header from '../container/Header';
-import SideMenu from '../container/SideMenu';
-import UserInfo from '../container/UserInfo';
-import ProgressBar from '../container/ProgressBar';
-import DdayTable from '../container/DdayTable';
+import style from "./Page.module.css";
+import Header from '../content/Header';
+import SideMenu from '../content/SideMenu';
+import UserInfo from '../content/UserInfo';
+import ProgressBar from '../content/ProgressBar';
+import DdayTable from '../content/DdayTable';
 
 function Dday(props) {
 
   const [titleh, setTitleh] = useState("목표 달성 D-day");
 
   return (
-    <div className={style.Dday}>
+    <div className={style.Page}>
       <div className={style.Side}>
         <SideMenu titleh={titleh} setTitleh={setTitleh}></SideMenu>
         <UserInfo name="Hyunwoo Kim"></UserInfo>
