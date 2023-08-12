@@ -5,7 +5,7 @@ import CustomLoginPageLabel from '../component/CustomLoginPageLabel';
 import CustomLoginPageInput from '../component/CustomLoginPageInput';
 import { ReactComponent as Eyeline } from "../svg/Eyeline.svg";
 import CustomLoginPageP from '../component/CustomLoginPageP';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useLocation} from 'react-router-dom';
 import {useState} from 'react';
 import axios from "axios";
 import errorFunc from '../util/errorFunc';
@@ -21,6 +21,7 @@ function FindPWResult () {
     });
 
     const areAllValid = Object.values(isVaild).every(value => value === true);
+    const useremail = useLocation().state.useremail;
     const navigate = useNavigate();
 
     const handlePWChange = (event) => {
@@ -52,7 +53,7 @@ function FindPWResult () {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        axios.post("http://localhost:8080/api/users/find/userpwupdate", {userpassword : userpassword, userpasswordchk : userpasswordchk })
+        axios.post("http://localhost:8080/api/users/find/userpwupdate", {userpassword : userpassword, useremail : useremail })
         .then(res => {
             if(res.data.isValid){
                 navigate("/loginpage");
