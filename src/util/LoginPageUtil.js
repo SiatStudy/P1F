@@ -1,5 +1,7 @@
 import CustomLoginPageP from '../component/CustomLoginPageP';
-import {searchUserData} from '../apis/apis';
+// import {searchUserData} from '../apis/apis';
+import axios from "axios";
+import errorFunc from '../util/errorFunc';
 
 const idRegex = /^[A-Za-z0-9]{3,8}$/;
 const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/;
@@ -99,10 +101,23 @@ export const handleBtnClickEvent = (sInputs, setIsVaild, mode, setButtons, setSi
     }
 
     if(mode === 'id'){
+        const isVal =  axios.post("http://localhost:8080/api/login/duple/id", null,  {params:{username : username}})
+        .then(res => {
+            if(res.data.isValid){
+                return true;
+            }else{
+                return false;
+            }
+        })
+        .catch(err => {
+            // 에러 핸들링을 위해 errorFunc 유틸리티 사용
+            errorFunc('dupleAxios', err)
+        });
+
         setErrorMessage((prevState) => ({...prevState, idError : setIdError()}));
 
         const setIdError = () => {
-            if (searchUserData("http://localhost:8080/api/login/duple/id", username, mode)) {
+            if (isVal) {
                 setButtons((prevState) => ({...prevState, checkDuplicateIdButton: true}));
                 setIsVaild((prevState) => ({...prevState, checkId : true}));
                 return <CustomLoginPageP $errorMessage $resultMessage>중복 확인이 완료되었습니다.</CustomLoginPageP>;
@@ -113,10 +128,23 @@ export const handleBtnClickEvent = (sInputs, setIsVaild, mode, setButtons, setSi
             }
         }
     }else if(mode === 'email'){
+        const isVal =  axios.post("http://localhost:8080/api/login/duple/email", null,  {params:{userdata : userdata}})
+        .then(res => {
+            if(res.data.isValid){
+                return true;
+            }else{
+                return false;
+            }
+        })
+        .catch(err => {
+            // 에러 핸들링을 위해 errorFunc 유틸리티 사용
+            errorFunc('dupleAxios', err)
+        });
+
         setErrorMessage((prevState) => ({...prevState, emailError : setEmailError()}));
 
         const setEmailError = () => {
-            if (searchUserData("http://localhost:8080/api/login/duple/email", userdata, mode)) {
+            if (isVal) {
                 setButtons((prevState) => ({...prevState, sendEmailVerificationButton: true}));
                 setButtons((prevState) => ({...prevState, verifyEmailCodeButton: false}));
                 setIsVaild((prevState) => ({...prevState, checkEmail : true}));
@@ -129,10 +157,23 @@ export const handleBtnClickEvent = (sInputs, setIsVaild, mode, setButtons, setSi
             }
         }
     }else if(mode === 'emailCode'){
+        const isVal =  axios.post("http://localhost:8080/api/mail/check", null,  {params:{code : code}})
+        .then(res => {
+            if(res.data.isValid){
+                return true;
+            }else{
+                return false;
+            }
+        })
+        .catch(err => {
+            // 에러 핸들링을 위해 errorFunc 유틸리티 사용
+            errorFunc('dupleAxios', err)
+        });
+
         setErrorMessage((prevState) => ({...prevState, emailCodeError : setEmailCodeError()}));
 
         const setEmailCodeError = () => {
-            if (searchUserData("http://localhost:8080/api/mail/check", code, mode)) {
+            if (isVal) {
                 setButtons((prevState) => ({...prevState, verifyEmailCodeButton: true}));
                 setIsVaild((prevState) => ({...prevState, checkEmailCode : true})); 
                 return <CustomLoginPageP $errorMessage $resultMessage>인증이 완료 되었습니다.</CustomLoginPageP>

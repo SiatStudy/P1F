@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 // import { useDispatch } from "react-redux";
 
 import errorFunc from '../util/errorFunc';
@@ -14,7 +14,7 @@ import errorFunc from '../util/errorFunc';
  * @returns {Promise} Promise 객체를 반환하며, 아이디 검색 시 아이디를, 비밀번호 검색 시 true를 반환합니다.
  */
 
-const searchUserData = async ({ url, userdata, mode }) => {
+const searchUserData = async ( url, userdata, mode ) => {
     // 유저 데이터 검색을 담당하는 함수 (아이디 또는 비밀번호로 검색)
     if (mode === "id") {
         // 중복 데이터 확인 기능을 담당하는 함수
@@ -58,7 +58,7 @@ const searchUserData = async ({ url, userdata, mode }) => {
         }
 };
 
-const signup = async ({ url, userdata, mode }) => {
+const signup = async ( url, userdata, mode ) => {
     // 회원가입 또는 유저 정보 업데이트를 담당하는 함수
     if (mode === "signup") {
         // 회원가입

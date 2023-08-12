@@ -8,7 +8,6 @@ import { ReactComponent as Eyeline } from "../svg/Eyeline.svg";
 import {handleInputsVal, handleBtnClickEvent} from "../util/LoginPageUtil";
 import { useState, useEffect } from 'react';
 import CustomLoginPageP from '../component/CustomLoginPageP';
-import {signup} from '../apis/apis';
 import {useNavigate} from 'react-router-dom';
 
 function SignUpPage () {
@@ -82,11 +81,18 @@ function SignUpPage () {
             useremail: signInputs.useremail + signInputs.userEmailDomain,
         }
 
-        if (signup("http://localhost:8080/api/users/signup",userdata,mode)) {
-            navigate("/loginpage");
-        }else{
-            alert("다시 시도해 주세요.");
-        }
+        axios.post("http://localhost:8080/api/users/signup", null,  {userdata : userdata})
+        .then(res => {
+            if(res.data.isValid){
+                navigate("/loginpage");
+            }else{
+                alert("다시 시도해 주세요.");
+            }
+        })
+        .catch(err => {
+            // 에러 핸들링을 위해 errorFunc 유틸리티 사용
+            errorFunc('dupleAxios', err)
+        })
     }
 
     useEffect(() => {
