@@ -9,6 +9,8 @@ import {handleInputsVal, handleBtnClickEvent} from "../util/LoginPageUtil";
 import { useState, useEffect } from 'react';
 import CustomLoginPageP from '../component/CustomLoginPageP';
 import {useNavigate} from 'react-router-dom';
+import axios from "axios";
+import errorFunc from '../util/errorFunc';
 
 function SignUpPage () {
     const navigate = useNavigate();
