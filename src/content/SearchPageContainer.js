@@ -29,19 +29,19 @@ const SearchPageContainer = ({ word }) => {
   //   //title : 일 제목
   //   // let data = getTodoData(`/api/todos/${currentYear}`);
 
-  //   // 백엔드에서 받은 배열을 알맞은 형태로 재생성하는 로직
-  //   const transformeArr = data.map(item => {
-  //     const { tdTitle, tdStartDate } = item;
-  //     const startDateObj = new Date(tdStartDate);
-  //     return {
-  //       month: startDateObj.getMonth() + 1,
-  //       startDay: startDateObj.getDate(),
-  //       endDay: new Date(item.tdEndDate).getDate(),
-  //       workTitle: tdTitle
-  //     };
-  //   });
-  //   setSearchDataArr(transformeArr);
-  // }
+    // 백엔드에서 받은 배열을 알맞은 형태로 재생성하는 로직
+    const transformeArr = data.map(item => {
+      const { tdTitle, tdStartDate } = item;
+      const startDateObj = new Date(tdStartDate);
+      return {
+        month: startDateObj.getMonth() + 1,
+        startDay: startDateObj.getDate(),
+        endDay: new Date(item.tdEndDate).getDate(),
+        workTitle: tdTitle
+      };
+    });
+    setSearchDataArr(transformeArr);
+  }
 
   // 월별 작업 데이터 정렬 및 필터링하는 함수
   const getFilteredData = () => {

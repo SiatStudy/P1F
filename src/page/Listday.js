@@ -4,7 +4,7 @@ import Header from '../content/Header';
 import SideMenu from '../content/SideMenu';
 import UserInfo from '../content/UserInfo';
 import { Calendar } from "../content/Calendar";
-import { getUserData } from "../apis/apis";
+import { getTodoData, getUserData } from "../apis/apis";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserEmail, setUserNickName } from "../store/userData";
 import { addTodoData, delTodoData, modifyTodoData, setTodoData } from "../store/todoData";
@@ -26,22 +26,22 @@ function Listday() {
     // 리덕스 나오는지 확인 코드
     dispatch(setUserNickName("사용자1"));
     let nickName = userData.userNickName;
-    console.log("nickName리덕스: "+nickName)
+    console.log("nickName리덕스: " + nickName)
     dispatch(setUserEmail("example1234@gmail.com"));
     console.log("email리덕스: " + userData.userEmail);
 
-    // todoData리덕스
+    // todoData리덕스 테스트함수
     dispatch(setTodoData(dummyData3()));
     console.log("todoList리덕스: ");
     console.log(todoData);
     let obj1 = {
-        tdid: "td4",
-        month: 4,
-        startDate: 4,
-        endDate: 4,
-        finishDate: 4,
-        workTitle: "title4",
-        workContent: "content4"
+      tdid: "td4",
+      month: 4,
+      startDate: 4,
+      endDate: 4,
+      finishDate: 4,
+      workTitle: "title4",
+      workContent: "content4"
     }
     dispatch(addTodoData(obj1));
     console.log("리덕스 배열 값 추가")
@@ -49,17 +49,34 @@ function Listday() {
     dispatch(delTodoData("td1"));
     console.log("리덕스 배열 값 삭제")
     console.log(todoData);
-    dispatch(modifyTodoData({tdid:"td2",key:"workContent",value:"new1"}));
+    dispatch(modifyTodoData({ tdid: "td2", key: "workContent", value: "new1" }));
     console.log("리덕스 배열 값 수정")
     console.log(todoData);
   }
 
-//처음 페이지 랜딩 시 백엔드에 요청해서 리덕스에 닉네임, 이메일 저장
-  // const setBackData = () => {
-  //   let obj = getUserData(`/api/users/setting`);
-  //   dispatch(setUserEmail(obj.email));
-  //   dispatch(setUserNickName(obj.nickName));
-  // };
+  // 백엔드에서 데이터 받아오기
+  const connectBack = () => {
+    const date = new Date();
+    const year = date.getFullYear()
+    let obj = getUserData(`/api/users/setting`);
+    dispatch(setUserEmail(obj.email));
+    dispatch(setUserNickName(obj.nickName));
+    let arr = getTodoData(`/api/todos/${year}`);
+    // 받아온 배열을 알맞은 형태로 교체
+    const transformeArr = arr.map(item => {
+      return {
+        tdid: item.tdid,
+        month: new Date(item.startDate).getMonth() + 1,
+        startDate: new Date(item.startDate),
+        endDate: new Date(item.tdEndDate),
+        finishDate: "",
+        workTitle: item.tdTitle,
+        workContent: item.tdContent
+      };
+    });
+    dispatch(setTodoData(transformeArr));
+  }
+  
 
   return (
     <div className={style.Page}>
@@ -72,10 +89,11 @@ function Listday() {
         <div className={style.List}>
           <Calendar mode={"list"} />
           {/* 아래 div 두개는 테스트용 코드이므로 실 사용시 삭제해야됨 */}
+          <button onClick={connectBack}>백 데이터 받기 임시 버튼</button>
           <div><h2>userData</h2>
-          <pre>{JSON.stringify(userData, null, 2)}</pre></div>
+            <pre>{JSON.stringify(userData, null, 2)}</pre></div>
           <div><h2>todoData</h2>
-          <pre>{JSON.stringify(todoData, null, 2)}</pre></div>
+            <pre>{JSON.stringify(todoData, null, 2)}</pre></div>
         </div>
       </div>
     </div>
