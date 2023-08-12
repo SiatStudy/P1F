@@ -18,12 +18,12 @@ let todoData = createSlice({
         }, 
         addTodoData : (state, action) => {
             //할일 추가 시 객체를 받아 배열에 추가하는 함수
-            return state.push(action.payload);
+            state.push(action.payload);
         }, 
         modifyTodoData : (state, action) => {
             // 어떤 기준으로 수정하는지
             // 할일 수정 시 수정할 tdid, 변경할 키값, 변경할 value 받아서 수정
-            return state.map(item =>{
+            state.map(item =>{
               if(item.tdid==action.payload.tdid){
                 item[action.payload.key] = action.payload.value;
               }

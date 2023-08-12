@@ -44,7 +44,7 @@ const MyPageContainer = () => {
   const toggleEditMode = () => {
     if (editMode) {
       // "확인" 버튼을 눌렀을 때
-      if (editedObj.nickName != dataObj.nickName) {
+      if (editedObj.nickName != dataObj.nickName) {// 새 닉네임이 기존 닉네임과 다를 경우
         setDataObj({ ...editedObj }); // 편집한 내용을 저장하고
         // changeNickName(editedObj.nickName); // 백엔드 DB에 새 닉네임 저장
         dispatch(setUserNickName(editedObj.nickName)); //리덕스의 닉네임 변경
