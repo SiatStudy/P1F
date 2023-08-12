@@ -48,7 +48,7 @@ const FindPWPage = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        axios.post("http://localhost:8080/api/login/search/password", null,  {params:{username : username, useremail : useremail}})
+        axios.post("http://localhost:8080/api/login/search/password", {username : username, useremail : useremail})
         .then(res => {
             if(res.data.isValid){
                 navigate("/findpwresult");

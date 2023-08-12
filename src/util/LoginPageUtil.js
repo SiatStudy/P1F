@@ -7,7 +7,7 @@ const idRegex = /^[A-Za-z0-9]{3,8}$/;
 const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/;
 const emailRegex = /^[A-Za-z0-9]{1,63}$/;
 const nicknameRegex = /^[A-Za-zㄱ-ㅎㅏ-ㅣ가-힣]{1,15}$/;
-const emailCodeRegex = /^[0-9]{8}$/
+const emailCodeRegex = /^[0-9]{8}$/;
 
 export const handleInputsVal = (value, setIsVaild, pwVal, setErrorMessage, setButtons, setSignInputs, mode) => {
     if(mode === 'id'){
@@ -101,7 +101,7 @@ export const handleBtnClickEvent = (sInputs, setIsVaild, mode, setButtons, setSi
     }
 
     if(mode === 'id'){
-        const isVal =  axios.post("http://localhost:8080/api/login/duple/id", null,  {params:{username : username}})
+        const isVal =  axios.post("http://localhost:8080/api/login/duple/id", {username : username})
         .then(res => {
             if(res.data.isValid){
                 return true;
@@ -128,7 +128,7 @@ export const handleBtnClickEvent = (sInputs, setIsVaild, mode, setButtons, setSi
             }
         }
     }else if(mode === 'email'){
-        const isVal =  axios.post("http://localhost:8080/api/login/duple/email", null,  {params:{userdata : userdata}})
+        const isVal =  axios.post("http://localhost:8080/api/login/duple/email", {userdata : userdata})
         .then(res => {
             if(res.data.isValid){
                 return true;
@@ -157,7 +157,7 @@ export const handleBtnClickEvent = (sInputs, setIsVaild, mode, setButtons, setSi
             }
         }
     }else if(mode === 'emailCode'){
-        const isVal =  axios.post("http://localhost:8080/api/mail/check", null,  {params:{code : code}})
+        const isVal =  axios.post("http://localhost:8080/api/mail/check", {code : code})
         .then(res => {
             if(res.data.isValid){
                 return true;

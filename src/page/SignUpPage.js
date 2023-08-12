@@ -81,7 +81,7 @@ function SignUpPage () {
             useremail: signInputs.useremail + signInputs.userEmailDomain,
         }
 
-        axios.post("http://localhost:8080/api/users/signup", null,  {userdata : userdata})
+        axios.post("http://localhost:8080/api/users/signup", {userdata : userdata})
         .then(res => {
             if(res.data.isValid){
                 navigate("/loginpage");

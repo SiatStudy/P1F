@@ -52,7 +52,7 @@ function FindPWResult () {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        axios.post("http://localhost:8080/api/users/find/userpwupdate", null,  {params:{userpassword : userpassword, userpasswordchk : userpasswordchk }})
+        axios.post("http://localhost:8080/api/users/find/userpwupdate", {userpassword : userpassword, userpasswordchk : userpasswordchk })
         .then(res => {
             if(res.data.isValid){
                 navigate("/loginpage");

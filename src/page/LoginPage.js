@@ -50,7 +50,7 @@ function LoginPage () {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        axios.post("http://localhost:8080/api/login/login", null,  {params:{username : username, userpassword : userpassword}})
+        axios.post("http://localhost:8080/api/login/login", {username : username, userpassword : userpassword})
         .then(res => {
             if(res.data.isValid){
                 navigate("/login/login");

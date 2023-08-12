@@ -32,7 +32,7 @@ const FindIdPage = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        axios.post("http://localhost:8080/api/login/search/id", null,  {params:{useremail : useremail}})
+        axios.post("http://localhost:8080/api/login/search/id", {useremail : useremail})
         .then(res => {
             if(res.data.isValid){
                 navigate("/findidresult", {state : { username : res.data.username}});
