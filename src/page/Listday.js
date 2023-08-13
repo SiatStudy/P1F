@@ -21,19 +21,15 @@ function Listday() {
     testingRedux();
   }, []);
 
-
   const testingRedux = () => {
-    // 리덕스 나오는지 확인 코드
+    // 리덕스에 임시값 세팅
     dispatch(setUserNickName("사용자1"));
     let nickName = userData.userNickName;
-    console.log("nickName리덕스: " + nickName)
     dispatch(setUserEmail("example1234@gmail.com"));
-    console.log("email리덕스: " + userData.userEmail);
-
-    // todoData리덕스 테스트함수
-    dispatch(setTodoData(dummyData3()));
-    console.log("todoList리덕스: ");
-    console.log(todoData);
+    dispatch(setTodoData(dummyData3())); 
+  }
+  // todo 추가, 수정, 삭제 임시 이벤트
+  const addEvent = () => {
     let obj1 = {
       tdid: "td4",
       month: 4,
@@ -44,14 +40,12 @@ function Listday() {
       workContent: "content4"
     }
     dispatch(addTodoData(obj1));
-    console.log("리덕스 배열 값 추가")
-    console.log(todoData);
-    dispatch(delTodoData("td1"));
-    console.log("리덕스 배열 값 삭제")
-    console.log(todoData);
+  }
+  const modifyEvent = () =>{
     dispatch(modifyTodoData({ tdid: "td2", key: "workContent", value: "new1" }));
-    console.log("리덕스 배열 값 수정")
-    console.log(todoData);
+  }
+  const delEvent = () =>{
+    dispatch(delTodoData("td1"));
   }
 
   // 백엔드에서 데이터 받아오기
@@ -88,8 +82,11 @@ function Listday() {
         <Header $titleh={titleh} />
         <div className={style.List}>
           <Calendar mode={"list"} />
-          {/* 아래 div 두개는 테스트용 코드이므로 실 사용시 삭제해야됨 */}
+          {/* 아래 코드는 리덕스를 화면에 찍는 테스트용 코드이므로 실 사용시 삭제해야됨 */}
           <button onClick={connectBack}>백 데이터 받기 임시 버튼</button>
+          <button onClick={addEvent}>todo 추가 임시 버튼</button>
+          <button onClick={modifyEvent}>todo 수정 임시 버튼</button>
+          <button onClick={delEvent}>todo 삭제 임시 버튼</button>
           <div><h2>userData</h2>
             <pre>{JSON.stringify(userData, null, 2)}</pre></div>
           <div><h2>todoData</h2>

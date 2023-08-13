@@ -3,7 +3,7 @@ import style from './SearchPageContainer.module.css'
 import CustomMainPageH1 from '../component/CustomMainPageH1';
 import CustomMainPageRow from '../component/CustomManinPageRow';
 import { dummyData2 } from '../apis/dummyData2';
-// import { getTodoData } from '../apis/apis';
+import { getTodoData } from '../apis/apis';
 
 const SearchPageContainer = ({ word }) => {
   const [currentMonth, setCurrentMonth] = useState(6);
@@ -22,12 +22,12 @@ const SearchPageContainer = ({ word }) => {
   }, []);
 
   //백엔드 데이터 세팅
-  // const settingBackData = () => {
-  //   //service에서 데이터 받기
-  //   //startDate : 시작일
-  //   //endDate : 종료일
-  //   //title : 일 제목
-  //   // let data = getTodoData(`/api/todos/${currentYear}`);
+  const settingBackData = () => {
+    //service에서 데이터 받기
+    //startDate : 시작일
+    //endDate : 종료일
+    //title : 일 제목
+    let data = getTodoData(`/api/todos/${currentYear}`);
 
     // 백엔드에서 받은 배열을 알맞은 형태로 재생성하는 로직
     const transformeArr = data.map(item => {

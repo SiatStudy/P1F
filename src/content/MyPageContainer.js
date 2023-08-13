@@ -32,8 +32,6 @@ const MyPageContainer = () => {
   //  email : email        이메일을 받음
   //}
   const settingUserData = () => {
-    console.log("email리덕스: "+userData.userEmail);
-    console.log("nickName리덕스: "+userData.userNickName);
     let data = {
       nickName: userData.userNickName,
       email: userData.userEmail
