@@ -4,7 +4,7 @@ import Header from '../content/Header';
 import SideMenu from '../content/SideMenu';
 import UserInfo from '../content/UserInfo';
 import { Calendar } from "../content/Calendar";
-import { getTodoData, getUserData } from "../apis/apis";
+import { connectTodoData, getUserData } from "../apis/apis";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserEmail, setUserNickName } from "../store/userData";
 import { addTodoData, delTodoData, modifyTodoData, setTodoData } from "../store/todoData";
@@ -36,13 +36,13 @@ function Listday() {
       startDate: 4,
       endDate: 4,
       finishDate: 4,
-      workTitle: "title4",
-      workContent: "content4"
+      tdTitle: "title4",
+      tdContent: "content4"
     }
     dispatch(addTodoData(obj1));
   }
   const modifyEvent = () =>{
-    dispatch(modifyTodoData({ tdid: "td2", key: "workContent", value: "new1" }));
+    dispatch(modifyTodoData({ tdid: "td2", key: "tdContent", value: "new1" }));
   }
   const delEvent = () =>{
     dispatch(delTodoData("td1"));
@@ -55,7 +55,7 @@ function Listday() {
     let obj = getUserData(`/api/users/setting`);
     dispatch(setUserEmail(obj.email));
     dispatch(setUserNickName(obj.nickName));
-    let arr = getTodoData(`/api/todos/${year}`);
+    let arr = connectTodoData(`/api/todos/${year}`);
     // 받아온 배열을 알맞은 형태로 교체
     const transformeArr = arr.map(item => {
       return {
@@ -64,14 +64,13 @@ function Listday() {
         startDate: new Date(item.startDate),
         endDate: new Date(item.tdEndDate),
         finishDate: "",
-        workTitle: item.tdTitle,
-        workContent: item.tdContent
+        tdTitle: item.tdTitle,
+        tdContent: item.tdContent
       };
     });
     dispatch(setTodoData(transformeArr));
   }
   
-
   return (
     <div className={style.Page}>
       <div className={style.Side}>

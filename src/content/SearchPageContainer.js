@@ -3,12 +3,14 @@ import style from './SearchPageContainer.module.css'
 import CustomMainPageH1 from '../component/CustomMainPageH1';
 import CustomMainPageRow from '../component/CustomManinPageRow';
 import { dummyData2 } from '../apis/dummyData2';
-import { getTodoData } from '../apis/apis';
+import { connectTodoData } from '../apis/apis';
+import { useSelector } from 'react-redux';
 
 const SearchPageContainer = ({ word }) => {
   const [currentMonth, setCurrentMonth] = useState(6);
   const [currentYear, setCurrentYear] = useState(2023);
   const [searchDataArr, setSearchDataArr] = useState([]);
+  const todoData = useSelector((state) => state.todoData);
 
   //처음 랜더링 시에만 실행
   //더미데이터를 state배열에 할당
@@ -27,7 +29,7 @@ const SearchPageContainer = ({ word }) => {
     //startDate : 시작일
     //endDate : 종료일
     //title : 일 제목
-    let data = getTodoData(`/api/todos/${currentYear}`);
+    let data = todoData;
 
     // 백엔드에서 받은 배열을 알맞은 형태로 재생성하는 로직
     const transformeArr = data.map(item => {
@@ -37,7 +39,7 @@ const SearchPageContainer = ({ word }) => {
         month: startDateObj.getMonth() + 1,
         startDay: startDateObj.getDate(),
         endDay: new Date(item.tdEndDate).getDate(),
-        workTitle: tdTitle
+        tdTitle: tdTitle
       };
     });
     setSearchDataArr(transformeArr);
@@ -46,7 +48,7 @@ const SearchPageContainer = ({ word }) => {
   // 월별 작업 데이터 정렬 및 필터링하는 함수
   const getFilteredData = () => {
     const regex = new RegExp(word, "gi");
-    let IncludeWordData = searchDataArr.filter(obj => (obj.workTitle.match(regex)));
+    let IncludeWordData = searchDataArr.filter(obj => (obj.tdTitle.match(regex)));
 
     // 데이터 정렬 (낮은 순으로 정렬 -> 같은 월일 경우 startDay로 정렬 -> 같은 월, startDay일 경우 endDay로 정렬)
     const sortedData = IncludeWordData.sort((a, b) => {
@@ -103,7 +105,7 @@ const SearchPageContainer = ({ word }) => {
               // 작업 기간이 하루인 경우에는 단일 날짜를 표시하고, 아닌 경우에는 작업 기간을 표시하는 title 설정
               title={work.startDay === work.endDay ? `${work.startDay}일` : `${work.startDay}일 - ${work.endDay}일`}
               // 작업 제목을 표시
-              value={work.workTitle}
+              value={work.tdTitle}
             />
           ))}
         </div>

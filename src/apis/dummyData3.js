@@ -8,8 +8,8 @@ const dummyData3 = () => {
       startDate: 1, // 시작날짜
       endDate: 1,   // 끝 날짜
       finishDate: 1, // 실제 완료 날짜
-      workTitle: "title1", // 제목
-      workContent: "content1" // 내용
+      tdTitle: "title1", // 제목
+      tdContent: "content1" // 내용
     },
     {
       tdid: "td2",
@@ -17,8 +17,8 @@ const dummyData3 = () => {
       startDate: 2,
       endDate: 2,
       finishDate: 2,
-      workTitle: "title2",
-      workContent: "content2"
+      tdTitle: "title2",
+      tdContent: "content2"
     },
     {
       tdid: "td3",
@@ -26,8 +26,8 @@ const dummyData3 = () => {
       startDate: 3,
       endDate: 3,
       finishDate: 3,
-      workTitle: "title3",
-      workContent: "content3"
+      tdTitle: "title3",
+      tdContent: "content3"
     }
 
   ]

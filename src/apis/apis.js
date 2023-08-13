@@ -281,48 +281,64 @@ const todoData = async (url, userData, mode) => {
   }
 };
 
-const getTodoData = (url) => {
-  console.log("getTodoData호출");
-  // Todo 데이터 검색시 사용하는 함수 추가 제작
-  axios.get(url).then(res=>{
-    if(res.success){
-      return res.data;
-    }else{
-      return false;
-    }
-  }).catch (error=> {
-    // 에러 핸들링을 위해 errorFunc 유틸리티 사용
-    errorFunc("getTodoAxios", error);
-  });    
-} 
+const connectTodoData = (url, mode = "get", data = null) => {
+  if (mode == "get") {
+    // Todo 데이터 받기
+    axios.get(url).then(res => {
+      if (res.success) {
+        return res.data;
+      } else {
+        return false;
+      }
+    }).catch(error => {
+      // 에러 핸들링을 위해 errorFunc 유틸리티 사용
+      errorFunc("getTodoAxios", error);
+    });
+  } else if (mode == "add") {
+    // Todo 데이터 추가
+    axios.patch(url, data).catch(error => {
+      errorFunc("addTodoAxios", error);
+    });
+  } else if (mode == "modify") {
+    // Todo 데이터 수정
+    axios.patch(url, data).catch(error => {
+      errorFunc("modifyTodoAxios", error);
+    });
+  } else if (mode == "del") {
+    // Todo 데이터 삭제
+    axios.delete(url, data).catch(error => {
+      errorFunc("delTodoAxios", error);
+    });
+  }
+}
 
 const getUserData = (url) => {
   // 유저 닉네임, 이메일 받는 함수 추가 제작
   console.log("getUserData호출");
-  axios.get(url).then(res=>{
+  axios.get(url).then(response => {
     if (response.success) {
       let email = response.data.useremail;
       let nickName = response.data.username;
       let obj = {
-        email : email,
-        nickName : nickName
+        email: email,
+        nickName: nickName
       }
       return obj;
     } else {
       // 데이터 조회 실패 시 false 반환
       return false;
     }
-  }).catch (error=> {
+  }).catch(error => {
     // 에러 핸들링을 위해 errorFunc 유틸리티 사용
     errorFunc("getUserDataAxios", error);
   });
 }
 
-const changeNickName = (str) =>{
+const changeNickName = (str) => {
   axios.patch(`/api/user/info/${str}`);
 };
 
-export { login, searchUserData, signup, todoData, getUserData, getTodoData };
+export { login, searchUserData, signup, todoData, getUserData, connectTodoData };
 // export { login, searchUserData, signup, todoData, getTodoData, getUserData, changeNickName };
 
 
