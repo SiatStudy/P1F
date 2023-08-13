@@ -9,18 +9,21 @@ import DdayTable from '../content/DdayTable';
 function Dday(props) {
 
   const [titleh, setTitleh] = useState("목표 달성 D-day");
+  const date = new Date();
+  const month = date.getMonth()+1+"월";
+  const year = date.getFullYear();
 
   return (
     <div className={style.Page}>
       <div className={style.Side}>
         <SideMenu titleh={titleh} setTitleh={setTitleh}></SideMenu>
-        <UserInfo name="Hyunwoo Kim"></UserInfo>
+        <UserInfo></UserInfo>
       </div>
       <div className={style.Main}>
         <Header $titleh={titleh}></Header>
         <div className={style.Section}>
-          <ProgressBar month="8월"></ProgressBar>
-          <DdayTable month="8월" year="2023"></DdayTable>
+          <ProgressBar month={month}></ProgressBar>
+          <DdayTable month={month} year={year}></DdayTable>
         </div>
       </div>
     </div>

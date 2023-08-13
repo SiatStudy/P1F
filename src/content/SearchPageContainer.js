@@ -18,13 +18,13 @@ const SearchPageContainer = ({ word }) => {
     const currentDate = new Date();
     setCurrentMonth(currentDate.getMonth() + 1);
     setCurrentYear(currentDate.getFullYear())
-    //더미데이터 가져옴. 본 사용시 아래 settingBackData사용 
+    //더미데이터 가져옴. 본 사용시 아래 settingReduxData사용 
     setSearchDataArr(dummyData2);  
-    // settingBackData();
+    // settingReduxData();
   }, []);
 
-  //백엔드 데이터 세팅
-  const settingBackData = () => {
+  //리덕스 데이터 세팅
+  const settingReduxData = () => {
     //service에서 데이터 받기
     //startDate : 시작일
     //endDate : 종료일
