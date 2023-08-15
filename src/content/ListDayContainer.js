@@ -15,14 +15,14 @@ const ListdayContainer = () => {
 
   useEffect(() => {
     settingReduxData();
-  }, []);
+  }, [todoData]);
 
   //리덕스 데이터 세팅
   const settingReduxData = () => {
     // 리덕스에서 받기
-    // let data = todoData;
+    let data = todoData;
     // 더미값 받기
-    let data = dummyData4;
+    // let data = dummyData4;
 
     let transformeArr = data.map(item => {
       const { tdStartDate, tdEndDate } = item;
@@ -38,9 +38,9 @@ const ListdayContainer = () => {
         today: startDateObj.toLocaleDateString('ko-KR', options),
         month: startDateObj.getMonth() + 1,
         startDay: startDateObj.getDate(),
-        startTime: startDateObj.toLocaleTimeString('en-US', { hour12: true }).split(':').slice(0, 2).join(':'),
+        startTime: startDateObj.toLocaleTimeString('en-US', { hour12: false }).split(':').slice(0, 2).join(':'),
         endDay: endDateObj.getDate(),
-        endTime: endDateObj.toLocaleTimeString('en-US', { hour12: true }).split(':').slice(0, 2).join(':'),
+        endTime: endDateObj.toLocaleTimeString('en-US', { hour12: false }).split(':').slice(0, 2).join(':'),
         tdTitle: item.tdTitle
       };
     });
@@ -81,6 +81,7 @@ const ListdayContainer = () => {
 
   return (
     <div className={style.mainContainer}>
+
       <div className={style.titleDiv}>
         <div className={style.monthTitle}>{currentMonth}월</div>
         <CustomMainPageH1 $searchPageYear>{currentYear}</CustomMainPageH1>
@@ -88,23 +89,23 @@ const ListdayContainer = () => {
       {/* // 각 일별 컨테이너 생성 (일의 이름을 key로 설정 */}
       {Object.entries(filteredData).map(([startDay, works]) => (
         <div className={style.dayContainer} key={startDay}>
-          
-      {/* 일별로 그룹화된 작업 데이터 순회 (각 일별 작업 표시) */}
-      
-          {/* 월별로 그룹화된 작업 데이터 순회 (작업별 CustomMainPageRow 컴포넌트 생성) */}
+           {/* 해당 일의 today속성 */}
+           <div className={style.dayTitle}>{works.length > 0 ? works[0].today : ''}</div>
+           <div className={style.worksContainer}>
           {works.map((work, index) => (
             // CustomMainPageRow 컴포넌트를 작업 데이터에 맞게 생성
             <CustomMainPageRow
               key={index}
               $page="searchPage"
               // 작업 기간이 하루인 경우에는 단일 날짜를 표시하고, 아닌 경우에는 작업 기간을 표시하는 title 설정
-              title={work.startDay === work.endDay ? `${work.startTime+" - "+work.endTime}` : `${work.startTime} ~ `}
+              title={work.startDay === work.endDay ? `${work.startTime + " - " + work.endTime}` : `${work.startTime} ~ `}
               // 작업 제목을 표시
               value={work.tdTitle}
             />
-          ))}
+          ))} </div>
         </div>
       ))}
+
     </div>
   );
 };

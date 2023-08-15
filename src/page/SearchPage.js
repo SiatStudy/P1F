@@ -7,7 +7,7 @@ import SearchPageContainer from "../content/SearchPageContainer";
 import { useParams } from "react-router-dom";
 
 function SearchPage() {
-  const [titleh, setTitleh] = useState("");
+  const [titleh, setTitleh] = useState("List Day");
   let { word } = useParams();
 
   return (

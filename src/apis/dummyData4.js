@@ -298,15 +298,6 @@ export const dummyData4 = [
   tdContent: "가을 휴가 예약 내용"
 },
 {
-  tdid: 32,
-  month: 8,
-  tdStartDate: new Date(2023, 7, 3, 7, 30), // July 12, 2023, 07:30 AM
-  tdEndDate: new Date(2023, 7, 3, 17, 45),
-  finishDate: "",
-  tdTitle: "가을 휴가 예약",
-  tdContent: "가을 휴가 예약 내용"
-},
-{
   tdid: 33,
   month: 9,
   tdStartDate: new Date(2023, 8, 2, 7, 30), // July 12, 2023, 07:30 AM

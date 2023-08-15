@@ -11,6 +11,7 @@ import { setUserEmail, setUserNickName } from "../store/userData";
 import { addTodoData, delTodoData, modifyTodoData, setTodoData } from "../store/todoData";
 import dummyData3 from "../apis/dummyData3";
 import ListdayContainer from "../content/ListdayContainer";
+import { dummyData4 } from "../apis/dummyData4";
 
 function Listday() {
   const [titleh, setTitleh] = useState("List Day");
@@ -37,26 +38,26 @@ function Listday() {
     dispatch(setUserNickName("사용자1"));
     let nickName = userData.userNickName;
     dispatch(setUserEmail("example1234@gmail.com"));
-    dispatch(setTodoData(dummyData3())); 
+    dispatch(setTodoData(dummyData4)); 
   }
   // todo 추가, 수정, 삭제 임시 이벤트
   const addEvent = () => {
     let obj1 = {
-      tdid: "td4",
-      month: 4,
-      startDate: 4,
-      endDate: 4,
-      finishDate: 4,
-      tdTitle: "title4",
-      tdContent: "content4"
+      tdid: 37,
+      month: 8,
+      tdStartDate: new Date(2023, 7, 3, 10, 30), // July 12, 2023, 07:30 AM
+      tdEndDate: new Date(2023, 7, 5, 20, 0),
+      finishDate: "",
+      tdTitle: "추가된 값",
+      tdContent: "추가된 값 내용"
     }
     dispatch(addTodoData(obj1));
   }
   const modifyEvent = () =>{
-    dispatch(modifyTodoData({ tdid: "td2", key: "tdContent", value: "new1" }));
+    dispatch(modifyTodoData({ tdid: "13", key: "tdTitle", value: "새로운 제목" }));
   }
   const delEvent = () =>{
-    dispatch(delTodoData("td1"));
+    dispatch(delTodoData("36"));
   }
 
   // 백엔드에서 데이터 받아오기
@@ -91,7 +92,7 @@ function Listday() {
       </div>
       <div className={style.Main}>
         <Header $titleh={titleh} />
-        <div className={style.List}>
+        {/* <div className={style.List}> */}
           {/* <Calendar mode={"list"} /> */}
           <ListdayContainer></ListdayContainer>
           {/* 아래 코드는 리덕스를 화면에 찍는 테스트용 코드이므로 실 사용시 삭제해야됨 */}
@@ -102,12 +103,12 @@ function Listday() {
           <button onClick={()=>{addTodoBack(obj5)}}>백 데이터 추가 임시 버튼</button>
           <button onClick={()=>{delTodoBack("td5")}}>백 데이터 삭제 임시 버튼</button>
           <button onClick={()=>{modifyTodoBack({ tdid: "td5", key: "tdContent", value: "new5" })}}>백 데이터 수정 임시 버튼</button>
-          <div><h2>userData</h2>
+          {/* <div><h2>userData</h2>
             <pre>{JSON.stringify(userData, null, 2)}</pre></div>
           <div><h2>todoData</h2>
-            <pre>{JSON.stringify(todoData, null, 2)}</pre></div>
+            <pre>{JSON.stringify(todoData, null, 2)}</pre></div> */}
         </div>
-      </div>
+      {/* </div> */}
     </div>
   );
 }
