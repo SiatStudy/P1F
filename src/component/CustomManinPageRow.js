@@ -73,6 +73,9 @@ display: ${props => (props.$mode ? 'none' : 'block')};
 const OutDiv = styled.div`
 ${prop => obj[prop.$page].outDiv}
 `;
+const buttonDiv = styled.div`
+display : ${prop => obj[prop.$isButtonVisible]? 'block' : 'none'}
+`;
 
 const CustomInput = styled.input`
 flex: 1 0 0;
@@ -81,7 +84,7 @@ border: 1px solid #000;
 display: ${props => (props.$mode ? 'block' : 'none')};
 `;
 
-const CustomMainPageRow = ({title, value, $mode, onChange, $page, pattern, $inputTitle}) => {
+const CustomMainPageRow = ({title, value, $mode, onChange, $page, pattern, $inputTitle, $isButtonVisible, $checked}) => {
   // title : 제목
   // value : 내용
   // $mode : 상태 전환
@@ -93,12 +96,19 @@ const CustomMainPageRow = ({title, value, $mode, onChange, $page, pattern, $inpu
       <CustomH3 $page={$page} $mode={$mode}>{value}</CustomH3>
       <CustomInput type="text" $mode={$mode} value={value} onChange={(e) => onChange(e.target.value)}
       pattern={pattern} title={$inputTitle}></CustomInput>
+      <buttonDiv $isButtonVisible={$isButtonVisible}>
+      { $checked ? <img src='/asset/img/check1' alt="Checked"></img>
+       : <img src='/asset/img/check0' alt="Unchecked"></img> }
+        <img src='/asset/img/delIcon'></img>
+      </buttonDiv>
     </OutDiv>
   );
 };
 
 CustomMainPageRow.defaultProps = {
-  $page : "myPage"
+  $page : "myPage",
+  $isButtonVisible : false,
+  $checked : false
 };
 
 export default CustomMainPageRow;

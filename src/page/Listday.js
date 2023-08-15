@@ -77,7 +77,8 @@ function Listday() {
         endDate: new Date(item.tdEndDate),
         finishDate: "",
         tdTitle: item.tdTitle,
-        tdContent: item.tdContent
+        tdContent: item.tdContent,
+        status: item.status
       };
     });
     dispatch(setTodoData(transformeArr));

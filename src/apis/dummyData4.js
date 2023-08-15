@@ -7,7 +7,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 6, 15, 15, 45),
       finishDate: "",
       tdTitle: "여름공부",
-      tdContent: "여름내용"
+      tdContent: "여름내용",
+      status: false
   },
   {
       tdid: 1,
@@ -16,7 +17,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 7, 25, 18, 30),
       finishDate: "",
       tdTitle: "가을 기차 여행",
-      tdContent: "가을 기차 여행 내용"
+      tdContent: "가을 기차 여행 내용",
+      status: false
   },
   {
       tdid: 2,
@@ -25,7 +27,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 8, 10, 16, 0),
       finishDate: "",
       tdTitle: "겨울 산책",
-      tdContent: "겨울 산책 내용"
+      tdContent: "겨울 산책 내용",
+      status: false
   },
   {
       tdid: 3,
@@ -34,7 +37,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 6, 17, 12, 30),
       finishDate: "",
       tdTitle: "여름 바다 여행",
-      tdContent: "여름 바다 여행 내용"
+      tdContent: "여름 바다 여행 내용",
+      status: false
   },
   {
       tdid: 4,
@@ -43,7 +47,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 7, 13, 17, 45),
       finishDate: "",
       tdTitle: "가을 먹거리 여행",
-      tdContent: "가을 먹거리 여행 내용"
+      tdContent: "가을 먹거리 여행 내용",
+      status: false
   },
   {
       tdid: 5,
@@ -52,7 +57,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 8, 28, 14, 30),
       finishDate: "",
       tdTitle: "겨울 관광 여행",
-      tdContent: "겨울 관광 여행내용"
+      tdContent: "겨울 관광 여행내용",
+      status: false
   },
   {
       tdid: 6,
@@ -61,7 +67,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 6, 8, 17, 15),
       finishDate: "",
       tdTitle: "여름 방학 공부",
-      tdContent: "여름 방학 공부 내용"
+      tdContent: "여름 방학 공부 내용",
+      status: false
   },
   {
       tdid: 7,
@@ -70,7 +77,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 7, 22, 16, 0),
       finishDate: "",
       tdTitle: "가을 단풍 여행",
-      tdContent: "가을 단풍 여행 내용"
+      tdContent: "가을 단풍 여행 내용",
+      status: false
   },
   {
       tdid: 8,
@@ -79,7 +87,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 8, 6, 19, 30),
       finishDate: "",
       tdTitle: "겨울 공부",
-      tdContent: "겨울내용"
+      tdContent: "겨울내용",
+      status: false
   },
   {
       tdid: 9,
@@ -88,7 +97,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 6, 16, 13, 45),
       finishDate: "",
       tdTitle: "여름여행",
-      tdContent: "여름내용"
+      tdContent: "여름내용",
+      status: false
   },
   {
       tdid: 10,
@@ -97,7 +107,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 7, 26, 18, 30),
       finishDate: "",
       tdTitle: "가을공부",
-      tdContent: "가을내용"
+      tdContent: "가을내용",
+      status: false
   },
   {
       tdid: 11,
@@ -106,7 +117,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 8, 13, 16, 0),
       finishDate: "",
       tdTitle: "겨울 온천 여행",
-      tdContent: "겨울 온천 여행 내용"
+      tdContent: "겨울 온천 여행 내용",
+      status: false
   },
   {
       tdid: 12,
@@ -115,7 +127,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 6, 22, 19, 30),
       finishDate: "",
       tdTitle: "여름공부",
-      tdContent: "여름내용"
+      tdContent: "여름내용",
+      status: false
   },
   {
       tdid: 13,
@@ -124,7 +137,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 7, 8, 17, 45),
       finishDate: "",
       tdTitle: "가을여행",
-      tdContent: "가을내용"
+      tdContent: "가을내용",
+      status: false
   },
   {
       tdid: 14,
@@ -133,7 +147,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 8, 23, 14, 30),
       finishDate: "",
       tdTitle: "겨울공부",
-      tdContent: "겨울내용"
+      tdContent: "겨울내용",
+      status: false
   },
   {
       tdid: 15,
@@ -142,7 +157,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 6, 11, 17, 15),
       finishDate: "",
       tdTitle: "여름여행",
-      tdContent: "여름내용"
+      tdContent: "여름내용",
+      status: false
   },
   {
       tdid: 16,
@@ -151,7 +167,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 7, 21, 16, 0),
       finishDate: "",
       tdTitle: "가을공부",
-      tdContent: "가을내용"
+      tdContent: "가을내용",
+      status: false
   },
   {
       tdid: 17,
@@ -160,7 +177,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 8, 7, 19, 30),
       finishDate: "",
       tdTitle: "겨울여행",
-      tdContent: "겨울내용"
+      tdContent: "겨울내용",
+      status: false
   },
   {
       tdid: 18,
@@ -169,7 +187,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 6, 17, 13, 45),
       finishDate: "",
       tdTitle: "여름공부",
-      tdContent: "여름내용"
+      tdContent: "여름내용",
+      status: false
   },
   {
       tdid: 19,
@@ -178,7 +197,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 7, 27, 18, 30),
       finishDate: "",
       tdTitle: "가을여행",
-      tdContent: "가을내용"
+      tdContent: "가을내용",
+      status: false
   },
   {
       tdid: 20,
@@ -187,7 +207,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 8, 14, 16, 0),
       finishDate: "",
       tdTitle: "겨울공부",
-      tdContent: "겨울내용"
+      tdContent: "겨울내용",
+      status: false
   },
   {
       tdid: 21,
@@ -196,7 +217,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 6, 23, 19, 30),
       finishDate: "",
       tdTitle: "여름공부",
-      tdContent: "여름내용"
+      tdContent: "여름내용",
+      status: false
   },
   {
       tdid: 22,
@@ -205,7 +227,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 7, 9, 17, 45),
       finishDate: "",
       tdTitle: "가을여행",
-      tdContent: "가을내용"
+      tdContent: "가을내용",
+      status: false
   },
   {
       tdid: 23,
@@ -214,7 +237,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 8, 24, 14, 30),
       finishDate: "",
       tdTitle: "겨울공부",
-      tdContent: "겨울내용"
+      tdContent: "겨울내용",
+      status: false
   },
   {
       tdid: 24,
@@ -223,7 +247,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 6, 12, 17, 15),
       finishDate: "",
       tdTitle: "여름여행",
-      tdContent: "여름내용"
+      tdContent: "여름내용",
+      status: false
   },
   {
       tdid: 25,
@@ -232,7 +257,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 7, 22, 16, 0),
       finishDate: "",
       tdTitle: "가을공부",
-      tdContent: "가을내용"
+      tdContent: "가을내용",
+      status: false
   },
   {
       tdid: 26,
@@ -241,7 +267,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 8, 8, 19, 30),
       finishDate: "",
       tdTitle: "겨울여행",
-      tdContent: "겨울내용"
+      tdContent: "겨울내용",
+      status: false
   },
   {
       tdid: 27,
@@ -250,7 +277,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 6, 18, 13, 45),
       finishDate: "",
       tdTitle: "여름공부",
-      tdContent: "여름내용"
+      tdContent: "여름내용",
+      status: false
   },
   {
       tdid: 28,
@@ -259,7 +287,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 7, 28, 18, 30),
       finishDate: "",
       tdTitle: "가을여행",
-      tdContent: "가을내용"
+      tdContent: "가을내용",
+      status: false
   },
   {
       tdid: 29,
@@ -268,7 +297,8 @@ export const dummyData4 = [
       tdEndDate: new Date(2023, 8, 15, 16, 0),
       finishDate: "",
       tdTitle: "겨울공부",
-      tdContent: "겨울내용"
+      tdContent: "겨울내용",
+      status: false
   },
   {
     tdid: 30,
@@ -277,7 +307,8 @@ export const dummyData4 = [
     tdEndDate: new Date(2023, 6, 1, 13, 45),
     finishDate: "",
     tdTitle: "여름 휴가 준비",
-    tdContent: "여름 휴가 준비 내용"
+    tdContent: "여름 휴가 준비 내용",
+    status: false
 },
 {
   tdid: 31,
@@ -286,7 +317,8 @@ export const dummyData4 = [
   tdEndDate: new Date(2023, 6, 3, 17, 45),
   finishDate: "",
   tdTitle: "여름 바다 여행",
-  tdContent: "여름 바다 여행 내용"
+  tdContent: "여름 바다 여행 내용",
+  status: false
 },
 {
   tdid: 32,
@@ -295,7 +327,8 @@ export const dummyData4 = [
   tdEndDate: new Date(2023, 7, 3, 17, 45),
   finishDate: "",
   tdTitle: "가을 휴가 예약",
-  tdContent: "가을 휴가 예약 내용"
+  tdContent: "가을 휴가 예약 내용",
+  status: false
 },
 {
   tdid: 33,
@@ -304,7 +337,8 @@ export const dummyData4 = [
   tdEndDate: new Date(2023, 8, 2, 17, 45),
   finishDate: "",
   tdTitle: "가을 캠핑 예약",
-  tdContent: "가을 캠핑 예약 내용"
+  tdContent: "가을 캠핑 예약 내용",
+  status: false
 },
 {
   tdid: 34,
@@ -313,7 +347,8 @@ export const dummyData4 = [
   tdEndDate: new Date(2023, 8, 8, 16, 0),
   finishDate: "",
   tdTitle:  "가을 농산물 구매",
-  tdContent:  "가을 농산물 구매 내용"
+  tdContent:  "가을 농산물 구매 내용",
+  status: false
 },
 {
   tdid: 35,
@@ -322,7 +357,8 @@ export const dummyData4 = [
   tdEndDate: new Date(2023, 7, 3, 17, 45),
   finishDate: "",
   tdTitle: "여름 휴가 예약",
-  tdContent: " 휴가 예약 내용"
+  tdContent: " 휴가 예약 내용",
+  status: false
 },
 {
   tdid: 36,
@@ -331,7 +367,8 @@ export const dummyData4 = [
   tdEndDate: new Date(2023, 7, 18, 20, 0),
   finishDate: "",
   tdTitle: "여름 꽃구경 가기",
-  tdContent: "여름 꽃구경 가기 내용"
+  tdContent: "여름 꽃구경 가기 내용",
+  status: false
 },
 ];
 

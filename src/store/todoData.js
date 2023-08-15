@@ -9,7 +9,8 @@ let todoData = createSlice({
         endDate: 0,   // 끝 날짜
         finishDate : 0, // 실제 완료 날짜
         tdTitle: "", // 제목
-        tdContent : "" // 내용
+        tdContent : "", // 내용
+        status: false
 }],
     reducers : {
         setTodoData : (state, action) => {

@@ -41,7 +41,8 @@ const ListdayContainer = () => {
         startTime: startDateObj.toLocaleTimeString('en-US', { hour12: false }).split(':').slice(0, 2).join(':'),
         endDay: endDateObj.getDate(),
         endTime: endDateObj.toLocaleTimeString('en-US', { hour12: false }).split(':').slice(0, 2).join(':'),
-        tdTitle: item.tdTitle
+        tdTitle: item.tdTitle,
+        status: item.status
       };
     });
     transformeArr = transformeArr.filter(item => { return item.month == currentMonth });
@@ -101,6 +102,7 @@ const ListdayContainer = () => {
               title={work.startDay === work.endDay ? `${work.startTime + " - " + work.endTime}` : `${work.startTime} ~ `}
               // 작업 제목을 표시
               value={work.tdTitle}
+              $isButtonVisible={true}
             />
           ))} </div>
         </div>
