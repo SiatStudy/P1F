@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import style from "./MainPage.module.css";
+import style from "./Page.module.css";
 import Header from '../content/Header';
 import SideMenu from '../content/SideMenu';
 import UserInfo from '../content/UserInfo';
@@ -16,9 +16,7 @@ function MyPage() {
       </div>
       <div className={style.Main}>
       <Header $titleh={titleh} />
-      <div className={style.MyPage}>
         <MyPageContainer></MyPageContainer>
-      </div>
       </div>
     </div>
   );

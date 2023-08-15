@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import style from "./MainPage.module.css";
+import style from "./Page.module.css";
 import Header from '../content/Header';
 import SideMenu from '../content/SideMenu';
 import UserInfo from '../content/UserInfo';
@@ -91,7 +91,7 @@ function Listday() {
         <SideMenu titleh={titleh} setTitleh={setTitleh}></SideMenu>
         <UserInfo />
       </div>
-      <div className={style.MainA}>
+      <div className={style.Main}>
         <Header $titleh={titleh} />
         {/* <div className={style.List}> */}
           {/* <Calendar mode={"list"} /> */}

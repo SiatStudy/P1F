@@ -94,48 +94,40 @@ const login = async (url, userData, mode) => {
  * @returns {Promise} Promise 객체를 반환하며, 아이디 검색 시 아이디를, 비밀번호 검색 시 true를 반환합니다.
  */
 
-const searchUserData = async ({ url, userdata, mode }) => {
+const searchUserData = async (url, userData, mode) => {
   // 유저 데이터 검색을 담당하는 함수 (아이디 또는 비밀번호로 검색)
   if (mode === "id") {
-      // 중복 데이터 확인 기능을 담당하는 함수
-      axios.post(url, null, {params:{username:userdata}})
-          .then(res => {
-              // 중복 데이터가 있을 경우 true 반환, 없을 경우 false 반환
-                  return !!res.data.isValid;
-          })
-          .catch(err => {
-              // 에러 핸들링을 위해 errorFunc 유틸리티 사용
-              errorFunc('dupleAxios', err)
-          })
-      }
-      else if (mode === "email") {
-      // 중복 데이터 확인 기능을 담당하는 함수
-      axios.post(url, null, {params:{userdata:userdata}})
-          .then(res => {
-              // 중복 데이터가 있을 경우 true 반환, 없을 경우 false 반환
-              return !!res.data.isValid
-          })
-          .catch(err => {
-              // 에러 핸들링을 위해 errorFunc 유틸리티 사용
-              errorFunc('dupleAxios', err)
-          })
-      }
-      else if (mode === "emailCode") {
-          // 중복 데이터 확인 기능을 담당하는 함수
-          axios.post(url, null, {params:{code:userdata}})
-              .then(res => {
-                  // 중복 데이터가 있을 경우 true 반환, 없을 경우 false 반환
-                  return !!res.data.isValid;
-              })
-              .catch(err => {
-                  // 에러 핸들링을 위해 errorFunc 유틸리티 사용
-                  errorFunc('dupleAxios', err)
-              })
-          }
-      else {
-      // 잘못된 모드 문자열 처리
-      errorFunc('searchUserAxios', 'wrong mode String');
-      }
+    // 아이디로 검색
+    axios
+      .post(url, userData)
+      .then((res) => {
+        if (res.data.exists) {
+          // 아이디가 존재하면 해당 아이디 반환, 없으면 false 반환
+          return res.data.id;
+        } else {
+          return false;
+        }
+      })
+      .catch((err) => {
+        // 에러 핸들링을 위해 errorFunc 유틸리티 사용
+        errorFunc("searchIDAxios", err);
+      });
+  } else if (mode === "pw") {
+    // 비밀번호로 검색
+    axios
+      .post(url, userData)
+      .then((res) => {
+        // 비밀번호 데이터가 존재하면 true 반환, 없으면 false 반환
+        return !!res.data.passwordData;
+      })
+      .catch((err) => {
+        // 에러 핸들링을 위해 errorFunc 유틸리티 사용
+        errorFunc("searchPWAxios", err);
+      });
+  } else {
+    // 잘못된 모드 문자열 처리
+    errorFunc("searchUserAxios", "wrong mode String");
+  }
 };
 
 /**
@@ -161,23 +153,39 @@ const searchUserData = async ({ url, userdata, mode }) => {
  * @returns {Promise} Promise 객체를 반환하며, 회원 가입 성공 시 true를 반환합니다.
  */
 
-const signup = async ({ url, userdata, mode }) => {
+const signup = async (url, userData, mode) => {
   // 회원가입 또는 유저 정보 업데이트를 담당하는 함수
   if (mode === "signup") {
-      // 회원가입
-      axios.post(url, null, {params:{userdata:userdata}})
-          .then(res => {
-              if (res.data.isValid) {
-                  // 회원가입이 실패하면 false 반환
-                  return false;
-              }
-          })
-          .catch(err => {
-              // 에러 핸들링을 위해 errorFunc 유틸리티 사용
-              errorFunc('signupAxios', err);
-          });
+    // 회원가입
+    axios
+      .post(url, userData)
+      .then((res) => {
+        if (res.data.registration) {
+          // 회원가입이 실패하면 false 반환
+          return false;
+        }
+      })
+      .catch((err) => {
+        // 에러 핸들링을 위해 errorFunc 유틸리티 사용
+        errorFunc("signupAxios", err);
+      });
+  } else if (mode === "info") {
+    // 유저 정보 업데이트
+    axios
+      .patch(url, userData)
+      .then((res) => {
+        // 정보 업데이트가 성공하면 true 반환, 실패하면 false 반환
+        return !!res.data.updateStatus;
+      })
+      .catch((err) => {
+        // 에러 핸들링을 위해 errorFunc 유틸리티 사용
+        errorFunc("infoAxios", err);
+      });
+  } else {
+    // 잘못된 모드 문자열 처리
+    errorFunc("signupAxios", "wrong mode String");
   }
-}
+};
 
 /**
  * Todo 데이터 조작 함수
@@ -342,3 +350,4 @@ export { login, searchUserData, signup, todoData, getUserData, connectTodoData }
  * @param {string} options.mode - 검색 모드 ("id" 또는 "pw")
  * @returns {Promise} Promise 객체를 반환하며, 아이디 검색 시 아이디를, 비밀번호 검색 시 true를 반환합니다.
  */
+

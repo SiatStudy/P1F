@@ -25,13 +25,13 @@ function SignUpPage () {
         checkEmailCode : false
     });
     const [signInputs, setSignInputs] = useState({
-        username : '',
-        usernickname : '',
-        userpassword : '',
-        userpasswordchk : '',
-        useremail : '',
+        userName : '',
+        userNickname : '',
+        userPw : '',
+        userConfirmPw : '',
+        userEmail : '',
         userEmailDomain : '@naver.com',
-        code : '',
+        userEmailCode : '',
     });
     const [errorMessage, setErrorMessage] = useState({
         idError : '',
@@ -52,7 +52,7 @@ function SignUpPage () {
     const handleInputsChange = (event) => {
         const value = event.target.value;
         const mode = event.target.dataset.mode;
-        const pwVal = signInputs.userpassword;
+        const pwVal = signInputs.userPw;
         handleInputsVal(value, setIsVaild, pwVal, setErrorMessage, setButtons, setSignInputs, mode);
     };
     
@@ -75,14 +75,14 @@ function SignUpPage () {
 
     const handleSubmitClick = (event, mode) => {
         event.preventDefault();
-        const userdata = {
-            username: signInputs.username,
-            usernickname: signInputs.usernickname,
-            userpassword: signInputs.userpassword,
-            useremail: signInputs.useremail + signInputs.userEmailDomain,
+        const userData = {
+            userName: signInputs.userName,
+            userNickname: signInputs.userNickname,
+            userPw: signInputs.userPw,
+            userEmail: signInputs.userEmail + signInputs.userEmailDomain,
         }
 
-        if (signup("http://localhost:8080/api/users/signup",userdata,mode)) {
+        if (signup("http://localhost:8080/api/users/signup",userData,mode)) {
             navigate("/loginpage");
         }else{
             alert("다시 시도해 주세요.");
@@ -117,7 +117,7 @@ function SignUpPage () {
                             $mbspid
                             data-mode='id'
                             placeholder='ID 입력'
-                            value={signInputs.username}
+                            value={signInputs.userName}
                             onChange={handleInputsChange}/>
                         </CustomLoginPageDiv>
                         <CustomLoginPageBtn 
@@ -135,7 +135,7 @@ function SignUpPage () {
                         <CustomLoginPageInput 
                         $idinput
                         data-mode='nickname'
-                        value={signInputs.usernickname} 
+                        value={signInputs.userNickname} 
                         onChange={handleInputsChange} />
                     </CustomLoginPageDiv>
                     {errorMessage.nicknameError}
@@ -148,7 +148,7 @@ function SignUpPage () {
                             data-mode='pw'
                             placeholder='Password' 
                             type='password' 
-                            value={signInputs.userpassword} 
+                            value={signInputs.userPw} 
                             onChange={handleInputsChange} />
                             <Eyeline className={style.eyelineSvg}/>
                         </CustomLoginPageDiv>
@@ -163,7 +163,7 @@ function SignUpPage () {
                             data-mode='confirmPw'
                             placeholder='Password' 
                             type='password' 
-                            value={signInputs.userpasswordchk} 
+                            value={signInputs.userConfirmPw} 
                             onChange={handleInputsChange} />
                             <Eyeline className={style.eyelineSvg}/>
                         </CustomLoginPageDiv>
@@ -178,7 +178,7 @@ function SignUpPage () {
                             $signupemail
                             data-mode='email'
                             placeholder='E-mail 입력' 
-                            value={signInputs.useremail} 
+                            value={signInputs.userEmail} 
                             onChange={handleInputsChange} />
                         </CustomLoginPageDiv>
                         <CustomLoginPageDiv $mbemail>@</CustomLoginPageDiv>
@@ -207,7 +207,7 @@ function SignUpPage () {
                             $mbspid 
                             data-mode='emailCode' 
                             placeholder='인증코드 입력'
-                            value={signInputs.code} 
+                            value={signInputs.userEmailCode} 
                             onChange={handleInputsChange}
                             />
                         </CustomLoginPageDiv>
