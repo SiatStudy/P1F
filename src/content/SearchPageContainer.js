@@ -5,31 +5,31 @@ import CustomMainPageRow from '../component/CustomManinPageRow';
 import { dummyData2 } from '../apis/dummyData2';
 import { connectTodoData } from '../apis/apis';
 import { useSelector } from 'react-redux';
+import { dummyData4 } from '../apis/dummyData4';
 
 const SearchPageContainer = ({ word }) => {
-  const [currentMonth, setCurrentMonth] = useState(6);
-  const [currentYear, setCurrentYear] = useState(2023);
   const [searchDataArr, setSearchDataArr] = useState([]);
   const todoData = useSelector((state) => state.todoData);
+  const date = new Date();
+  let currentMonth = date.getMonth()+1;
+  let currentYear = date.getFullYear();
 
   //처음 랜더링 시에만 실행
-  //더미데이터를 state배열에 할당
   useEffect(() => {
-    const currentDate = new Date();
-    setCurrentMonth(currentDate.getMonth() + 1);
-    setCurrentYear(currentDate.getFullYear())
     //더미데이터 가져옴. 본 사용시 아래 settingReduxData사용 
-    setSearchDataArr(dummyData2);  
-    // settingReduxData();
+    // setSearchDataArr(dummyData2);  
+    settingReduxData();
   }, []);
 
   //리덕스 데이터 세팅
   const settingReduxData = () => {
-    //service에서 데이터 받기
     //startDate : 시작일
     //endDate : 종료일
     //title : 일 제목
-    let data = todoData;
+    // 리덕스에서 받기
+    // let data = todoData;
+    // 더미값 받기
+    let data = dummyData4;
 
     // 백엔드에서 받은 배열을 알맞은 형태로 재생성하는 로직
     const transformeArr = data.map(item => {

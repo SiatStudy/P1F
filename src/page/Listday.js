@@ -5,10 +5,12 @@ import SideMenu from '../content/SideMenu';
 import UserInfo from '../content/UserInfo';
 import { Calendar } from "../content/Calendar";
 import { connectTodoData, getUserData } from "../apis/apis";
+import { addTodoBack, modifyTodoBack, delTodoBack } from "../service/todoService";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserEmail, setUserNickName } from "../store/userData";
 import { addTodoData, delTodoData, modifyTodoData, setTodoData } from "../store/todoData";
 import dummyData3 from "../apis/dummyData3";
+import ListdayContainer from "../content/ListdayContainer";
 
 function Listday() {
   const [titleh, setTitleh] = useState("List Day");
@@ -16,6 +18,15 @@ function Listday() {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.userData);
   const todoData = useSelector((state) => state.todoData);
+  let obj5 = {
+    tdid: "td5",
+    month: 5,
+    startDate: 5,
+    endDate: 5,
+    finishDate: 5,
+    tdTitle: "title5",
+    tdContent: "content5"
+  }
 
   useEffect(() => {
     testingRedux();
@@ -55,7 +66,7 @@ function Listday() {
     let obj = getUserData(`/api/users/setting`);
     dispatch(setUserEmail(obj.email));
     dispatch(setUserNickName(obj.nickName));
-    let arr = connectTodoData(`/api/todos/${year}`);
+    let arr = connectTodoData(`/api/todos/${year}`, "get");
     // 받아온 배열을 알맞은 형태로 교체
     const transformeArr = arr.map(item => {
       return {
@@ -71,6 +82,7 @@ function Listday() {
     dispatch(setTodoData(transformeArr));
   }
   
+  
   return (
     <div className={style.Page}>
       <div className={style.Side}>
@@ -80,12 +92,16 @@ function Listday() {
       <div className={style.Main}>
         <Header $titleh={titleh} />
         <div className={style.List}>
-          <Calendar mode={"list"} />
+          {/* <Calendar mode={"list"} /> */}
+          <ListdayContainer></ListdayContainer>
           {/* 아래 코드는 리덕스를 화면에 찍는 테스트용 코드이므로 실 사용시 삭제해야됨 */}
-          <button onClick={connectBack}>백 데이터 받기 임시 버튼</button>
           <button onClick={addEvent}>todo 추가 임시 버튼</button>
           <button onClick={modifyEvent}>todo 수정 임시 버튼</button>
-          <button onClick={delEvent}>todo 삭제 임시 버튼</button>
+          <button onClick={delEvent}>todo 삭제 임시 버튼</button><br></br>
+          <button onClick={connectBack}>백 데이터 받기 임시 버튼</button>
+          <button onClick={()=>{addTodoBack(obj5)}}>백 데이터 추가 임시 버튼</button>
+          <button onClick={()=>{delTodoBack("td5")}}>백 데이터 삭제 임시 버튼</button>
+          <button onClick={()=>{modifyTodoBack({ tdid: "td5", key: "tdContent", value: "new5" })}}>백 데이터 수정 임시 버튼</button>
           <div><h2>userData</h2>
             <pre>{JSON.stringify(userData, null, 2)}</pre></div>
           <div><h2>todoData</h2>
