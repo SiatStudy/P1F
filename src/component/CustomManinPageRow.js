@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const CustomMainPageRow = ({title, value, $mode, onChange, $page, pattern, 
-  $inputTitle, $isButtonVisible, status}) => {
+  $inputTitle, $isButtonVisible, status, toggleStatus, delRow}) => {
   // title : 제목
   // value : 내용
   // $mode : 상태 전환
@@ -100,22 +100,15 @@ border: 1px solid #000;
 display: ${props => (props.$mode ? 'block' : 'none')};
 `;
 
-
-
-
-  
   return (
     <OutDiv $page={$page}>
-      { status ? <Img src='/asset/img/check1.svg' alt="Checked" $isButtonVisible={$isButtonVisible}></Img>
-       : <Img src='/asset/img/check0.svg' alt="Unchecked" $isButtonVisible={$isButtonVisible}></Img> }
+      { status ? <Img src='/asset/img/check1.svg' alt="Checked" $isButtonVisible={$isButtonVisible} onClick={toggleStatus}></Img>
+       : <Img src='/asset/img/check0.svg' alt="Unchecked" $isButtonVisible={$isButtonVisible} onClick={toggleStatus}></Img> }
       <KeyDiv $page={$page} $isButtonVisible={$isButtonVisible}>{title}</KeyDiv>
       <CustomH3 $page={$page} $mode={$mode}>{value}</CustomH3>
       <CustomInput type="text" $mode={$mode} value={value} onChange={(e) => onChange(e.target.value)}
       pattern={pattern} title={$inputTitle}></CustomInput>
-      {/* <ButtonDiv $isButtonVisible={$isButtonVisible}> */}
-      
-        <DelImg src='/asset/img/delIcon.svg' $isButtonVisible={$isButtonVisible}></DelImg>
-      {/* </ButtonDiv> */}
+      <DelImg src='/asset/img/delIcon.svg' $isButtonVisible={$isButtonVisible} onClick={delRow}></DelImg>
     </OutDiv>
   );
 };

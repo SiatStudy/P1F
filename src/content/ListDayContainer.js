@@ -3,10 +3,12 @@ import style from './SearchPageContainer.module.css'
 import CustomMainPageH1 from '../component/CustomMainPageH1';
 import CustomMainPageRow from '../component/CustomManinPageRow';
 import { connectTodoData } from '../apis/apis';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { dummyData4 } from '../apis/dummyData4';
+import { delTodoData, modifyTodoData } from '../store/todoData';
 
 const ListdayContainer = () => {
+  const dispatch = useDispatch();
   const [todoDataArr, setTodoDataArr] = useState([]);
   const todoData = useSelector((state) => state.todoData);
   const date = new Date();
@@ -78,11 +80,19 @@ const ListdayContainer = () => {
     return groupedData;
   };
 
+  const toggleStatus = (tdid, status) => {
+    dispatch(modifyTodoData({ tdid: tdid, key: "status", value: !status }));
+    // 여기에 status수정 백엔드 통신 필요
+  }
+  const delRow = tdid =>{
+    dispatch(delTodoData(tdid));
+    // 여기에 DB에서 해당 tdid 지우는 백엔드 통신 필요
+  }
+
   const filteredData = getFilteredData();
 
   return (
     <div className={style.mainContainer}>
-
       <div className={style.titleDiv}>
         <div className={style.monthTitle}>{currentMonth}월</div>
         <CustomMainPageH1 $searchPageYear>{currentYear}</CustomMainPageH1>
@@ -104,6 +114,8 @@ const ListdayContainer = () => {
               value={work.tdTitle}
               status={work.status}
               $isButtonVisible={true}
+              toggleStatus={()=>{toggleStatus(work.tdid, work.status)}}
+              delRow={()=>{delRow(work.tdid)}}
             />
           ))} </div>
         </div>
