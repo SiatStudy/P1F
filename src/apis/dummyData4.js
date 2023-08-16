@@ -48,7 +48,7 @@ export const dummyData4 = [
       finishDate: "",
       tdTitle: "가을 먹거리 여행",
       tdContent: "가을 먹거리 여행 내용",
-      status: false
+      status: true
   },
   {
       tdid: 5,
@@ -138,7 +138,7 @@ export const dummyData4 = [
       finishDate: "",
       tdTitle: "가을여행",
       tdContent: "가을내용",
-      status: false
+      status: true
   },
   {
       tdid: 14,

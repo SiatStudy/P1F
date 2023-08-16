@@ -49,9 +49,19 @@ function Listday() {
       tdEndDate: new Date(2023, 7, 5, 20, 0),
       finishDate: "",
       tdTitle: "추가된 값",
-      tdContent: "추가된 값 내용"
+      tdContent: "추가된 값 내용",
+      status: false
     }
     dispatch(addTodoData(obj1));
+    dispatch(addTodoData({
+      tdid: "tdid", // 할일 아이디
+      month: "startMonth", // 시작 날의 월
+      startDate: "remakeStartDate", // 시작날짜
+      endDate: "remakeEndDate",   // 끝 날짜
+      finishDate: "", // 실제 완료 날짜
+      tdTitle: "titleVal", // 제목
+      tdContent: "memoVal" // 내용
+    }));
   }
   const modifyEvent = () =>{
     dispatch(modifyTodoData({ tdid: "13", key: "tdTitle", value: "새로운 제목" }));
@@ -97,9 +107,9 @@ function Listday() {
           {/* <Calendar mode={"list"} /> */}
           <ListdayContainer></ListdayContainer>
           {/* 아래 코드는 리덕스를 화면에 찍는 테스트용 코드이므로 실 사용시 삭제해야됨 */}
-          <button onClick={addEvent}>todo 추가 임시 버튼</button>
-          <button onClick={modifyEvent}>todo 수정 임시 버튼</button>
-          <button onClick={delEvent}>todo 삭제 임시 버튼</button><br></br>
+          <button onClick={addEvent}>todo리덕스에 추가 임시 버튼</button>
+          <button onClick={modifyEvent}>todo리덕스에 수정 임시 버튼</button>
+          <button onClick={delEvent}>todo리덕스에 삭제 임시 버튼</button><br></br>
           <button onClick={connectBack}>백 데이터 받기 임시 버튼</button>
           <button onClick={()=>{addTodoBack(obj5)}}>백 데이터 추가 임시 버튼</button>
           <button onClick={()=>{delTodoBack("td5")}}>백 데이터 삭제 임시 버튼</button>

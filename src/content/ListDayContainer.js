@@ -102,6 +102,7 @@ const ListdayContainer = () => {
               title={work.startDay === work.endDay ? `${work.startTime + " - " + work.endTime}` : `${work.startTime} ~ `}
               // 작업 제목을 표시
               value={work.tdTitle}
+              status={work.status}
               $isButtonVisible={true}
             />
           ))} </div>
