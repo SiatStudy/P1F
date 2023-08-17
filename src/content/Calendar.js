@@ -16,7 +16,6 @@ import errorFunc from "../util/errorFunc";
 import DatepickerContent from "./DatepickerContent";
 
 import "./Datepicker.scss";
-import { dummyData2 } from "../apis/dummyData2";
 
 
 /**

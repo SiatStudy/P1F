@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import style from './SearchPageContainer.module.css'
 import CustomMainPageH1 from '../component/CustomMainPageH1';
 import CustomMainPageRow from '../component/CustomManinPageRow';
-import { connectTodoData } from '../apis/apis';
 import { useDispatch, useSelector } from 'react-redux';
-import { dummyData4 } from '../apis/dummyData4';
 import { delTodoData, modifyTodoData } from '../store/todoData';
 
 const ListdayContainer = () => {
@@ -23,9 +21,6 @@ const ListdayContainer = () => {
   const settingReduxData = () => {
     // 리덕스에서 받기
     let data = todoData;
-    // 더미값 받기
-    // let data = dummyData4;
-
     let transformeArr = data.map(item => {
       const { tdStartDate, tdEndDate } = item;
       const startDateObj = new Date(tdStartDate);
